@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://b8npii23s1hqy"]
+
+[ext_resource type="Script" uid="uid://cijjtqwjsfr5" path="res://404_not_found.gd" id="1_46wdv"]
+[ext_resource type="Shader" uid="uid://bluiwwacpkk1k" path="res://Player/player.gdshader" id="1_xno82"]
+[ext_resource type="ArrayMesh" uid="uid://ck4p4qg4q31ss" path="res://trees/model.obj" id="2_46wdv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dnbx"]
+resource_name = "mat20"
+albedo_color = Color(0.19, 0.09, 0.06, 1)
+
+[sub_resource type="Gradient" id="Gradient_gjl0y"]
+colors = PackedColorArray(0, 0.27395758, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vnv7o"]
+gradient = SubResource("Gradient_gjl0y")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnv7o"]
+render_priority = 0
+next_pass = SubResource("StandardMaterial3D_6dnbx")
+shader = ExtResource("1_xno82")
+shader_parameter/shake_power = 0.7
+shader_parameter/shake_rate = 0.0010000000475
+shader_parameter/shake_speed = 3.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.5
+shader_parameter/main_tex = SubResource("GradientTexture1D_vnv7o")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_46wdv"]
+radius = 1.4306641
+height = 7.1625977
+
+[node name="404 Not Found" type="Area3D"]
+collision_mask = 4
+script = ExtResource("1_46wdv")
+
+[node name="Model" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.2914467, 4.1756196, 2.7319794)
+material_overlay = SubResource("ShaderMaterial_vnv7o")
+mesh = ExtResource("2_46wdv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5812988, 2.867187)
+shape = SubResource("CapsuleShape3D_46wdv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
