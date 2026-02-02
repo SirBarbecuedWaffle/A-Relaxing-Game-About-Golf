@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxnhmgd6nak3d"]
+[gd_scene format=3 uid="uid://cxnhmgd6nak3d"]
 
 [ext_resource type="Script" uid="uid://dvn4q2fd6ablf" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Material" uid="uid://bvyf2qws5wffg" path="res://Player/freakyshader.tres" id="2_00tjw"]
@@ -28,7 +28,7 @@ rings = 11
 [sub_resource type="LabelSettings" id="LabelSettings_k53q1"]
 font_size = 160
 
-[node name="Player" type="RigidBody3D"]
+[node name="Player" type="RigidBody3D" unique_id=980045678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9165852, 0)
 collision_layer = 4
 collision_mask = 3
@@ -46,56 +46,57 @@ linear_damp = 1.0
 script = ExtResource("1_l8h54")
 launchForce = 8.689
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=377827783]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 shape = SubResource("SphereShape3D_gwnis")
 
-[node name="ballSkin" type="Node3D" parent="."]
+[node name="ballSkin" type="Node3D" parent="." unique_id=2110694953]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 
-[node name="ballMessiah" type="MeshInstance3D" parent="ballSkin"]
+[node name="ballMessiah" type="MeshInstance3D" parent="ballSkin" unique_id=1850379817]
+visible = false
 mesh = SubResource("SphereMesh_gwnis")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("2_00tjw")
 
-[node name="golfBall" type="MeshInstance3D" parent="ballSkin"]
+[node name="golfBall" type="MeshInstance3D" parent="ballSkin" unique_id=431632365]
 mesh = ExtResource("2_k53q1")
 skeleton = NodePath("../..")
 
-[node name="GolfballLowpoly" type="MeshInstance3D" parent="ballSkin"]
+[node name="GolfballLowpoly" type="MeshInstance3D" parent="ballSkin" unique_id=709035546]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.30000007, 0)
 mesh = ExtResource("2_vtle1")
 surface_material_override/0 = ExtResource("2_00tjw")
 
-[node name="success" type="AudioStreamPlayer" parent="."]
+[node name="success" type="AudioStreamPlayer" parent="." unique_id=1314836401]
 stream = ExtResource("2_gwnis")
 
-[node name="explode" type="AudioStreamPlayer" parent="."]
+[node name="explode" type="AudioStreamPlayer" parent="." unique_id=1224703502]
 stream = ExtResource("2_btcbx")
 
-[node name="boost" type="AudioStreamPlayer3D" parent="."]
+[node name="boost" type="AudioStreamPlayer3D" parent="." unique_id=1892492641]
 stream = ExtResource("2_4ntmi")
 autoplay = true
 
-[node name="camera_pivot" type="Node3D" parent="."]
+[node name="camera_pivot" type="Node3D" parent="." unique_id=903152552]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4878771, 0)
 
-[node name="SpringArm3D" type="SpringArm3D" parent="camera_pivot"]
+[node name="SpringArm3D" type="SpringArm3D" parent="camera_pivot" unique_id=2094533519]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.15062, 0)
 shape = SubResource("SeparationRayShape3D_gwnis")
 spring_length = 3.0
 
-[node name="Camera3D" type="Camera3D" parent="camera_pivot/SpringArm3D"]
+[node name="Camera3D" type="Camera3D" parent="camera_pivot/SpringArm3D" unique_id=1436092533]
 transform = Transform3D(1, 0, 0, 0, 0.831033, 0.5562231, 0, -0.5562231, 0.831033, 0, 7.520611, 5.6766195)
 fov = 90.0
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=2049251096]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="pauseLab" type="Label" parent="Control"]
+[node name="pauseLab" type="Label" parent="Control" unique_id=1424643681]
 visible = false
 layout_mode = 0
 offset_right = 1146.0
@@ -105,15 +106,15 @@ label_settings = SubResource("LabelSettings_k53q1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="clubLocation" type="Marker3D" parent="."]
+[node name="clubLocation" type="Marker3D" parent="." unique_id=447362086]
 
-[node name="clubDeco" type="Node3D" parent="clubLocation"]
+[node name="clubDeco" type="Node3D" parent="clubLocation" unique_id=889069011]
 visible = false
 
-[node name="Root Scene" parent="clubLocation/clubDeco" instance=ExtResource("6_vtle1")]
+[node name="Root Scene" parent="clubLocation/clubDeco" unique_id=477420912 instance=ExtResource("6_vtle1")]
 transform = Transform3D(4, 3.496911e-07, 0, -3.496911e-07, 4, 0, 0, 0, -4, 0, 0.20889187, 0)
 
-[node name="Golf ball" parent="." instance=ExtResource("6_fhl08")]
+[node name="Golf ball" parent="." unique_id=728287173 instance=ExtResource("6_fhl08")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6494646, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

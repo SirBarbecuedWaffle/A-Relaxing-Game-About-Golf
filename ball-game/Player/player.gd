@@ -8,7 +8,7 @@ var transitioning:=false
 @onready var boost: AudioStreamPlayer3D = $boost
 @onready var _camera_pivot: Node3D = $camera_pivot
 @export_range(0.0, 1.0) var mouse_sensitivity = 0.01
-@export var tilt_limit = deg_to_rad(75)
+@export var tilt_limit = deg_to_rad(45)
 @onready var ball_skin: Node3D = $ballSkin
 @onready var ball_speen: RigidBody3D = $ballSkin/ballSpeen
 
