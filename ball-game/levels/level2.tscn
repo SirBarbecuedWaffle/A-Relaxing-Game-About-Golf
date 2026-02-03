@@ -1,19 +1,17 @@
-[gd_scene load_steps=26 format=3 uid="uid://u5lll2hh3g74"]
+[gd_scene format=3 uid="uid://cpgirlj2s6v4q"]
 
-[ext_resource type="Script" uid="uid://cqpfxpnlllop8" path="res://levels/level_2.gd" id="1_76ugp"]
-[ext_resource type="Texture2D" uid="uid://dq5dgpqrllj0b" path="res://levels/sloppyfloor.png" id="1_qyb5k"]
-[ext_resource type="Texture2D" uid="uid://c28rnredii8jg" path="res://levels/sloppymess.png" id="2_py88r"]
-[ext_resource type="PackedScene" uid="uid://cxnhmgd6nak3d" path="res://Player/player.tscn" id="2_qyb5k"]
-[ext_resource type="Texture2D" uid="uid://c0hms64ktlane" path="res://levels/sloppytrees.png" id="3_py88r"]
-[ext_resource type="PackedScene" uid="uid://d3pckmmnm7mgb" path="res://boostpanel/boostPanel.tscn" id="4_e8p81"]
-[ext_resource type="PackedScene" uid="uid://dcecb8hw7dbrv" path="res://levels/explosion_particles.tscn" id="5_g1dg4"]
-[ext_resource type="Texture2D" uid="uid://buan63dr7j1b3" path="res://trees/Log_Cabin.png" id="6_55gdq"]
-[ext_resource type="AudioStream" uid="uid://cfdyifv3m5rcv" path="res://audio/reversedoverworldmusic.mp3" id="6_s1bpp"]
+[ext_resource type="PackedScene" uid="uid://cxnhmgd6nak3d" path="res://Player/player.tscn" id="1_py88r"]
+[ext_resource type="PhysicsMaterial" uid="uid://qe8151vhjqcj" path="res://levels/rampMaterial.tres" id="2_g1dg4"]
+[ext_resource type="Script" uid="uid://va1a24efnbdb" path="res://levels/course.gd" id="3_76ugp"]
+[ext_resource type="PackedScene" uid="uid://d3pckmmnm7mgb" path="res://boostpanel/boostPanel.tscn" id="3_s1bpp"]
+[ext_resource type="PackedScene" uid="uid://b8npii23s1hqy" path="res://404_not_found.tscn" id="4_76ugp"]
+[ext_resource type="ArrayMesh" uid="uid://c1qtxbcclnboj" path="res://flag/model.obj" id="5_g1dg4"]
+[ext_resource type="PackedScene" uid="uid://jfwajmrh6ca7" path="res://levels/success_particles.tscn" id="6_s1bpp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_umreq"]
 sky_top_color = Color(0.35000002, 0.4908334, 1, 1)
-sky_horizon_color = Color(0.6963154, 0.7237737, 0.84206533, 1)
-ground_horizon_color = Color(0.6963154, 0.7237737, 0.84206533, 1)
+sky_horizon_color = Color(0.23186839, 0.34759256, 0.9999829, 1)
+ground_horizon_color = Color(0.35000002, 0.4908334, 1, 1)
 
 [sub_resource type="Sky" id="Sky_80vhd"]
 sky_material = SubResource("ProceduralSkyMaterial_umreq")
@@ -23,745 +21,248 @@ background_mode = 2
 sky = SubResource("Sky_80vhd")
 tonemap_mode = 2
 glow_enabled = true
-fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(1, 1, 1, 1)
-fog_light_energy = 1.69
-fog_sun_scatter = 0.25
-fog_density = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yy828"]
-albedo_texture = ExtResource("1_qyb5k")
-uv1_scale = Vector3(200, 200, 200)
+albedo_color = Color(0, 0.28627452, 0, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cwqvt"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_py88r"]
+albedo_color = Color(0, 0.5796624, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1bpp"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0)
-albedo_texture = ExtResource("1_qyb5k")
-uv1_scale = Vector3(20, 20, 20)
+albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Gradient" id="Gradient_lkolc"]
-offsets = PackedFloat32Array(0.903846)
-colors = PackedColorArray(0, 0, 0, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_e8p81"]
+size = Vector3(2.5662842, 0.81591797, 2.80542)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_u3rij"]
-gradient = SubResource("Gradient_lkolc")
-
-[sub_resource type="Curve" id="Curve_cv3ok"]
-_limits = [0.0, 100.0, 0.0, 1.0]
-_data = [Vector2(0, 1), 0.0, 146.581, 0, 0, Vector2(1, 100), 413.249, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_mygan"]
-curve = SubResource("Curve_cv3ok")
-
-[sub_resource type="Curve" id="Curve_qubh3"]
-_data = [Vector2(0, 0.530249), 0.0, 2.25724, 0, 0, Vector2(1, 0), -2.97204, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_5bhb0"]
-curve = SubResource("Curve_qubh3")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g1dg4"]
-direction = Vector3(0, 1, 0)
-spread = 180.0
-initial_velocity_min = 4.0
-initial_velocity_max = 7.0
-gravity = Vector3(0, 0, 0)
-damping_max = 3.0
-damping_curve = SubResource("CurveTexture_mygan")
-scale_max = 2.0
-scale_curve = SubResource("CurveTexture_5bhb0")
-color_ramp = SubResource("GradientTexture1D_u3rij")
-turbulence_enabled = true
-turbulence_noise_scale = 1.0
-turbulence_noise_speed_random = 4.0
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e8p81"]
-radius = 1.2143555
-height = 2.428711
-
-[sub_resource type="Animation" id="Animation_55gdq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("leftSide:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1204, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("rightSide:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1164, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-
-[sub_resource type="Animation" id="Animation_e8p81"]
-resource_name = "new_animation"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("leftSide:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666669),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-1204, 0), Vector2(-528, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("rightSide:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1164, 0), Vector2(488, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.033333335, 0.96666664, 1.3666667, 1.7333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [-11.45, 10.0, 10.0, -80.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_crte6"]
+[sub_resource type="Curve3D" id="Curve3D_5mrsh"]
 _data = {
-&"RESET": SubResource("Animation_55gdq"),
-&"new_animation": SubResource("Animation_e8p81")
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0, 60, 5, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
+point_count = 3
 
-[node name="level" type="Node3D"]
-script = ExtResource("1_76ugp")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_safpt"]
+albedo_color = Color(0.20392157, 0.45490196, 0, 1)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1dg4"]
+albedo_color = Color(0.44584405, 0.24664211, 0, 1)
+
+[node name="level" type="Node3D" unique_id=1443469558]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1754046222]
 transform = Transform3D(1, 0, 0, 0, 0.45982784, 0.888008, 0, -0.888008, 0.45982784, 0, 12.767386, 4.9112964)
 light_color = Color(1, 0.90000004, 0, 1)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=592178240]
 environment = SubResource("Environment_hjsbj")
 
-[node name="floor" type="CSGBox3D" parent="." groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2532654, -4, -80.00424)
+[node name="Player" parent="." unique_id=2030944428 instance=ExtResource("1_py88r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.35675, 65.61857, -1.5343418)
+launchForce = 15.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1473728355]
+collision_mask = 5
+physics_material_override = ExtResource("2_g1dg4")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="StaticBody3D" unique_id=1802964772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4992919, 0)
+operation = 2
 use_collision = true
-size = Vector3(384.59222, 8, 603.01324)
+
+[node name="ramp" type="CSGBox3D" parent="StaticBody3D/CSGCombiner3D" unique_id=136835469 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.117889, 1.116946, 0.02315712)
+use_collision = true
+size = Vector3(2.3223639, 1.2863055, 5.303)
 material = SubResource("StandardMaterial3D_yy828")
 
-[node name="Sprite3D" type="Sprite3D" parent="floor"]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 8.003923, 6.0586286, 76.44461)
-billboard = 2
-texture = ExtResource("2_py88r")
-region_enabled = true
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+[node name="CSGTorus3D" type="CSGCylinder3D" parent="StaticBody3D/CSGCombiner3D" unique_id=1428059324]
+transform = Transform3D(0.99856764, -2.3387205e-08, -0.05350369, -0.05350369, -4.364878e-07, -0.99856764, 0, 10, -4.371139e-08, 13.9678755, 2.5669699, 0.030517578)
+operation = 2
+radius = 2.0761719
+height = 0.5456543
+sides = 64
 
-[node name="Sprite3D2" type="Sprite3D" parent="floor"]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0.38966513, 6.0586286, 72.3913)
-billboard = 2
-texture = ExtResource("2_py88r")
-region_enabled = true
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+[node name="course" type="StaticBody3D" parent="." unique_id=438832795]
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_cwqvt")
+script = ExtResource("3_76ugp")
 
-[node name="Sprite3D3" type="Sprite3D" parent="floor"]
-transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, 1.8722548, 6.0586286, 80.8596)
-billboard = 2
-texture = ExtResource("2_py88r")
-region_enabled = true
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D4" type="Sprite3D" parent="floor"]
-transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, 5.40024, 6.0586286, 86.8478)
-billboard = 2
-texture = ExtResource("2_py88r")
-region_enabled = true
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D7" type="Sprite3D" parent="floor"]
-transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, 0.95671034, 4.6913557, 86.8478)
-billboard = 2
-texture = ExtResource("2_py88r")
-region_enabled = true
-region_rect = Rect2(33.92758, 34.014896, 26.530273, 28.223701)
-
-[node name="Sprite3D8" type="Sprite3D" parent="floor"]
-transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, 8.588493, 4.6913557, 66.80388)
-billboard = 2
-texture = ExtResource("2_py88r")
-region_enabled = true
-region_rect = Rect2(33.92758, 34.014896, 26.530273, 28.223701)
-
-[node name="Sprite3D9" type="Sprite3D" parent="floor"]
-transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, 0.79346085, 4.483374, 62.711086)
-billboard = 2
-texture = ExtResource("2_py88r")
-region_enabled = true
-region_rect = Rect2(33.92758, 66.754395, 26.530273, 27.094742)
-
-[node name="Sprite3D10" type="Sprite3D" parent="floor"]
-transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, 8.27536, 4.483374, 91.45529)
-billboard = 2
-texture = ExtResource("2_py88r")
-region_enabled = true
-region_rect = Rect2(33.92758, 66.754395, 26.530273, 27.094742)
-
-[node name="Sprite3D5" type="Sprite3D" parent="floor"]
-transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, -0.52711725, 6.0586286, 93.27099)
-billboard = 2
-texture = ExtResource("2_py88r")
-region_enabled = true
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D6" type="Sprite3D" parent="floor"]
-transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, 8.030016, 6.0586286, 99.35874)
-billboard = 2
-texture = ExtResource("2_py88r")
-region_enabled = true
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="floor2" type="CSGBox3D" parent="." groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1325521, 3.2729435, 19.028858)
-visible = false
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="course" unique_id=585450970]
 use_collision = true
-size = Vector3(2, 0.5196533, 1.208374)
-material = SubResource("StandardMaterial3D_yy828")
 
-[node name="boostPanel" parent="floor2" instance=ExtResource("4_e8p81")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.16247034, 0.23868465, -0.09158802)
-launchforce = 200
-
-[node name="floor4" type="CSGBox3D" parent="." groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4206753, 4.0510807, 27.516869)
+[node name="floor10" type="CSGBox3D" parent="course/CSGCombiner3D" unique_id=2071006355 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.756638, 47.607147, -2.178605)
 use_collision = true
-size = Vector3(33.161743, 8, 10.483093)
+size = Vector3(78.9498, 8, 16.454699)
+material = SubResource("StandardMaterial3D_py88r")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="course/CSGCombiner3D" unique_id=485852995]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.72751, 50.833347, -1.9891572)
+operation = 2
+radius = 2.350586
+sides = 32
+material = SubResource("StandardMaterial3D_py88r")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="course/CSGCombiner3D" unique_id=122925291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.684673, 48.51323, -2.0194297)
+inner_radius = 0.001
+outer_radius = 6.5502033
+sides = 16
+ring_sides = 19
+material = SubResource("StandardMaterial3D_py88r")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="course/CSGCombiner3D" unique_id=1261277812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.72751, 50.598484, -1.9891572)
+operation = 2
+radius = 0.85009766
+height = 2.4697266
+sides = 32
 material = SubResource("StandardMaterial3D_s1bpp")
 
-[node name="floor5" type="CSGBox3D" parent="." groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4206753, 4.0510807, -34.311363)
-use_collision = true
-size = Vector3(33.161743, 8, 10.483093)
-material = SubResource("StandardMaterial3D_s1bpp")
-
-[node name="Sprite3D22" type="Sprite3D" parent="floor5"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 5.43808, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D23" type="Sprite3D" parent="floor5"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 1.0256557, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D24" type="Sprite3D" parent="floor5"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -3.373108, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D25" type="Sprite3D" parent="floor5"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -7.7864885, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D26" type="Sprite3D" parent="floor5"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 9.8433075, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="floor8" type="CSGBox3D" parent="." groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0789156, 4.0510807, -36.060238)
-use_collision = true
-size = Vector3(33.161743, 8, 9.046234)
-material = SubResource("StandardMaterial3D_s1bpp")
-
-[node name="Sprite3D22" type="Sprite3D" parent="floor8"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 5.43808, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D23" type="Sprite3D" parent="floor8"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 1.0256557, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D24" type="Sprite3D" parent="floor8"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -3.373108, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D25" type="Sprite3D" parent="floor8"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -7.7864885, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D26" type="Sprite3D" parent="floor8"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 9.8433075, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="floor9" type="CSGBox3D" parent="." groups=["obstacle"]]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.8465023, 4.1406736, 29.206123)
-use_collision = true
-size = Vector3(33.161743, 8, 10.483093)
-material = SubResource("StandardMaterial3D_s1bpp")
-
-[node name="Sprite3D22" type="Sprite3D" parent="floor9"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 5.43808, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D23" type="Sprite3D" parent="floor9"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 1.0256557, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D24" type="Sprite3D" parent="floor9"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -3.373108, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D25" type="Sprite3D" parent="floor9"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -7.7864885, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D26" type="Sprite3D" parent="floor9"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 9.8433075, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="floor10" type="CSGBox3D" parent="." groups=["obstacle"]]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.5047426, 4.1406736, 27.457249)
-use_collision = true
-size = Vector3(33.161743, 8, 9.046234)
-material = SubResource("StandardMaterial3D_s1bpp")
-
-[node name="Sprite3D22" type="Sprite3D" parent="floor10"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 5.43808, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D23" type="Sprite3D" parent="floor10"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 1.0256557, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D24" type="Sprite3D" parent="floor10"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -3.373108, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D25" type="Sprite3D" parent="floor10"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -7.7864885, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D26" type="Sprite3D" parent="floor10"]
-transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 9.8433075, -1.3890944, 5.220415)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="floor3" type="CSGBox3D" parent="." groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.42276, 1.2884655, 0.08239746)
-use_collision = true
-size = Vector3(8.032227, 8, 59.316162)
-material = SubResource("StandardMaterial3D_s1bpp")
-
-[node name="Sprite3D7" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 16.03471)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D9" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 11.652945)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D10" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 7.264058)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D11" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 2.863575)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D8" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 20.436584)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D12" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -5.9690933)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D13" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -10.350859)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D14" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -14.739745)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D15" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -19.140228)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D16" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -1.5672188)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D22" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-7.0000005, 0, 6.119595e-07, 0, 7, 0, -6.119595e-07, 0, -7.0000005, -9.827849, 3.3100777, -32.742165)
-texture = ExtResource("6_55gdq")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D17" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -27.94043)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D18" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -32.322197)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D19" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -36.711082)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D20" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -41.111565)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D21" type="Sprite3D" parent="floor3"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -23.538555)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="floor7" type="CSGBox3D" parent="." groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.328167, 1.2884655, 1.7359467)
-use_collision = true
-size = Vector3(8.032227, 8, 59.316162)
-material = SubResource("StandardMaterial3D_s1bpp")
-
-[node name="Sprite3D7" type="Sprite3D" parent="floor7"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 16.03471)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D9" type="Sprite3D" parent="floor7"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 11.652945)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D10" type="Sprite3D" parent="floor7"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 7.264058)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D11" type="Sprite3D" parent="floor7"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 2.863575)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D8" type="Sprite3D" parent="floor7"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 20.436584)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D12" type="Sprite3D" parent="floor7"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -5.9690933)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D13" type="Sprite3D" parent="floor7"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -10.350859)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D14" type="Sprite3D" parent="floor7"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -14.739745)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D15" type="Sprite3D" parent="floor7"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -19.140228)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D16" type="Sprite3D" parent="floor7"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -1.5672188)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D17" type="Sprite3D" parent="floor7"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -27.94043)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D18" type="Sprite3D" parent="floor7"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -32.322197)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D19" type="Sprite3D" parent="floor7"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -36.711082)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D20" type="Sprite3D" parent="floor7"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -41.111565)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D21" type="Sprite3D" parent="floor7"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -23.538555)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="floor6" type="CSGBox3D" parent="." groups=["obstacle"]]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -13.206147, 1.2884655, -17.973883)
-use_collision = true
-size = Vector3(8.032227, 8, 59.316162)
-material = SubResource("StandardMaterial3D_s1bpp")
-
-[node name="Sprite3D7" type="Sprite3D" parent="floor6"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 16.03471)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D9" type="Sprite3D" parent="floor6"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 11.652945)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D10" type="Sprite3D" parent="floor6"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 7.264058)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D11" type="Sprite3D" parent="floor6"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 2.863575)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D8" type="Sprite3D" parent="floor6"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 20.436584)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D12" type="Sprite3D" parent="floor6"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -5.9690933)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D13" type="Sprite3D" parent="floor6"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -10.350859)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D14" type="Sprite3D" parent="floor6"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -14.739745)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D15" type="Sprite3D" parent="floor6"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -19.140228)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D16" type="Sprite3D" parent="floor6"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -1.5672188)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D17" type="Sprite3D" parent="floor6"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -27.94043)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D18" type="Sprite3D" parent="floor6"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -32.322197)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D19" type="Sprite3D" parent="floor6"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -36.711082)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D20" type="Sprite3D" parent="floor6"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -41.111565)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D21" type="Sprite3D" parent="floor6"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -23.538555)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="floor11" type="CSGBox3D" parent="." groups=["obstacle"]]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.2514305, 1.2884655, -18.597015)
-use_collision = true
-size = Vector3(8.032227, 8, 59.316162)
-material = SubResource("StandardMaterial3D_s1bpp")
-
-[node name="Sprite3D7" type="Sprite3D" parent="floor11"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 16.03471)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D9" type="Sprite3D" parent="floor11"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 11.652945)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D10" type="Sprite3D" parent="floor11"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 7.264058)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D11" type="Sprite3D" parent="floor11"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 2.863575)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D8" type="Sprite3D" parent="floor11"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 20.436584)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D12" type="Sprite3D" parent="floor11"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -5.9690933)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D13" type="Sprite3D" parent="floor11"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -10.350859)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D14" type="Sprite3D" parent="floor11"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -14.739745)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D15" type="Sprite3D" parent="floor11"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -19.140228)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D16" type="Sprite3D" parent="floor11"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -1.5672188)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D17" type="Sprite3D" parent="floor11"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -27.94043)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D18" type="Sprite3D" parent="floor11"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -32.322197)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D19" type="Sprite3D" parent="floor11"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -36.711082)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D20" type="Sprite3D" parent="floor11"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -41.111565)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Sprite3D21" type="Sprite3D" parent="floor11"]
-transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -23.538555)
-texture = ExtResource("3_py88r")
-region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
-
-[node name="Player" parent="." instance=ExtResource("2_qyb5k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0624235, 3.4401984, 19.100021)
-
-[node name="ExplosionParticles" parent="." instance=ExtResource("5_g1dg4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59055233, 1.2226849, -23.822453)
-emitting = true
-amount = 256
-one_shot = false
-explosiveness = 0.0
-process_material = SubResource("ParticleProcessMaterial_g1dg4")
-
-[node name="Area3D" type="Area3D" parent="ExplosionParticles"]
+[node name="CSGBox3D" type="CSGBox3D" parent="course/CSGCombiner3D" unique_id=209410966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.248, 52.625, -2.272)
+operation = 2
+size = Vector3(10.615433, 2.0305176, 9.66703)
+material = SubResource("StandardMaterial3D_py88r")
+
+[node name="Area3D" type="Area3D" parent="course/CSGCombiner3D" unique_id=1250936346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.63258, 49.94424, -1.9141424)
 collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosionParticles/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16699219, 0.073041916)
-shape = SubResource("CapsuleShape3D_e8p81")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="course/CSGCombiner3D/Area3D" unique_id=52460535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124938965, -0.092041016, 0.030151367)
+shape = SubResource("BoxShape3D_e8p81")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_s1bpp")
-volume_db = -11.45
+[node name="SuccessParticles" parent="course/CSGCombiner3D" unique_id=839795811 instance=ExtResource("6_s1bpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.758385, 49.21149, -1.9252609)
+speed_scale = 0.8
+randomness = 1.0
 
-[node name="leftSide" type="ColorRect" parent="."]
-offset_left = -1204.0
-offset_right = -11.0
-offset_bottom = 674.0
-color = Color(0, 0, 0, 1)
+[node name="Model" type="MeshInstance3D" parent="course/CSGCombiner3D" unique_id=636898561]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 37.670734, 55.33843, -2.2519925)
+mesh = ExtResource("5_g1dg4")
+skeleton = NodePath("../../..")
 
-[node name="rightSide" type="ColorRect" parent="."]
-offset_left = 1164.0
-offset_right = 2357.0015
-offset_bottom = 674.0
-color = Color(0, 0, 0, 1)
+[node name="floor" type="CSGBox3D" parent="course" unique_id=1915327618 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.990967, 44, 1.0932617)
+use_collision = true
+size = Vector3(478, 8, 356)
+material = SubResource("StandardMaterial3D_yy828")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_crte6")
-}
-autoplay = "RESET"
+[node name="Path3D" type="Path3D" parent="course" unique_id=656225569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.18232, 7.516209, -248.89056)
+curve = SubResource("Curve3D_5mrsh")
 
-[connection signal="body_entered" from="ExplosionParticles/Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[node name="StaticBody3D2" type="StaticBody3D" parent="course/Path3D" unique_id=1559340351]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.774956, -18.114843, -34.948883)
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_cwqvt")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="course/Path3D/StaticBody3D2" unique_id=1874281906]
+transform = Transform3D(1, 0, 0, 0, 1.0862424, 0, 0, 0, 1, 28.398676, 8.623318, 34.948883)
+use_collision = true
+polygon = PackedVector2Array(-5, -5, -5, 1, 5, 1, 5, -5)
+mode = 2
+path_node = NodePath("../..")
+path_interval_type = 0
+path_interval = 0.9
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 0.0
+path_joined = false
+smooth_faces = true
+material = SubResource("StandardMaterial3D_safpt")
+
+[node name="wallPhysics" type="StaticBody3D" parent="." unique_id=1784687661]
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_cwqvt")
+
+[node name="floor11" type="CSGBox3D" parent="wallPhysics" unique_id=845507670 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.650002, 48.083633, 6.2777615)
+use_collision = true
+size = Vector3(78.73653, 8.952972, 1.056973)
+material = SubResource("StandardMaterial3D_g1dg4")
+
+[node name="floor12" type="CSGBox3D" parent="wallPhysics" unique_id=622661227 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.63224, 48.083633, -10.393763)
+use_collision = true
+size = Vector3(78.701004, 8.952972, 1.056973)
+material = SubResource("StandardMaterial3D_g1dg4")
+
+[node name="floor13" type="CSGBox3D" parent="wallPhysics" unique_id=1838792465 groups=["obstacle"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 48.505745, 48.083633, -2.0442486)
+use_collision = true
+size = Vector3(17.73209, 8.952972, 1.056973)
+material = SubResource("StandardMaterial3D_g1dg4")
+
+[node name="floor14" type="CSGBox3D" parent="wallPhysics" unique_id=185695346 groups=["obstacle"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -31.189611, 48.083633, -2.0442486)
+use_collision = true
+size = Vector3(17.73209, 8.952972, 1.056973)
+material = SubResource("StandardMaterial3D_g1dg4")
+
+[node name="Path3D" type="Path3D" parent="wallPhysics" unique_id=1643156592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.18232, 7.516209, -248.89056)
+curve = SubResource("Curve3D_5mrsh")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="wallPhysics/Path3D" unique_id=620769430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.774956, -18.114843, -34.948883)
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_cwqvt")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="wallPhysics/Path3D/StaticBody3D2" unique_id=1945747032]
+transform = Transform3D(1, 0, 0, 0, 1.0862424, 0, 0, 0, 1, 28.398676, 8.623318, 34.948883)
+use_collision = true
+polygon = PackedVector2Array(-5, -5, -5, 1, 5, 1, 5, -5)
+mode = 2
+path_node = NodePath("../..")
+path_interval_type = 0
+path_interval = 0.9
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 0.0
+path_joined = false
+smooth_faces = true
+material = SubResource("StandardMaterial3D_safpt")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=1927884447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.774956, -10.598634, -34.948883)
+collision_mask = 5
+physics_material_override = ExtResource("2_g1dg4")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="StaticBody3D3" unique_id=1745712726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.062405, 0, 0)
+use_collision = true
+collision_layer = 2
+
+[node name="floor2" type="CSGBox3D" parent="StaticBody3D3/CSGCombiner3D" unique_id=859200949 groups=["obstacle"]]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 29.319042, 12.785839, 1.086206)
+use_collision = true
+size = Vector3(12.061537, 4.9439087, 12.280994)
+material = SubResource("StandardMaterial3D_yy828")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="StaticBody3D3/CSGCombiner3D" unique_id=1964249787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.368404, 16.268875, 0.96761036)
+operation = 2
+radius = 6.004
+radial_segments = 20
+rings = 20
+
+[node name="boostPanel4" parent="." unique_id=1995855526 instance=ExtResource("3_s1bpp")]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000001, -22.775951, 0.039640427, -0.0011380911)
+
+[node name="404 Not Found" parent="." unique_id=1027208430 instance=ExtResource("4_76ugp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1639.0416, -26.329628)
+
+[connection signal="body_entered" from="course/CSGCombiner3D/Area3D" to="course" method="_on_area_3d_body_entered"]

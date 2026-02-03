@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ceuwh381aghb"]
+
+[node name="treeMesh" type="GridMap" unique_id=205267026]
+data = {
+"cells": PackedInt32Array(0, 65535, 0, 1, 0, 0, 0, 0, 0)
+}
