@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ceuwh381aghb"]
 
+[ext_resource type="MeshLibrary" uid="uid://c1ghtun8bjpxq" path="res://trees/treemeshLib.tres" id="1_m6jxq"]
+
 [node name="treeMesh" type="GridMap" unique_id=205267026]
-data = {
-"cells": PackedInt32Array(0, 65535, 0, 1, 0, 0, 0, 0, 0)
-}
+mesh_library = ExtResource("1_m6jxq")
+cell_size = Vector3(1, 2, 1)

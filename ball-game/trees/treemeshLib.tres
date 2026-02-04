@@ -1,0 +1,19 @@
+[gd_resource type="MeshLibrary" format=3 uid="uid://c1ghtun8bjpxq"]
+
+[ext_resource type="ArrayMesh" uid="uid://ck4p4qg4q31ss" path="res://trees/model.obj" id="1_arljl"]
+
+[resource]
+item/0/name = "tree"
+item/0/mesh = ExtResource("1_arljl")
+item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+item/0/mesh_cast_shadow = 1
+item/0/shapes = []
+item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/navigation_layers = 1
+item/1/name = "lowerTree"
+item/1/mesh = ExtResource("1_arljl")
+item/1/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+item/1/mesh_cast_shadow = 1
+item/1/shapes = []
+item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/navigation_layers = 1
