@@ -40,9 +40,9 @@ physics_material_override = SubResource("PhysicsMaterial_k53q1")
 gravity_scale = 3.0
 continuous_cd = true
 contact_monitor = true
-max_contacts_reported = 1000
+max_contacts_reported = 4000
 linear_damp_mode = 1
-linear_damp = 1.0
+linear_damp = 0.75
 script = ExtResource("1_l8h54")
 launchForce = 8.689
 

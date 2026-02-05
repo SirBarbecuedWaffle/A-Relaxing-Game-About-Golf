@@ -206,15 +206,27 @@ collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_cwqvt")
 
 [node name="floor11" type="CSGBox3D" parent="wallPhysics" unique_id=845507670 groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.650002, 48.083633, 6.2777615)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.958303, 48.083633, 6.2777615)
 use_collision = true
-size = Vector3(78.73653, 8.952972, 1.056973)
+size = Vector3(42.119923, 8.952972, 1.056973)
+material = SubResource("StandardMaterial3D_g1dg4")
+
+[node name="floor15" type="CSGBox3D" parent="wallPhysics" unique_id=1464341399 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.875484, 48.083633, 6.2777615)
+use_collision = true
+size = Vector3(25.764307, 8.952972, 1.056973)
 material = SubResource("StandardMaterial3D_g1dg4")
 
 [node name="floor12" type="CSGBox3D" parent="wallPhysics" unique_id=622661227 groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.63224, 48.083633, -10.393763)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.825802, 48.083633, -10.393763)
 use_collision = true
-size = Vector3(78.701004, 8.952972, 1.056973)
+size = Vector3(42.31388, 8.952972, 1.056973)
+material = SubResource("StandardMaterial3D_g1dg4")
+
+[node name="floor16" type="CSGBox3D" parent="wallPhysics" unique_id=422934168 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.888165, 48.083633, -10.393763)
+use_collision = true
+size = Vector3(25.614359, 8.952972, 1.056973)
 material = SubResource("StandardMaterial3D_g1dg4")
 
 [node name="floor13" type="CSGBox3D" parent="wallPhysics" unique_id=1838792465 groups=["obstacle"]]
@@ -280,7 +292,7 @@ radial_segments = 20
 rings = 20
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=2140888432]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.870377, 51.64804, -1.8554094)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.849262, 51.61058, -1.8554094)
 collision_mask = 5
 physics_material_override = ExtResource("3_o0ax4")
 
@@ -296,9 +308,9 @@ size = Vector3(2.3223639, 1.2863055, 5.303)
 material = SubResource("StandardMaterial3D_mf7v1")
 
 [node name="CSGTorus3D" type="CSGCylinder3D" parent="StaticBody3D2/CSGCombiner3D" unique_id=2044201563]
-transform = Transform3D(0.99856764, -2.3387205e-08, -0.05350369, -0.05350369, -4.364878e-07, -0.99856764, 0, 10, -4.371139e-08, 14.078723, 4.0953217, 0.036082268)
+transform = Transform3D(0.99856764, -2.3387205e-08, -0.05350369, -0.05350369, -4.364878e-07, -0.99856764, 0, 10, -4.371139e-08, 14.078723, 3.4665184, 0.036082268)
 operation = 2
-radius = 3.6044922
+radius = 2.9760742
 height = 0.5456543
 sides = 64
 
@@ -349,6 +361,12 @@ mesh = ExtResource("11_4lmri")
 
 [node name="Root Scene" parent="." unique_id=638883093 instance=ExtResource("12_i3cyh")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -37.83082, 48.03136, -17.60384)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1463264488]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=989907849]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="body_entered" from="course/CSGCombiner3D/Area3D" to="course" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="resetArea" to="." method="_on_reset_area_body_entered"]

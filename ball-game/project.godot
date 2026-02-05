@@ -59,3 +59,26 @@ down={
 
 textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+
+[shader_globals]
+
+specular_smoothness={
+"type": "float",
+"value": 0.05
+}
+fresnel_smoothness={
+"type": "float",
+"value": 0.05
+}
+outline_width={
+"type": "float",
+"value": 4.0
+}
+outline_color={
+"type": "color",
+"value": Color(0, 0, 0, 1)
+}
+diffuse_curve={
+"type": "sampler2D",
+"value": "::qegch"
+}

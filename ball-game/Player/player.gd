@@ -61,9 +61,9 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("boost") && abs(linear_velocity.z)<0.2 && abs(linear_velocity.x)<0.2 && abs(linear_velocity.y)<0.2:
 			club_deco.visible=true
 			print(clubDistance)
-			if clubDistance<10:
+			if clubDistance<8.5:
 				clubDistance+=0.075
-			if spring_arm_3d.spring_length<6:
+			if spring_arm_3d.spring_length<5.5:
 				spring_arm_3d.spring_length+=0.025
 		if Input.is_action_just_released("boost") && abs(linear_velocity.z)<0.2 && abs(linear_velocity.x)<0.2 && abs(linear_velocity.y)<0.2:
 			var clubtween = create_tween()
@@ -74,6 +74,7 @@ func _physics_process(delta: float) -> void:
 			club_deco.visible=false
 			print(clubDistance)
 			apply_central_force(Vector3(global_position.x-club_location.global_position.x,0,global_position.z-club_location.global_position.z)*launchForce*delta*100*clubDistance)		
+			apply_central_force(Vector3.DOWN)	
 			clubDistance=1.0
 			spring_arm_3d.spring_length=3
 		else:

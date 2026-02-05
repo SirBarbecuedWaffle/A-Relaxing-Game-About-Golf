@@ -15,4 +15,4 @@ func _process(delta: float) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	success_particles.emitting=true
 	await get_tree().create_timer(3.0).timeout
-	get_tree().change_scene_to_file("res://levels/level.tscn")
+	get_tree().change_scene_to_file("res://levels/level3.tscn")
