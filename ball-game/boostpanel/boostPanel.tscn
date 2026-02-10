@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3pckmmnm7mgb"]
+[gd_scene format=3 uid="uid://d3pckmmnm7mgb"]
 
 [ext_resource type="Script" uid="uid://urkrxgt1mkr8" path="res://boostpanel/boost_panel.gd" id="1_l5dww"]
 [ext_resource type="ArrayMesh" uid="uid://fv2pojx0vetr" path="res://boostpanel/model.obj" id="2_u3vqa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6ciil"]
-size = Vector3(1, 0.3857422, 1.1932373)
+size = Vector3(1, 0.17480469, 1.1932373)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3vqa"]
 albedo_color = Color(1, 1, 0, 1)
@@ -41,15 +41,15 @@ albedo_color = Color(1, 0.4745098, 0, 1)
 emission_enabled = true
 emission = Color(1, 0.45882353, 0, 1)
 
-[node name="boostPanel" type="Area3D"]
+[node name="boostPanel" type="Area3D" unique_id=2028299605]
 collision_mask = 4
 script = ExtResource("1_l5dww")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19394153, -0.029846191)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1586522337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08847278, -0.029846191)
 shape = SubResource("BoxShape3D_6ciil")
 
-[node name="Model" type="MeshInstance3D" parent="."]
+[node name="Model" type="MeshInstance3D" parent="." unique_id=1259249025]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.039711356, 0, -0.009362221)
 mesh = ExtResource("2_u3vqa")
 surface_material_override/0 = SubResource("StandardMaterial3D_u3vqa")
@@ -62,7 +62,7 @@ surface_material_override/6 = SubResource("StandardMaterial3D_u3vqa")
 surface_material_override/7 = SubResource("StandardMaterial3D_nlb6g")
 surface_material_override/8 = SubResource("StandardMaterial3D_e76nf")
 
-[node name="Model3" type="MeshInstance3D" parent="."]
+[node name="Model3" type="MeshInstance3D" parent="." unique_id=915883211]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.039711356, 0, 0.3986873)
 mesh = ExtResource("2_u3vqa")
 surface_material_override/0 = SubResource("StandardMaterial3D_u3vqa")
@@ -75,7 +75,7 @@ surface_material_override/6 = SubResource("StandardMaterial3D_u3vqa")
 surface_material_override/7 = SubResource("StandardMaterial3D_nlb6g")
 surface_material_override/8 = SubResource("StandardMaterial3D_e76nf")
 
-[node name="Model2" type="MeshInstance3D" parent="."]
+[node name="Model2" type="MeshInstance3D" parent="." unique_id=138609501]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.039711356, 0, -0.40839913)
 mesh = ExtResource("2_u3vqa")
 surface_material_override/0 = SubResource("StandardMaterial3D_u3vqa")

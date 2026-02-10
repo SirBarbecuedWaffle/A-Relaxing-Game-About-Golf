@@ -33,6 +33,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	_camera_pivot.global_position=global_position
 	club_deco.rotation.y=_camera_pivot.rotation.y-1.57
 	var rollAxis: Vector3 = linear_velocity.cross(Vector3.UP).normalized()
 	var angdistance: float = linear_velocity.length() * delta / 0.3
@@ -73,7 +74,7 @@ func _physics_process(delta: float) -> void:
 			club_deco.global_position=club_location.global_position
 			club_deco.visible=false
 			print(clubDistance)
-			apply_central_force(Vector3(global_position.x-club_location.global_position.x,0,global_position.z-club_location.global_position.z)*launchForce*delta*100*clubDistance)		
+			apply_central_force(Vector3(global_position.x-club_location.global_position.x,0,global_position.z-club_location.global_position.z)*launchForce*delta*5000*clubDistance)		
 			apply_central_force(Vector3.DOWN)	
 			clubDistance=1.0
 			spring_arm_3d.spring_length=3
@@ -84,7 +85,6 @@ func _physics_process(delta: float) -> void:
 			#apply_central_force(_camera_pivot.global_basis * Vector3(-1, 0, 0)*50)
 		#if Input.is_action_pressed("rot_right"):
 			#apply_central_force(_camera_pivot.global_basis * Vector3(1, 0, 0)*50)
-
 
 func _on_body_entered(body: Node) -> void:
 	#if "goal" in body.get_groups() && !transitioning:

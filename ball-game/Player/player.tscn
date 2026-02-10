@@ -12,7 +12,6 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k53q1"]
 friction = 0.09
-bounce = 0.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gwnis"]
 radius = 0.3
@@ -29,20 +28,22 @@ rings = 11
 font_size = 160
 
 [node name="Player" type="RigidBody3D" unique_id=980045678]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9165852, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.871692, 17.473867, 16.632252)
 collision_layer = 4
 collision_mask = 3
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-mass = 0.2
+mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_k53q1")
 gravity_scale = 3.0
 continuous_cd = true
 contact_monitor = true
 max_contacts_reported = 4000
 linear_damp_mode = 1
-linear_damp = 0.75
+linear_damp = 0.47
+angular_damp_mode = 1
+angular_damp = 0.2
 script = ExtResource("1_l8h54")
 launchForce = 8.689
 
@@ -79,10 +80,11 @@ stream = ExtResource("2_4ntmi")
 autoplay = true
 
 [node name="camera_pivot" type="Node3D" parent="." unique_id=903152552]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4878771, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4044623, 0)
+top_level = true
 
 [node name="SpringArm3D" type="SpringArm3D" parent="camera_pivot" unique_id=2094533519]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.15062, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7965083, 0)
 shape = SubResource("SeparationRayShape3D_gwnis")
 spring_length = 3.0
 

@@ -3,4 +3,4 @@ extends Area3D
 
 func _on_body_entered(body: Node3D) -> void:
 	body.linear_velocity*=0.3
-	body.apply_central_force(-global_transform.basis.x*launchforce)		
+	body.apply_central_force(-global_transform.basis.x*launchforce*50)		
