@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cv7krxq7hmerw"]
+
+[ext_resource type="Texture2D" uid="uid://bn8nq8ywwy68k" path="res://trees/grass.webp" id="1_u6hvm"]
+
+[resource]
+albedo_color = Color(0, 0.28627452, 0, 1)
+albedo_texture = ExtResource("1_u6hvm")
+uv1_scale = Vector3(10, 10, 1)

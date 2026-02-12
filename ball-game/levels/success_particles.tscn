@@ -2,6 +2,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wvwh"]
 shading_mode = 0
+diffuse_mode = 3
 vertex_color_use_as_albedo = true
 albedo_color = Color(1.0659664, 0.5909541, 0.43678352, 1)
 disable_receive_shadows = true

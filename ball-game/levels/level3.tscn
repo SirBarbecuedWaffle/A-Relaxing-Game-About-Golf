@@ -5,9 +5,12 @@
 [ext_resource type="PhysicsMaterial" uid="uid://qe8151vhjqcj" path="res://levels/rampMaterial.tres" id="3_o0ax4"]
 [ext_resource type="Script" uid="uid://va1a24efnbdb" path="res://levels/course.gd" id="4_nq7ub"]
 [ext_resource type="PackedScene" uid="uid://jfwajmrh6ca7" path="res://levels/success_particles.tscn" id="5_7ej46"]
+[ext_resource type="PackedScene" uid="uid://b7ogctfwjh30x" path="res://levels/level5.tscn" id="5_mf7v1"]
+[ext_resource type="Material" uid="uid://brd42gst6v57f" path="res://materials/basicGrassMaterial.tres" id="6_o0ax4"]
 [ext_resource type="ArrayMesh" uid="uid://c1qtxbcclnboj" path="res://flag/model.obj" id="6_tq58f"]
 [ext_resource type="PackedScene" uid="uid://b8npii23s1hqy" path="res://404_not_found.tscn" id="8_c750c"]
 [ext_resource type="PackedScene" uid="uid://ceuwh381aghb" path="res://tree_mesh.tscn" id="9_283cd"]
+[ext_resource type="Material" uid="uid://bp45eo2ayq38h" path="res://materials/woodMaterial.tres" id="9_nq7ub"]
 [ext_resource type="ArrayMesh" uid="uid://dbjbqq1vchicd" path="res://trees/TerrainVertex.obj" id="10_ulrxl"]
 [ext_resource type="ArrayMesh" uid="uid://do6gcf5q8lufu" path="res://trees/PUSHILIN_tree_stump.obj" id="11_4lmri"]
 [ext_resource type="PackedScene" uid="uid://d1rh546cwbpsv" path="res://trees/Tall Grass.glb" id="12_i3cyh"]
@@ -33,9 +36,6 @@ albedo_color = Color(0, 0.28627452, 0, 1)
 friction = 0.0
 bounce = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_py88r"]
-albedo_color = Color(0, 0.5796624, 0, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1bpp"]
 albedo_color = Color(0, 0, 0, 1)
 
@@ -51,12 +51,6 @@ point_count = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_safpt"]
 albedo_color = Color(0.20392157, 0.45490196, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1dg4"]
-albedo_color = Color(0.44584405, 0.24664211, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mf7v1"]
-albedo_color = Color(0.45, 0.285, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_55gdq"]
 size = Vector3(500, 1, 500)
@@ -105,6 +99,7 @@ sides = 64
 collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_cwqvt")
 script = ExtResource("4_nq7ub")
+nextScene = ExtResource("5_mf7v1")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="course" unique_id=585450970]
 use_collision = true
@@ -113,20 +108,26 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.756638, 47.607147, -2.178605)
 use_collision = true
 size = Vector3(78.9498, 8, 16.454699)
-material = SubResource("StandardMaterial3D_py88r")
+material = ExtResource("6_o0ax4")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="course/CSGCombiner3D" unique_id=417857035]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06542969, 48.15786, -2.0340576)
+transform = Transform3D(1, 0, 0, 0, 0.92573863, 0.37816396, 0, -0.37816396, 0.92573863, 11.330017, 53.649788, -8.227028)
 operation = 2
-size = Vector3(12.994141, 7.401367, 19.151611)
-material = SubResource("StandardMaterial3D_py88r")
+size = Vector3(35.785034, 7.401367, 8.269104)
+material = ExtResource("6_o0ax4")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="course/CSGCombiner3D" unique_id=1787447312]
+transform = Transform3D(1, 0, 0, 0, 0.9545998, -0.2978914, 0, 0.2978914, 0.9545998, 11.253738, 53.348534, 5.789323)
+operation = 2
+size = Vector3(35.632477, 7.401367, 12.032166)
+material = ExtResource("6_o0ax4")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="course/CSGCombiner3D" unique_id=485852995]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.72751, 50.833347, -1.9891572)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.72751, 50.629795, -1.9891572)
 operation = 2
 radius = 2.350586
 sides = 32
-material = SubResource("StandardMaterial3D_py88r")
+material = ExtResource("6_o0ax4")
 
 [node name="CSGTorus3D" type="CSGTorus3D" parent="course/CSGCombiner3D" unique_id=122925291]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.684673, 48.51323, -2.0194297)
@@ -134,10 +135,10 @@ inner_radius = 0.001
 outer_radius = 6.5502033
 sides = 16
 ring_sides = 19
-material = SubResource("StandardMaterial3D_py88r")
+material = ExtResource("6_o0ax4")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="course/CSGCombiner3D" unique_id=1261277812]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.72751, 50.598484, -1.9891572)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.72751, 50.337467, -1.9891572)
 operation = 2
 radius = 0.85009766
 height = 2.4697266
@@ -148,7 +149,7 @@ material = SubResource("StandardMaterial3D_s1bpp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.248, 52.625, -2.272)
 operation = 2
 size = Vector3(10.615433, 2.0305176, 9.66703)
-material = SubResource("StandardMaterial3D_py88r")
+material = ExtResource("6_o0ax4")
 
 [node name="Area3D" type="Area3D" parent="course/CSGCombiner3D" unique_id=1250936346]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.63258, 49.94424, -1.9141424)
@@ -206,40 +207,40 @@ collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_cwqvt")
 
 [node name="floor11" type="CSGBox3D" parent="wallPhysics" unique_id=845507670 groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.958303, 48.083633, 6.2777615)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.34302, 48.083633, 6.2777615)
 use_collision = true
-size = Vector3(42.119923, 8.952972, 1.056973)
-material = SubResource("StandardMaterial3D_g1dg4")
+size = Vector3(19.350489, 8.952972, 1.056973)
+material = ExtResource("9_nq7ub")
 
 [node name="floor15" type="CSGBox3D" parent="wallPhysics" unique_id=1464341399 groups=["obstacle"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.875484, 48.083633, 6.2777615)
 use_collision = true
 size = Vector3(25.764307, 8.952972, 1.056973)
-material = SubResource("StandardMaterial3D_g1dg4")
+material = ExtResource("9_nq7ub")
 
 [node name="floor12" type="CSGBox3D" parent="wallPhysics" unique_id=622661227 groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.825802, 48.083633, -10.393763)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.50779, 48.083633, -10.393763)
 use_collision = true
-size = Vector3(42.31388, 8.952972, 1.056973)
-material = SubResource("StandardMaterial3D_g1dg4")
+size = Vector3(18.94991, 8.952972, 1.056973)
+material = ExtResource("9_nq7ub")
 
 [node name="floor16" type="CSGBox3D" parent="wallPhysics" unique_id=422934168 groups=["obstacle"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.888165, 48.083633, -10.393763)
 use_collision = true
 size = Vector3(25.614359, 8.952972, 1.056973)
-material = SubResource("StandardMaterial3D_g1dg4")
+material = ExtResource("9_nq7ub")
 
 [node name="floor13" type="CSGBox3D" parent="wallPhysics" unique_id=1838792465 groups=["obstacle"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 48.505745, 48.083633, -2.0442486)
 use_collision = true
 size = Vector3(17.73209, 8.952972, 1.056973)
-material = SubResource("StandardMaterial3D_g1dg4")
+material = ExtResource("9_nq7ub")
 
 [node name="floor14" type="CSGBox3D" parent="wallPhysics" unique_id=185695346 groups=["obstacle"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -31.189611, 48.083633, -2.0442486)
 use_collision = true
 size = Vector3(17.73209, 8.952972, 1.056973)
-material = SubResource("StandardMaterial3D_g1dg4")
+material = ExtResource("9_nq7ub")
 
 [node name="Path3D" type="Path3D" parent="wallPhysics" unique_id=1643156592]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.18232, 7.516209, -248.89056)
@@ -290,29 +291,6 @@ operation = 2
 radius = 6.004
 radial_segments = 20
 rings = 20
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=2140888432]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.849262, 51.61058, -1.8554094)
-collision_mask = 5
-physics_material_override = ExtResource("3_o0ax4")
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="StaticBody3D2" unique_id=58673714]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4992919, 0)
-operation = 2
-use_collision = true
-
-[node name="ramp" type="CSGBox3D" parent="StaticBody3D2/CSGCombiner3D" unique_id=398052310 groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.117889, 1.116946, 0.02315712)
-use_collision = true
-size = Vector3(2.3223639, 1.2863055, 5.303)
-material = SubResource("StandardMaterial3D_mf7v1")
-
-[node name="CSGTorus3D" type="CSGCylinder3D" parent="StaticBody3D2/CSGCombiner3D" unique_id=2044201563]
-transform = Transform3D(0.99856764, -2.3387205e-08, -0.05350369, -0.05350369, -4.364878e-07, -0.99856764, 0, 10, -4.371139e-08, 14.078723, 3.4665184, 0.036082268)
-operation = 2
-radius = 2.9760742
-height = 0.5456543
-sides = 64
 
 [node name="404 Not Found" parent="." unique_id=1027208430 instance=ExtResource("8_c750c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1639.0416, -26.329628)

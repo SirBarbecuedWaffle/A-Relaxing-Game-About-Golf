@@ -1,6 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj5blxe6bec8u"]
-
-[ext_resource type="Script" uid="uid://bayypafvgt8yd" path="res://levels/moving_obstacle.gd" id="1_d1e3i"]
+[gd_scene format=3 uid="uid://cj5blxe6bec8u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cb6x"]
 albedo_color = Color(0.6522379, 0.15887472, 0.99999994, 1)
@@ -11,16 +9,55 @@ size = Vector3(1, 3, 3)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oqjvw"]
 points = PackedVector3Array(0.5, 1.5, 1.5, -0.5, 1.5, 1.5, 0.5, -1.5, 1.5, 0.5, 1.5, -1.5, -0.5, 1.5, -1.5, -0.5, -1.5, 1.5, 0.5, -1.5, -1.5, -0.5, -1.5, -1.5)
 
-[node name="movingObstacle" type="AnimatableBody3D" groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6293695, 0, 0)
-script = ExtResource("1_d1e3i")
-duration = 2.0
+[sub_resource type="Animation" id="Animation_oqjvw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7181262, 1.5029774, 0)
+[sub_resource type="Animation" id="Animation_d1e3i"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.1415927, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bvvw5"]
+_data = {
+&"RESET": SubResource("Animation_oqjvw"),
+&"new_animation": SubResource("Animation_d1e3i")
+}
+
+[node name="movingObstacle" type="AnimatableBody3D" unique_id=1406859365 groups=["obstacle"]]
+constant_linear_velocity = Vector3(0, 2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1551859822]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 0.6, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_3cb6x")
 mesh = SubResource("BoxMesh_3cb6x")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71090186, 1.5029774, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1925283484]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_oqjvw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=144404972]
+libraries/ = SubResource("AnimationLibrary_bvvw5")
+autoplay = &"new_animation"

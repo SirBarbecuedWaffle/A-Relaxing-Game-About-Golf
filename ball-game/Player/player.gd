@@ -74,7 +74,7 @@ func _physics_process(delta: float) -> void:
 			club_deco.global_position=club_location.global_position
 			club_deco.visible=false
 			print(clubDistance)
-			apply_central_force(Vector3(global_position.x-club_location.global_position.x,0,global_position.z-club_location.global_position.z)*launchForce*delta*5000*clubDistance)		
+			apply_central_force(Vector3(global_position.x-club_location.global_position.x,0,global_position.z-club_location.global_position.z)*launchForce*delta*1000*clubDistance)		
 			apply_central_force(Vector3.DOWN)	
 			clubDistance=1.0
 			spring_arm_3d.spring_length=3

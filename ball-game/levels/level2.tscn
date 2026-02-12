@@ -6,10 +6,14 @@
 [ext_resource type="Script" uid="uid://va1a24efnbdb" path="res://levels/course.gd" id="3_76ugp"]
 [ext_resource type="PackedScene" uid="uid://d3pckmmnm7mgb" path="res://boostpanel/boostPanel.tscn" id="3_s1bpp"]
 [ext_resource type="PackedScene" uid="uid://b8npii23s1hqy" path="res://404_not_found.tscn" id="4_76ugp"]
+[ext_resource type="Material" uid="uid://cv7krxq7hmerw" path="res://materials/OutOfBoundsMaterial.tres" id="4_jai45"]
+[ext_resource type="PackedScene" uid="uid://co1yhhhve4j4r" path="res://levels/level3.tscn" id="5_6mfmt"]
 [ext_resource type="ArrayMesh" uid="uid://c1qtxbcclnboj" path="res://flag/model.obj" id="5_g1dg4"]
 [ext_resource type="PackedScene" uid="uid://jfwajmrh6ca7" path="res://levels/success_particles.tscn" id="6_s1bpp"]
+[ext_resource type="Material" uid="uid://brd42gst6v57f" path="res://materials/basicGrassMaterial.tres" id="7_jj0ry"]
 [ext_resource type="PackedScene" uid="uid://ceuwh381aghb" path="res://tree_mesh.tscn" id="8_e8p81"]
 [ext_resource type="ArrayMesh" uid="uid://dbjbqq1vchicd" path="res://trees/TerrainVertex.obj" id="9_55gdq"]
+[ext_resource type="Material" uid="uid://bp45eo2ayq38h" path="res://materials/woodMaterial.tres" id="9_jj0ry"]
 [ext_resource type="ArrayMesh" uid="uid://do6gcf5q8lufu" path="res://trees/PUSHILIN_tree_stump.obj" id="11_hq01p"]
 [ext_resource type="PackedScene" uid="uid://d1rh546cwbpsv" path="res://trees/Tall Grass.glb" id="12_fjysh"]
 [ext_resource type="Shader" uid="uid://bjp1ka3nomc02" path="res://src/cel-shader-base.gdshader" id="13_bcewn"]
@@ -28,15 +32,9 @@ sky = SubResource("Sky_80vhd")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yy828"]
-albedo_color = Color(0, 0.28627452, 0, 1)
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cwqvt"]
 friction = 0.0
 bounce = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_py88r"]
-albedo_color = Color(0, 0.5796624, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1bpp"]
 albedo_color = Color(0, 0, 0, 1)
@@ -53,9 +51,6 @@ point_count = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_safpt"]
 albedo_color = Color(0.20392157, 0.45490196, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1dg4"]
-albedo_color = Color(0.44584405, 0.24664211, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_55gdq"]
 size = Vector3(500, 1, 500)
@@ -95,7 +90,7 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.117889, 1.116946, 0.02315712)
 use_collision = true
 size = Vector3(2.3223639, 1.2863055, 5.303)
-material = SubResource("StandardMaterial3D_yy828")
+material = ExtResource("4_jai45")
 
 [node name="CSGTorus3D" type="CSGCylinder3D" parent="StaticBody3D/CSGCombiner3D" unique_id=1428059324]
 transform = Transform3D(0.99856764, -2.3387205e-08, -0.05350369, -0.05350369, -4.364878e-07, -0.99856764, 0, 10, -4.371139e-08, 13.9678755, 2.5669699, 0.030517578)
@@ -108,6 +103,7 @@ sides = 64
 collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_cwqvt")
 script = ExtResource("3_76ugp")
+nextScene = ExtResource("5_6mfmt")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="course" unique_id=585450970]
 use_collision = true
@@ -116,14 +112,14 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.756638, 47.607147, -2.178605)
 use_collision = true
 size = Vector3(78.9498, 8, 16.454699)
-material = SubResource("StandardMaterial3D_py88r")
+material = ExtResource("7_jj0ry")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="course/CSGCombiner3D" unique_id=485852995]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.72751, 50.833347, -1.9891572)
 operation = 2
 radius = 2.350586
 sides = 32
-material = SubResource("StandardMaterial3D_py88r")
+material = ExtResource("7_jj0ry")
 
 [node name="CSGTorus3D" type="CSGTorus3D" parent="course/CSGCombiner3D" unique_id=122925291]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.684673, 48.51323, -2.0194297)
@@ -131,7 +127,7 @@ inner_radius = 0.001
 outer_radius = 6.5502033
 sides = 16
 ring_sides = 19
-material = SubResource("StandardMaterial3D_py88r")
+material = ExtResource("7_jj0ry")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="course/CSGCombiner3D" unique_id=1261277812]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.72751, 50.598484, -1.9891572)
@@ -145,7 +141,7 @@ material = SubResource("StandardMaterial3D_s1bpp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.248, 52.625, -2.272)
 operation = 2
 size = Vector3(10.615433, 2.0305176, 9.66703)
-material = SubResource("StandardMaterial3D_py88r")
+material = ExtResource("7_jj0ry")
 
 [node name="Area3D" type="Area3D" parent="course/CSGCombiner3D" unique_id=1250936346]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.63258, 49.94424, -1.9141424)
@@ -169,7 +165,7 @@ skeleton = NodePath("../../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.990967, 44, 1.0932617)
 use_collision = true
 size = Vector3(478, 8, 356)
-material = SubResource("StandardMaterial3D_yy828")
+material = ExtResource("4_jai45")
 
 [node name="Path3D" type="Path3D" parent="course" unique_id=656225569]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.18232, 7.516209, -248.89056)
@@ -206,25 +202,25 @@ physics_material_override = SubResource("PhysicsMaterial_cwqvt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.650002, 48.083633, 6.2777615)
 use_collision = true
 size = Vector3(78.73653, 8.952972, 1.056973)
-material = SubResource("StandardMaterial3D_g1dg4")
+material = ExtResource("9_jj0ry")
 
 [node name="floor12" type="CSGBox3D" parent="wallPhysics" unique_id=622661227 groups=["obstacle"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.63224, 48.083633, -10.393763)
 use_collision = true
 size = Vector3(78.701004, 8.952972, 1.056973)
-material = SubResource("StandardMaterial3D_g1dg4")
+material = ExtResource("9_jj0ry")
 
 [node name="floor13" type="CSGBox3D" parent="wallPhysics" unique_id=1838792465 groups=["obstacle"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 48.505745, 48.083633, -2.0442486)
 use_collision = true
 size = Vector3(17.73209, 8.952972, 1.056973)
-material = SubResource("StandardMaterial3D_g1dg4")
+material = ExtResource("9_jj0ry")
 
 [node name="floor14" type="CSGBox3D" parent="wallPhysics" unique_id=185695346 groups=["obstacle"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -31.189611, 48.083633, -2.0442486)
 use_collision = true
 size = Vector3(17.73209, 8.952972, 1.056973)
-material = SubResource("StandardMaterial3D_g1dg4")
+material = ExtResource("9_jj0ry")
 
 [node name="Path3D" type="Path3D" parent="wallPhysics" unique_id=1643156592]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.18232, 7.516209, -248.89056)
@@ -267,7 +263,7 @@ collision_layer = 2
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 29.319042, 12.785839, 1.086206)
 use_collision = true
 size = Vector3(12.061537, 4.9439087, 12.280994)
-material = SubResource("StandardMaterial3D_yy828")
+material = ExtResource("4_jai45")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="StaticBody3D3/CSGCombiner3D" unique_id=1964249787]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.368404, 16.268875, 0.96761036)
