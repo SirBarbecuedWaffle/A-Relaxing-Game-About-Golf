@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://jfwajmrh6ca7" path="res://levels/success_particles.tscn" id="5_yruw8"]
 [ext_resource type="ArrayMesh" uid="uid://c1qtxbcclnboj" path="res://flag/model.obj" id="6_1c06p"]
 [ext_resource type="Texture2D" uid="uid://bn8nq8ywwy68k" path="res://trees/grass.webp" id="6_52hkl"]
-[ext_resource type="PackedScene" uid="uid://b8npii23s1hqy" path="res://404_not_found.tscn" id="7_b8ghs"]
+[ext_resource type="PackedScene" uid="uid://b8npii23s1hqy" path="res://unimportant/404_not_found.tscn" id="7_b8ghs"]
 [ext_resource type="PackedScene" uid="uid://ceuwh381aghb" path="res://tree_mesh.tscn" id="8_lrvx3"]
 [ext_resource type="Material" uid="uid://cv7krxq7hmerw" path="res://materials/OutOfBoundsMaterial.tres" id="8_vobc4"]
 [ext_resource type="ArrayMesh" uid="uid://dbjbqq1vchicd" path="res://trees/TerrainVertex.obj" id="9_0halg"]
@@ -127,6 +127,12 @@ material = ExtResource("5_y18d6")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="course/CSGCombiner3D" unique_id=417857035]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06542969, 48.15786, -2.0340576)
+operation = 2
+size = Vector3(12.994141, 7.401367, 19.151611)
+material = ExtResource("5_y18d6")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="course/CSGCombiner3D" unique_id=1202661938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.532253, 48.15786, -2.0340576)
 operation = 2
 size = Vector3(12.994141, 7.401367, 19.151611)
 material = ExtResource("5_y18d6")
@@ -320,7 +326,7 @@ radial_segments = 20
 rings = 20
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=2140888432]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.849262, 51.61058, -1.8554094)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.849262, 47.513893, -1.8554094)
 collision_mask = 5
 physics_material_override = ExtResource("3_lw0yu")
 
@@ -336,11 +342,28 @@ size = Vector3(2.3223639, 1.2863055, 5.303)
 material = ExtResource("9_52hkl")
 
 [node name="CSGTorus3D" type="CSGCylinder3D" parent="StaticBody3D2/CSGCombiner3D" unique_id=2044201563]
-transform = Transform3D(0.99856764, -2.3387205e-08, -0.05350369, -0.05350369, -4.364878e-07, -0.99856764, 0, 10, -4.371139e-08, 14.078723, 3.4665184, 0.036082268)
+transform = Transform3D(0.99856764, -2.3387205e-08, -0.05350369, -0.05350369, -4.364878e-07, -0.99856764, 0, 10, -4.371139e-08, 14.078723, -1.9557419, 0.036082268)
 operation = 2
 radius = 2.9760742
 height = 0.5456543
 sides = 64
+material = ExtResource("9_52hkl")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="." unique_id=369377992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.849262, 47.513893, -1.8554094)
+collision_mask = 5
+physics_material_override = ExtResource("3_lw0yu")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D4" unique_id=888659185]
+transform = Transform3D(0.90630764, -0.4226182, 0, 0.4226182, 0.90630764, 0, 0, 0, 1, 12.211445, 3.399681, 0)
+use_collision = true
+size = Vector3(6.867594, 2.9311523, 5)
+material = ExtResource("9_52hkl")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="StaticBody3D4" unique_id=1913274199]
+transform = Transform3D(0.90630764, -0.4226182, 0, 0.4226182, 0.90630764, 0, 0, 0, 1, 38.062866, 3.399681, 0)
+use_collision = true
+size = Vector3(6.867594, 2.9311523, 5)
 material = ExtResource("9_52hkl")
 
 [node name="404 Not Found" parent="." unique_id=1027208430 instance=ExtResource("7_b8ghs")]
@@ -398,10 +421,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="movingObstacle" parent="." unique_id=1406859365 instance=ExtResource("10_52hkl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1798356, 55.753296, -9.069149)
+transform = Transform3D(2, 0, 0, 0, -2, 3.019916e-07, 0, -3.019916e-07, -2, -5.5296664, 51.69005, -2.2150192)
 
-[node name="movingObstacle2" parent="." unique_id=1060706196 instance=ExtResource("10_52hkl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8569248, 59.32402, 0.7554283)
+[node name="movingObstacle3" parent="." unique_id=1815097665 instance=ExtResource("10_52hkl")]
+transform = Transform3D(2, 0, 0, 0, -1.4142135, 1.4142135, 0, -1.4142135, -1.4142135, 22.802132, 51.69005, -5.4960155)
+
+[node name="movingObstacle4" parent="." unique_id=987278750 instance=ExtResource("10_52hkl")]
+transform = Transform3D(2, 0, 0, 0, 1.4142134, 1.4142134, 0, -1.4142134, 1.4142134, 28.480762, 58.30254, -5.4960155)
 
 [connection signal="body_entered" from="course/CSGCombiner3D/Area3D" to="course" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="resetArea" to="." method="_on_reset_area_body_entered"]

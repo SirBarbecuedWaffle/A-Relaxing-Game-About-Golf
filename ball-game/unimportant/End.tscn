@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://vttlrei4xl7h"]
 
-[ext_resource type="Script" uid="uid://63fd2227v1ex" path="res://end.gd" id="1_7wqwc"]
+[ext_resource type="Script" uid="uid://63fd2227v1ex" path="res://unimportant/end.gd" id="1_7wqwc"]
 [ext_resource type="Texture2D" uid="uid://0t7kqeggxhac" path="res://Player/Idle (32x32)-downscaled-1x.png" id="1_ede3x"]
 [ext_resource type="Texture2D" uid="uid://cusdan2fvyiuv" path="res://Player/Appearing (96x96)-downscaled-3x.png" id="2_7wqwc"]
 [ext_resource type="Texture2D" uid="uid://cj3cr1aqfvd8q" path="res://Player/Run (32x32)-downscaled-1x.png" id="3_oufnp"]
 [ext_resource type="Texture2D" uid="uid://dfaoemqcabmtj" path="res://Player/New Piskel (6).png" id="5_oufnp"]
 [ext_resource type="AudioStream" uid="uid://evjflyrt2nay" path="res://audio/dungeon_ambient_1.ogg" id="7_x4165"]
-[ext_resource type="Shader" uid="uid://d3x8w5lmqex3x" path="res://crtShader3.gdshader" id="8_4p6m0"]
+[ext_resource type="Shader" uid="uid://d3x8w5lmqex3x" path="res://unimportant/crtShader3.gdshader" id="8_4p6m0"]
 [ext_resource type="AudioStream" uid="uid://bo1fiwl0iwvcm" path="res://audio/8-bit-explosion-3-340456.mp3" id="8_tyei3"]
 [ext_resource type="AudioStream" uid="uid://cb7hexssskdvu" path="res://audio/GameOver.ogg" id="9_fw8k1"]
 

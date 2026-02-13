@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b37o8yoqfw8yh"]
+[gd_scene format=3 uid="uid://b37o8yoqfw8yh"]
 
-[ext_resource type="Script" uid="uid://c325a8ecdwkii" path="res://gateway_404.gd" id="1_dxm21"]
+[ext_resource type="Script" uid="uid://c325a8ecdwkii" path="res://unimportant/gateway_404.gd" id="1_dxm21"]
 [ext_resource type="AudioStream" uid="uid://dpevmikprw0fq" path="res://audio/Footstep1__001.ogg" id="2_oq37b"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_br3yg"]

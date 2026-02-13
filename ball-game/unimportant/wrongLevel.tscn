@@ -1,0 +1,765 @@
+[gd_scene format=3 uid="uid://u5lll2hh3g74"]
+
+[ext_resource type="Script" uid="uid://1a3edv6wouy1" path="res://unimportant/wrongLevel.gd" id="1_ptkpd"]
+[ext_resource type="Texture2D" uid="uid://dq5dgpqrllj0b" path="res://levels/sloppyfloor.png" id="2_wn41d"]
+[ext_resource type="Texture2D" uid="uid://c28rnredii8jg" path="res://levels/sloppymess.png" id="3_cgrbi"]
+[ext_resource type="PackedScene" uid="uid://d3pckmmnm7mgb" path="res://boostpanel/boostPanel.tscn" id="4_6747k"]
+[ext_resource type="Texture2D" uid="uid://c0hms64ktlane" path="res://levels/sloppytrees.png" id="5_um1d6"]
+[ext_resource type="Texture2D" uid="uid://buan63dr7j1b3" path="res://trees/Log_Cabin.png" id="6_u4nxy"]
+[ext_resource type="PackedScene" uid="uid://cxnhmgd6nak3d" path="res://Player/player.tscn" id="7_a3cu3"]
+[ext_resource type="PackedScene" uid="uid://dcecb8hw7dbrv" path="res://levels/explosion_particles.tscn" id="8_8r00b"]
+[ext_resource type="AudioStream" uid="uid://cfdyifv3m5rcv" path="res://audio/reversedoverworldmusic.mp3" id="9_8qmhr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_umreq"]
+sky_top_color = Color(0.35000002, 0.4908334, 1, 1)
+sky_horizon_color = Color(0.6963154, 0.7237737, 0.84206533, 1)
+ground_horizon_color = Color(0.6963154, 0.7237737, 0.84206533, 1)
+
+[sub_resource type="Sky" id="Sky_80vhd"]
+sky_material = SubResource("ProceduralSkyMaterial_umreq")
+
+[sub_resource type="Environment" id="Environment_hjsbj"]
+background_mode = 2
+sky = SubResource("Sky_80vhd")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(1, 1, 1, 1)
+fog_light_energy = 1.69
+fog_sun_scatter = 0.25
+fog_density = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yy828"]
+albedo_texture = ExtResource("2_wn41d")
+uv1_scale = Vector3(200, 200, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1bpp"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+albedo_texture = ExtResource("2_wn41d")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="Gradient" id="Gradient_lkolc"]
+offsets = PackedFloat32Array(0.903846)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u3rij"]
+gradient = SubResource("Gradient_lkolc")
+
+[sub_resource type="Curve" id="Curve_cv3ok"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 146.581, 0, 0, Vector2(1, 100), 413.249, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mygan"]
+curve = SubResource("Curve_cv3ok")
+
+[sub_resource type="Curve" id="Curve_qubh3"]
+_data = [Vector2(0, 0.530249), 0.0, 2.25724, 0, 0, Vector2(1, 0), -2.97204, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5bhb0"]
+curve = SubResource("Curve_qubh3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g1dg4"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 4.0
+initial_velocity_max = 7.0
+gravity = Vector3(0, 0, 0)
+damping_max = 3.0
+damping_curve = SubResource("CurveTexture_mygan")
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_5bhb0")
+color_ramp = SubResource("GradientTexture1D_u3rij")
+turbulence_enabled = true
+turbulence_noise_scale = 1.0
+turbulence_noise_speed_random = 4.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e8p81"]
+radius = 1.2143555
+height = 2.428711
+
+[sub_resource type="Animation" id="Animation_55gdq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("leftSide:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1204, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rightSide:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1164, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_e8p81"]
+resource_name = "new_animation"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("leftSide:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666669),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1204, 0), Vector2(-528, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rightSide:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1164, 0), Vector2(488, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335, 0.96666664, 1.3666667, 1.7333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-11.45, 10.0, 10.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_crte6"]
+_data = {
+&"RESET": SubResource("Animation_55gdq"),
+&"new_animation": SubResource("Animation_e8p81")
+}
+
+[node name="level" type="Node3D" unique_id=1982163482]
+script = ExtResource("1_ptkpd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1274397683]
+transform = Transform3D(1, 0, 0, 0, 0.45982784, 0.888008, 0, -0.888008, 0.45982784, 0, 12.767386, 4.9112964)
+light_color = Color(1, 0.90000004, 0, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=697221261]
+environment = SubResource("Environment_hjsbj")
+
+[node name="floor" type="CSGBox3D" parent="." unique_id=1725684890 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2532654, -4, -80.00424)
+use_collision = true
+size = Vector3(384.59222, 8, 603.01324)
+material = SubResource("StandardMaterial3D_yy828")
+
+[node name="Sprite3D" type="Sprite3D" parent="floor" unique_id=545739486]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 8.003923, 6.0586286, 76.44461)
+billboard = 2
+texture = ExtResource("3_cgrbi")
+region_enabled = true
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D2" type="Sprite3D" parent="floor" unique_id=1969335155]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0.38966513, 6.0586286, 72.3913)
+billboard = 2
+texture = ExtResource("3_cgrbi")
+region_enabled = true
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D3" type="Sprite3D" parent="floor" unique_id=1644374437]
+transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, 1.8722548, 6.0586286, 80.8596)
+billboard = 2
+texture = ExtResource("3_cgrbi")
+region_enabled = true
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D4" type="Sprite3D" parent="floor" unique_id=1990434601]
+transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, 5.40024, 6.0586286, 86.8478)
+billboard = 2
+texture = ExtResource("3_cgrbi")
+region_enabled = true
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D7" type="Sprite3D" parent="floor" unique_id=1016229340]
+transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, 0.95671034, 4.6913557, 86.8478)
+billboard = 2
+texture = ExtResource("3_cgrbi")
+region_enabled = true
+region_rect = Rect2(33.92758, 34.014896, 26.530273, 28.223701)
+
+[node name="Sprite3D8" type="Sprite3D" parent="floor" unique_id=366891107]
+transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, 8.588493, 4.6913557, 66.80388)
+billboard = 2
+texture = ExtResource("3_cgrbi")
+region_enabled = true
+region_rect = Rect2(33.92758, 34.014896, 26.530273, 28.223701)
+
+[node name="Sprite3D9" type="Sprite3D" parent="floor" unique_id=1465419504]
+transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, 0.79346085, 4.483374, 62.711086)
+billboard = 2
+texture = ExtResource("3_cgrbi")
+region_enabled = true
+region_rect = Rect2(33.92758, 66.754395, 26.530273, 27.094742)
+
+[node name="Sprite3D10" type="Sprite3D" parent="floor" unique_id=510367430]
+transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, 8.27536, 4.483374, 91.45529)
+billboard = 2
+texture = ExtResource("3_cgrbi")
+region_enabled = true
+region_rect = Rect2(33.92758, 66.754395, 26.530273, 27.094742)
+
+[node name="Sprite3D5" type="Sprite3D" parent="floor" unique_id=168427504]
+transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, -0.52711725, 6.0586286, 93.27099)
+billboard = 2
+texture = ExtResource("3_cgrbi")
+region_enabled = true
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D6" type="Sprite3D" parent="floor" unique_id=690767643]
+transform = Transform3D(6.995489, 0, 0.251256, 0, 7, 0, -0.251256, 0, 6.995489, 8.030016, 6.0586286, 99.35874)
+billboard = 2
+texture = ExtResource("3_cgrbi")
+region_enabled = true
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="floor2" type="CSGBox3D" parent="." unique_id=671648529 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1325521, 3.2729435, 19.028858)
+visible = false
+use_collision = true
+size = Vector3(2, 0.5196533, 1.208374)
+material = SubResource("StandardMaterial3D_yy828")
+
+[node name="boostPanel" parent="floor2" unique_id=851555894 instance=ExtResource("4_6747k")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.16247034, 0.23868465, -0.09158802)
+launchforce = 200
+
+[node name="floor4" type="CSGBox3D" parent="." unique_id=1458104124 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4206753, 4.0510807, 27.516869)
+use_collision = true
+size = Vector3(33.161743, 8, 10.483093)
+material = SubResource("StandardMaterial3D_s1bpp")
+
+[node name="floor5" type="CSGBox3D" parent="." unique_id=281440441 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4206753, 4.0510807, -34.311363)
+use_collision = true
+size = Vector3(33.161743, 8, 10.483093)
+material = SubResource("StandardMaterial3D_s1bpp")
+
+[node name="Sprite3D22" type="Sprite3D" parent="floor5" unique_id=780834977]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 5.43808, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D23" type="Sprite3D" parent="floor5" unique_id=2083233549]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 1.0256557, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D24" type="Sprite3D" parent="floor5" unique_id=1972863876]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -3.373108, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D25" type="Sprite3D" parent="floor5" unique_id=979921742]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -7.7864885, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D26" type="Sprite3D" parent="floor5" unique_id=746882040]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 9.8433075, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="floor8" type="CSGBox3D" parent="." unique_id=1442876 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0789156, 4.0510807, -36.060238)
+use_collision = true
+size = Vector3(33.161743, 8, 9.046234)
+material = SubResource("StandardMaterial3D_s1bpp")
+
+[node name="Sprite3D22" type="Sprite3D" parent="floor8" unique_id=2057522734]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 5.43808, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D23" type="Sprite3D" parent="floor8" unique_id=708938953]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 1.0256557, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D24" type="Sprite3D" parent="floor8" unique_id=1881488816]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -3.373108, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D25" type="Sprite3D" parent="floor8" unique_id=1389849367]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -7.7864885, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D26" type="Sprite3D" parent="floor8" unique_id=1564088696]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 9.8433075, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="floor9" type="CSGBox3D" parent="." unique_id=655888842 groups=["obstacle"]]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.8465023, 4.1406736, 29.206123)
+use_collision = true
+size = Vector3(33.161743, 8, 10.483093)
+material = SubResource("StandardMaterial3D_s1bpp")
+
+[node name="Sprite3D22" type="Sprite3D" parent="floor9" unique_id=978864037]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 5.43808, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D23" type="Sprite3D" parent="floor9" unique_id=249142022]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 1.0256557, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D24" type="Sprite3D" parent="floor9" unique_id=22800100]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -3.373108, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D25" type="Sprite3D" parent="floor9" unique_id=2049582979]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -7.7864885, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D26" type="Sprite3D" parent="floor9" unique_id=1889921189]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 9.8433075, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="floor10" type="CSGBox3D" parent="." unique_id=1477831814 groups=["obstacle"]]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.5047426, 4.1406736, 27.457249)
+use_collision = true
+size = Vector3(33.161743, 8, 9.046234)
+material = SubResource("StandardMaterial3D_s1bpp")
+
+[node name="Sprite3D22" type="Sprite3D" parent="floor10" unique_id=222283364]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 5.43808, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D23" type="Sprite3D" parent="floor10" unique_id=2126672831]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 1.0256557, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D24" type="Sprite3D" parent="floor10" unique_id=381434856]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -3.373108, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D25" type="Sprite3D" parent="floor10" unique_id=813602518]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, -7.7864885, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D26" type="Sprite3D" parent="floor10" unique_id=67435887]
+transform = Transform3D(6.9999995, 0, 0, 0, 7, 0, 0, 0, 6.9999995, 9.8433075, -1.3890944, 5.220415)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="floor3" type="CSGBox3D" parent="." unique_id=597669302 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.42276, 1.2884655, 0.08239746)
+use_collision = true
+size = Vector3(8.032227, 8, 59.316162)
+material = SubResource("StandardMaterial3D_s1bpp")
+
+[node name="Sprite3D7" type="Sprite3D" parent="floor3" unique_id=77545676]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 16.03471)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D9" type="Sprite3D" parent="floor3" unique_id=1318805453]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 11.652945)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D10" type="Sprite3D" parent="floor3" unique_id=1872519092]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 7.264058)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D11" type="Sprite3D" parent="floor3" unique_id=1139329071]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 2.863575)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D8" type="Sprite3D" parent="floor3" unique_id=1561751697]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 20.436584)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D12" type="Sprite3D" parent="floor3" unique_id=1205173981]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -5.9690933)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D13" type="Sprite3D" parent="floor3" unique_id=476586735]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -10.350859)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D14" type="Sprite3D" parent="floor3" unique_id=952900735]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -14.739745)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D15" type="Sprite3D" parent="floor3" unique_id=1472130243]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -19.140228)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D16" type="Sprite3D" parent="floor3" unique_id=568972680]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -1.5672188)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D22" type="Sprite3D" parent="floor3" unique_id=364263316]
+transform = Transform3D(-7.0000005, 0, 6.119595e-07, 0, 7, 0, -6.119595e-07, 0, -7.0000005, -9.827849, 3.3100777, -32.742165)
+texture = ExtResource("6_u4nxy")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D17" type="Sprite3D" parent="floor3" unique_id=1401150971]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -27.94043)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D18" type="Sprite3D" parent="floor3" unique_id=1996302229]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -32.322197)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D19" type="Sprite3D" parent="floor3" unique_id=1462859464]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -36.711082)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D20" type="Sprite3D" parent="floor3" unique_id=1646196026]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -41.111565)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D21" type="Sprite3D" parent="floor3" unique_id=1460147087]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -23.538555)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="floor7" type="CSGBox3D" parent="." unique_id=121101946 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.328167, 1.2884655, 1.7359467)
+use_collision = true
+size = Vector3(8.032227, 8, 59.316162)
+material = SubResource("StandardMaterial3D_s1bpp")
+
+[node name="Sprite3D7" type="Sprite3D" parent="floor7" unique_id=1040248387]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 16.03471)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D9" type="Sprite3D" parent="floor7" unique_id=1579749221]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 11.652945)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D10" type="Sprite3D" parent="floor7" unique_id=1610119574]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 7.264058)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D11" type="Sprite3D" parent="floor7" unique_id=1786848082]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 2.863575)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D8" type="Sprite3D" parent="floor7" unique_id=1522200157]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 20.436584)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D12" type="Sprite3D" parent="floor7" unique_id=1148149722]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -5.9690933)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D13" type="Sprite3D" parent="floor7" unique_id=909055050]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -10.350859)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D14" type="Sprite3D" parent="floor7" unique_id=1502543753]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -14.739745)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D15" type="Sprite3D" parent="floor7" unique_id=32489237]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -19.140228)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D16" type="Sprite3D" parent="floor7" unique_id=1080847507]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -1.5672188)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D17" type="Sprite3D" parent="floor7" unique_id=935068897]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -27.94043)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D18" type="Sprite3D" parent="floor7" unique_id=623014426]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -32.322197)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D19" type="Sprite3D" parent="floor7" unique_id=1282665431]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -36.711082)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D20" type="Sprite3D" parent="floor7" unique_id=608175339]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -41.111565)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D21" type="Sprite3D" parent="floor7" unique_id=671116344]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -23.538555)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="floor6" type="CSGBox3D" parent="." unique_id=2028195915 groups=["obstacle"]]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -13.206147, 1.2884655, -17.973883)
+use_collision = true
+size = Vector3(8.032227, 8, 59.316162)
+material = SubResource("StandardMaterial3D_s1bpp")
+
+[node name="Sprite3D7" type="Sprite3D" parent="floor6" unique_id=506410839]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 16.03471)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D9" type="Sprite3D" parent="floor6" unique_id=980894917]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 11.652945)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D10" type="Sprite3D" parent="floor6" unique_id=107864956]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 7.264058)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D11" type="Sprite3D" parent="floor6" unique_id=1482025794]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 2.863575)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D8" type="Sprite3D" parent="floor6" unique_id=721743033]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 20.436584)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D12" type="Sprite3D" parent="floor6" unique_id=651142725]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -5.9690933)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D13" type="Sprite3D" parent="floor6" unique_id=939719282]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -10.350859)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D14" type="Sprite3D" parent="floor6" unique_id=1330927548]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -14.739745)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D15" type="Sprite3D" parent="floor6" unique_id=1457265458]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -19.140228)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D16" type="Sprite3D" parent="floor6" unique_id=1414703270]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -1.5672188)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D17" type="Sprite3D" parent="floor6" unique_id=343787629]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -27.94043)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D18" type="Sprite3D" parent="floor6" unique_id=1734462467]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -32.322197)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D19" type="Sprite3D" parent="floor6" unique_id=1833471459]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -36.711082)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D20" type="Sprite3D" parent="floor6" unique_id=1532987550]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -41.111565)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D21" type="Sprite3D" parent="floor6" unique_id=1504212684]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -23.538555)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="floor11" type="CSGBox3D" parent="." unique_id=196838182 groups=["obstacle"]]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.2514305, 1.2884655, -18.597015)
+use_collision = true
+size = Vector3(8.032227, 8, 59.316162)
+material = SubResource("StandardMaterial3D_s1bpp")
+
+[node name="Sprite3D7" type="Sprite3D" parent="floor11" unique_id=32388182]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 16.03471)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D9" type="Sprite3D" parent="floor11" unique_id=594811650]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 11.652945)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D10" type="Sprite3D" parent="floor11" unique_id=1509122937]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 7.264058)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D11" type="Sprite3D" parent="floor11" unique_id=1950392798]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 2.863575)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D8" type="Sprite3D" parent="floor11" unique_id=1520447696]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, 20.436584)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D12" type="Sprite3D" parent="floor11" unique_id=612951938]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -5.9690933)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D13" type="Sprite3D" parent="floor11" unique_id=21712710]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -10.350859)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D14" type="Sprite3D" parent="floor11" unique_id=452831568]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -14.739745)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D15" type="Sprite3D" parent="floor11" unique_id=737094300]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -19.140228)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D16" type="Sprite3D" parent="floor11" unique_id=1906607250]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -1.5672188)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D17" type="Sprite3D" parent="floor11" unique_id=662975230]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -27.94043)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D18" type="Sprite3D" parent="floor11" unique_id=7727239]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -32.322197)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D19" type="Sprite3D" parent="floor11" unique_id=1489099871]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -36.711082)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D20" type="Sprite3D" parent="floor11" unique_id=1931849240]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -41.111565)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Sprite3D21" type="Sprite3D" parent="floor11" unique_id=177963610]
+transform = Transform3D(-3.059797e-07, 0, 6.9999995, 0, 7, 0, -6.9999995, 0, -3.059797e-07, -4.0766144, 1.3735209, -23.538555)
+texture = ExtResource("5_um1d6")
+region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
+
+[node name="Player" parent="." unique_id=1297519559 instance=ExtResource("7_a3cu3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0624235, 3.4401984, 19.100021)
+
+[node name="ExplosionParticles" parent="." unique_id=341806300 instance=ExtResource("8_8r00b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59055233, 1.2226849, -23.822453)
+emitting = true
+amount = 256
+one_shot = false
+explosiveness = 0.0
+process_material = SubResource("ParticleProcessMaterial_g1dg4")
+
+[node name="Area3D" type="Area3D" parent="ExplosionParticles" unique_id=588786492]
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosionParticles/Area3D" unique_id=2029735601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16699219, 0.073041916)
+shape = SubResource("CapsuleShape3D_e8p81")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=365867977]
+stream = ExtResource("9_8qmhr")
+volume_db = -80.0
+
+[node name="leftSide" type="ColorRect" parent="." unique_id=1407895317]
+offset_left = -1204.0
+offset_right = -11.0
+offset_bottom = 674.0
+color = Color(0, 0, 0, 1)
+
+[node name="rightSide" type="ColorRect" parent="." unique_id=2096210074]
+offset_left = 1164.0
+offset_right = 2357.0015
+offset_bottom = 674.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=69376685]
+libraries/ = SubResource("AnimationLibrary_crte6")
+autoplay = &"RESET"
+
+[connection signal="body_entered" from="ExplosionParticles/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

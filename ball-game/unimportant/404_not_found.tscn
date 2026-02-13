@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8npii23s1hqy"]
+[gd_scene format=3 uid="uid://b8npii23s1hqy"]
 
-[ext_resource type="Script" uid="uid://cijjtqwjsfr5" path="res://404_not_found.gd" id="1_46wdv"]
+[ext_resource type="Script" uid="uid://cijjtqwjsfr5" path="res://unimportant/404_not_found.gd" id="1_46wdv"]
 [ext_resource type="Shader" uid="uid://bluiwwacpkk1k" path="res://Player/player.gdshader" id="1_xno82"]
 [ext_resource type="ArrayMesh" uid="uid://ck4p4qg4q31ss" path="res://trees/model.obj" id="2_46wdv"]
 

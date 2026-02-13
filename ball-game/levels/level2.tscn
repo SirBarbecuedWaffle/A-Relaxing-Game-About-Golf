@@ -5,7 +5,7 @@
 [ext_resource type="PhysicsMaterial" uid="uid://qe8151vhjqcj" path="res://levels/rampMaterial.tres" id="2_g1dg4"]
 [ext_resource type="Script" uid="uid://va1a24efnbdb" path="res://levels/course.gd" id="3_76ugp"]
 [ext_resource type="PackedScene" uid="uid://d3pckmmnm7mgb" path="res://boostpanel/boostPanel.tscn" id="3_s1bpp"]
-[ext_resource type="PackedScene" uid="uid://b8npii23s1hqy" path="res://404_not_found.tscn" id="4_76ugp"]
+[ext_resource type="PackedScene" uid="uid://b8npii23s1hqy" path="res://unimportant/404_not_found.tscn" id="4_76ugp"]
 [ext_resource type="Material" uid="uid://cv7krxq7hmerw" path="res://materials/OutOfBoundsMaterial.tres" id="4_jai45"]
 [ext_resource type="PackedScene" uid="uid://co1yhhhve4j4r" path="res://levels/level3.tscn" id="5_6mfmt"]
 [ext_resource type="ArrayMesh" uid="uid://c1qtxbcclnboj" path="res://flag/model.obj" id="5_g1dg4"]

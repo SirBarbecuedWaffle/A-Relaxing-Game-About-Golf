@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b7ogctfwjh30x" path="res://levels/level5.tscn" id="5_mf7v1"]
 [ext_resource type="Material" uid="uid://brd42gst6v57f" path="res://materials/basicGrassMaterial.tres" id="6_o0ax4"]
 [ext_resource type="ArrayMesh" uid="uid://c1qtxbcclnboj" path="res://flag/model.obj" id="6_tq58f"]
-[ext_resource type="PackedScene" uid="uid://b8npii23s1hqy" path="res://404_not_found.tscn" id="8_c750c"]
+[ext_resource type="PackedScene" uid="uid://b8npii23s1hqy" path="res://unimportant/404_not_found.tscn" id="8_c750c"]
 [ext_resource type="PackedScene" uid="uid://ceuwh381aghb" path="res://tree_mesh.tscn" id="9_283cd"]
 [ext_resource type="Material" uid="uid://bp45eo2ayq38h" path="res://materials/woodMaterial.tres" id="9_nq7ub"]
 [ext_resource type="ArrayMesh" uid="uid://dbjbqq1vchicd" path="res://trees/TerrainVertex.obj" id="10_ulrxl"]

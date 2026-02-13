@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dlxombnnlif0t"]
+
+[ext_resource type="PackedScene" uid="uid://cj5blxe6bec8u" path="res://levels/moving_obstacle.tscn" id="1_8qgng"]
+
+[node name="cool thing" type="Node3D" unique_id=814329526]
+
+[node name="movingObstacle2" parent="." unique_id=1406859365 instance=ExtResource("1_8qgng")]
+transform = Transform3D(1, 0, 0, 0, -0.70710677, 0.70710677, 0, -0.70710677, -0.70710677, 0, 57.236076, -2.3032293)
+
+[node name="movingObstacle3" parent="." unique_id=1145926101 instance=ExtResource("1_8qgng")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 57.236076, -2.3032293)
+
+[node name="movingObstacle4" parent="." unique_id=1636460933 instance=ExtResource("1_8qgng")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 57.236076, -2.3032293)
+
+[node name="movingObstacle5" parent="." unique_id=329164064 instance=ExtResource("1_8qgng")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 57.236076, -2.3032293)
+
+[node name="movingObstacle6" parent="." unique_id=1347705320 instance=ExtResource("1_8qgng")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 57.236076, -2.3032293)
+
+[node name="movingObstacle7" parent="." unique_id=240180426 instance=ExtResource("1_8qgng")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 57.236076, -2.3032293)
+
+[node name="movingObstacle8" parent="." unique_id=2078228746 instance=ExtResource("1_8qgng")]
+transform = Transform3D(1, 0, 0, 0, -0.70710677, -0.70710677, 0, 0.70710677, -0.70710677, 0, 57.236076, -2.3032293)
+
+[node name="movingObstacle" parent="." unique_id=1422661197 instance=ExtResource("1_8qgng")]
+transform = Transform3D(1, 0, 0, 0, -1, 1.509958e-07, 0, -1.509958e-07, -1, 0, 57.236076, -2.3032293)

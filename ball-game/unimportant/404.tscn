@@ -1,14 +1,14 @@
 [gd_scene format=4 uid="uid://p7ahco04sixo"]
 
-[ext_resource type="Script" uid="uid://bdnksvwa4ym6t" path="res://404.gd" id="1_4ja4w"]
+[ext_resource type="Script" uid="uid://bdnksvwa4ym6t" path="res://unimportant/404.gd" id="1_4ja4w"]
 [ext_resource type="Texture2D" uid="uid://0t7kqeggxhac" path="res://Player/Idle (32x32)-downscaled-1x.png" id="1_dswoi"]
 [ext_resource type="Texture2D" uid="uid://cj3cr1aqfvd8q" path="res://Player/Run (32x32)-downscaled-1x.png" id="2_4ja4w"]
 [ext_resource type="Texture2D" uid="uid://cusdan2fvyiuv" path="res://Player/Appearing (96x96)-downscaled-3x.png" id="3_k3fpr"]
 [ext_resource type="Texture2D" uid="uid://c1npdijuusl1u" path="res://trees/sloppymess-downscaled-1x (1)-downscaled-1x.png" id="5_vrohb"]
-[ext_resource type="PackedScene" uid="uid://b37o8yoqfw8yh" path="res://gateway404.tscn" id="6_r1w2r"]
+[ext_resource type="PackedScene" uid="uid://b37o8yoqfw8yh" path="res://unimportant/gateway404.tscn" id="6_r1w2r"]
 [ext_resource type="AudioStream" uid="uid://defjslhlgxir0" path="res://audio/oldlove.mp3" id="7_br3yg"]
 [ext_resource type="AudioStream" uid="uid://evjflyrt2nay" path="res://audio/dungeon_ambient_1.ogg" id="7_e6ugh"]
-[ext_resource type="Shader" uid="uid://d3x8w5lmqex3x" path="res://crtShader3.gdshader" id="7_jihe1"]
+[ext_resource type="Shader" uid="uid://d3x8w5lmqex3x" path="res://unimportant/crtShader3.gdshader" id="7_jihe1"]
 [ext_resource type="AudioStream" uid="uid://dpevmikprw0fq" path="res://audio/Footstep1__001.ogg" id="8_jihe1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3fpr"]
