@@ -28,6 +28,7 @@ background_mode = 2
 sky = SubResource("Sky_80vhd")
 tonemap_mode = 2
 glow_enabled = true
+volumetric_fog_albedo = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yy828"]
 albedo_color = Color(0, 0.28627452, 0, 1)
@@ -58,6 +59,13 @@ point_count = 3
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_safpt"]
 albedo_color = Color(0.20392157, 0.45490196, 0, 1)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dtagf"]
+friction = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtagf"]
+transparency = 1
+albedo_color = Color(0.70980394, 1, 1, 0.09411765)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_55gdq"]
 size = Vector3(1023.8456, 1, 1324.7751)
 
@@ -73,7 +81,7 @@ shadow_enabled = true
 environment = SubResource("Environment_hjsbj")
 
 [node name="Player" parent="." unique_id=2030944428 instance=ExtResource("2_nasht")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215.06178, 152.80424, -26.892536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274.7544, 273.31537, 87.42049)
 launchForce = 15.0
 
 [node name="resetPoint" type="Marker3D" parent="." unique_id=215411684]
@@ -179,7 +187,7 @@ mesh = ExtResource("6_ewo4o")
 skeleton = NodePath("../../..")
 
 [node name="floor" type="CSGBox3D" parent="course" unique_id=1915327618 groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.365967, 44, -86.67871)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.462097, 43.81987, -87.04755)
 use_collision = true
 size = Vector3(1227.282, 8, 1106.2412)
 material = ExtResource("6_ow7pe")
@@ -462,17 +470,34 @@ size = Vector3(15.8224945, 3.7908554, 1.056973)
 material = ExtResource("9_ow7pe")
 
 [node name="wallPhysics2" type="StaticBody3D" parent="course/verticle climb/floor29" unique_id=1341788318]
-transform = Transform3D(0.99999976, 0, -7.450581e-09, 0, 1, 0, 7.450581e-09, 0, 0.99999976, -1.1871948, -35.69078, 144.15605)
+transform = Transform3D(0.9999994, 0, -1.4901161e-08, 0, 1, 0, 1.8626451e-08, 0, 0.9999994, 0.7831421, -46.947342, 143.29424)
 collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_cwqvt")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="course/verticle climb/floor29/wallPhysics2" unique_id=1750738554]
+use_collision = true
+collision_layer = 2
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="course/verticle climb/floor29/wallPhysics2/CSGCombiner3D" unique_id=1300045868]
 transform = Transform3D(1.0000038, 0, -7.450581e-09, 0, 1, 0, 1.8626451e-08, 0, 1.0000038, 0.29647827, 89.26743, -8.812035)
-radius = 4.0
+radius = 3.0
 height = 160.87012
 sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="course/verticle climb/floor29/wallPhysics2/CSGCombiner3D" unique_id=1650684601]
+transform = Transform3D(1.0000039, 0, -7.450581e-09, 0, 1, 0, 1.8626451e-08, 0, 1.0000039, 0.2965088, 90.469734, -8.812035)
+operation = 2
+radius = 2.0
+height = 160.87012
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="course/verticle climb/floor29/wallPhysics2/CSGCombiner3D" unique_id=367403291]
+transform = Transform3D(1.000007, 0, 7.450581e-09, 0, 1, 0, 7.450581e-09, 0, 1.000007, 0.19165039, 11.995598, -12.331284)
+operation = 2
+size = Vector3(3, 3, 4.2735596)
+material = ExtResource("9_ow7pe")
 
 [node name="floor30" type="CSGBox3D" parent="course/verticle climb" unique_id=194348395 groups=["obstacle"]]
 transform = Transform3D(0.9994346, 0, 0.033626243, 0, 1.0000001, 0, -0.033626247, 0, 0.9994345, 276.60596, 147.03638, -19.468452)
@@ -481,10 +506,711 @@ size = Vector3(5.1473303, 2.5170898, 15.688477)
 material = ExtResource("6_ow7pe")
 
 [node name="floor37" type="CSGBox3D" parent="course/verticle climb" unique_id=1931584715 groups=["obstacle"]]
-transform = Transform3D(0.9994346, 0, 0.033626243, 0, 1.0000001, 0, -0.033626247, 0, 0.9994345, 276.87576, 109.34526, 89.89647)
+transform = Transform3D(0.9994346, 0, 0.033626243, 0, 1.0000001, 0, -0.033626247, 0, 0.9994345, 276.87103, 109.345, 89.74783)
 use_collision = true
-size = Vector3(5.1473303, 2.5170898, 22.853027)
+size = Vector3(5.1473303, 2.5170898, 23.149536)
 material = ExtResource("6_ow7pe")
+
+[node name="wallPhysics" type="StaticBody3D" parent="course/verticle climb/floor37" unique_id=643351603]
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_cwqvt")
+
+[node name="floor11" type="CSGBox3D" parent="course/verticle climb/floor37/wallPhysics" unique_id=270737816 groups=["obstacle"]]
+transform = Transform3D(-4.4703484e-08, 0, 0.99998957, 0, 1.0000012, 0, -1.0000012, 0, 1.8253922e-07, 3.059082, 0.61865234, 0.25453186)
+use_collision = true
+size = Vector3(24.198471, 3.7940547, 1.056973)
+material = ExtResource("9_ow7pe")
+
+[node name="floor13" type="CSGBox3D" parent="course/verticle climb/floor37/wallPhysics" unique_id=267427165 groups=["obstacle"]]
+transform = Transform3D(-4.4703484e-08, 0, 0.9999895, 0, 1.0000012, 0, -1.0000012, 0, 1.8253922e-07, -2.2927856, 0.61865234, 0.07446289)
+use_collision = true
+size = Vector3(24.198471, 3.7940547, 1.056973)
+material = ExtResource("9_ow7pe")
+
+[node name="floor12" type="CSGBox3D" parent="course/verticle climb/floor37/wallPhysics" unique_id=1467744078 groups=["obstacle"]]
+transform = Transform3D(1.0000012, 0, -2.4959445e-07, 0, 1.0000012, 0, 0, 1.5898394e-13, 0.9999858, 0.38641357, 0.5991974, -11.907692)
+use_collision = true
+size = Vector3(6.403747, 3.755168, 1.056973)
+material = ExtResource("9_ow7pe")
+
+[node name="floor41" type="CSGBox3D" parent="course/verticle climb" unique_id=526921986 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659256, 0, -0.9659258, 0.258819, 277.148, 232.54123, 73.547485)
+use_collision = true
+size = Vector3(36.316734, 2.5170898, 72.65729)
+material = ExtResource("6_ow7pe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="course/verticle climb/floor41" unique_id=396959206]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, -0.33299255, 0.0892334)
+physics_material_override = SubResource("PhysicsMaterial_dtagf")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1560679888]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 0, 2.5042229, 25.188492)
+use_collision = true
+radius = 3.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=529643872]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 10.968658, 2.5042229, 25.188522)
+use_collision = true
+radius = 3.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=475165745]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -11.223633, 2.5042152, 25.188522)
+use_collision = true
+radius = 3.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=2054107648]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 9.636597, 2.4963646, 14.590683)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=293818307]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 4.285797, 2.4963646, 14.590683)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1813646412]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -1.5255737, 2.4963646, 14.590683)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1518156080]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -6.7622375, 2.4963646, 14.590683)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=671552539]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -12.661591, 2.4963646, 14.590683)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1775120715]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -10.205017, 1.4274368, 10.60144)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1284587158]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -18.39209, 1.427433, 10.601456)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1270505682]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -4.085663, 1.4274292, 10.601486)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1599265420]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 1.506073, 1.4274254, 10.601501)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1564315646]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 6.682953, 1.4274178, 10.601532)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1496325603]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 12.255432, 1.4274101, 10.601532)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1724643130]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 18.068878, 1.4273949, 10.601532)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1565316892]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 14.520874, 2.4963646, 14.590683)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D17" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1614798144]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 9.636597, 1.6207199, 6.814316)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D18" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=79950614]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 4.285797, 1.6207199, 6.814316)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D19" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1322136391]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -1.5255737, 1.6207199, 6.814316)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D20" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1352098860]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -6.7622375, 1.6207199, 6.814316)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D21" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1011479672]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -12.661591, 1.6207199, 6.814316)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D22" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=305123524]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -10.205017, 0.55178833, 2.8250732)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D23" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=465664843]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -18.39209, 0.5517998, 2.825058)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D24" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=814309166]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -4.085663, 0.55179596, 2.8251038)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D25" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1808435576]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 1.506073, 0.5518036, 2.8251495)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D26" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1228093799]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 6.682953, 0.5517845, 2.8251648)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D27" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1584264454]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 12.255432, 0.5517769, 2.8251343)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D28" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1583992079]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 18.068878, 0.5517578, 2.8251648)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D29" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1177692155]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 14.520874, 1.6207199, 6.814316)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D30" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=754447256]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 9.636597, 3.4141045, -1.8977661)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D31" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1467265173]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 4.285797, 3.4141045, -1.8977661)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D32" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=45090093]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -1.5255737, 3.4141045, -1.8977661)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D33" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=2112619433]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -6.7622375, 3.4141045, -1.8977661)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D34" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=496781330]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -12.661591, 3.4141045, -1.8977661)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D35" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1351943845]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -10.205017, 2.345173, -5.8870087)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D36" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=441591613]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -18.39209, 2.3451881, -5.8870087)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D37" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=474284601]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -4.085663, 2.3451805, -5.886978)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D38" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1955897165]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 1.506073, 2.3451767, -5.886917)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D39" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1218375551]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 6.682953, 2.3451576, -5.886902)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D40" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1965475336]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 12.255432, 2.3451614, -5.8869476)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D41" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1919523476]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 18.068878, 2.3451347, -5.886902)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D42" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=532616976]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 14.520874, 3.4141045, -1.8977661)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D43" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=362205968]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 9.636597, 3.5405731, -10.046036)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D44" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=397034318]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 4.285797, 3.5405731, -10.046036)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D45" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=932941401]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -1.5255737, 3.5405731, -10.046036)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D46" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=993985933]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -6.7622375, 3.5405731, -10.046036)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D47" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1461357307]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -12.661591, 3.5405731, -10.046036)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D48" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=533074317]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -10.205017, 2.4716454, -14.035263)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D49" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=635890950]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -18.39209, 2.4716644, -14.035263)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D50" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1152500410]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -4.085663, 2.471653, -14.035233)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D51" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1871998547]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 1.506073, 2.4716454, -14.035187)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D52" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=427565565]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 6.682953, 2.47163, -14.035187)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D53" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1398549570]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 12.255432, 2.471634, -14.035202)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D54" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=130233144]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 18.068878, 2.4716148, -14.0351715)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D55" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=908802415]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 14.520874, 3.5405731, -10.046036)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D56" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=954747688]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 9.673401, 3.4211693, -16.878662)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D57" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1096801074]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 4.3226013, 3.4211693, -16.878662)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D58" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=403833893]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -1.4887695, 3.4211693, -16.878662)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D59" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1700585890]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -6.7254333, 3.4211693, -16.878662)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D60" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1307257400]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -12.624786, 3.4211693, -16.878662)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D61" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1728882150]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -10.168213, 2.352253, -20.867874)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D62" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1513721346]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -18.355286, 2.3522568, -20.867874)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D63" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=835202108]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -4.0488586, 2.3522606, -20.867859)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D64" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=57519798]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 1.5428772, 2.3522453, -20.867798)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D65" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=664128700]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 6.719757, 2.35223, -20.867798)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D66" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=209684762]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 12.292236, 2.35223, -20.867798)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D67" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1063569343]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 18.105682, 2.35223, -20.867798)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D68" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=757639100]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 14.557678, 1.9642982, -16.488312)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D69" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=892033746]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 9.3125, 2.2745934, -23.95488)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D70" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1157553433]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 3.9617004, 2.2745934, -23.95488)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D71" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=939895053]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -1.8496704, 2.2745934, -23.95488)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D72" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1157517442]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -7.086334, 2.2745934, -23.95488)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D73" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=10529799]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -12.985687, 2.2745934, -23.95488)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D74" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=138719216]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -10.529114, 2.6625557, -28.334457)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D75" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1414818652]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -18.716187, 2.6625633, -28.334457)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D76" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=656111531]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, -4.4097595, 2.662571, -28.334427)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D77" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1676789002]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 1.1819763, 2.6625404, -28.33435)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D78" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1070166931]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 6.358856, 2.6625252, -28.33435)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D79" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1218695746]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 11.931335, 2.6625252, -28.33435)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D80" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=813077528]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 17.744781, 2.6625252, -28.33435)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="CSGCylinder3D81" type="CSGCylinder3D" parent="course/verticle climb/floor41/StaticBody3D" unique_id=1796985721]
+transform = Transform3D(1, 0, 0, 0, 1.0000029, 5.9604645e-08, 0, -5.9604645e-08, 1.0000029, 14.196777, 3.7314644, -24.345245)
+use_collision = true
+radius = 1.0
+height = 3.0
+sides = 32
+material = ExtResource("9_ow7pe")
+
+[node name="floor42" type="CSGBox3D" parent="course/verticle climb" unique_id=1193874559 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659256, 0, -0.9659258, 0.258819, 277.04694, 236.07541, 68.86311)
+use_collision = true
+collision_layer = 2
+size = Vector3(38.64608, 2.5170898, 79.975006)
+material = SubResource("StandardMaterial3D_dtagf")
+
+[node name="floor38" type="CSGBox3D" parent="course/verticle climb" unique_id=317927534 groups=["obstacle"]]
+transform = Transform3D(-0.7071067, 0.7071067, -8.742276e-08, 0.7071067, 0.7071067, 0, 6.181723e-08, -6.181723e-08, -0.9999998, 278.36105, 117.80046, 92.808205)
+use_collision = true
+collision_layer = 2
+size = Vector3(5.1473303, 1.1600342, 8.591858)
+material = ExtResource("9_ow7pe")
+
+[node name="floor40" type="CSGBox3D" parent="course/verticle climb" unique_id=800286089 groups=["obstacle"]]
+transform = Transform3D(-0.7071067, -0.70710677, -8.740944e-08, -0.706999, 0.70699906, -0.017452402, 0.012340774, -0.012340653, -0.9998475, 275.42606, 117.929085, 92.815735)
+use_collision = true
+collision_layer = 2
+size = Vector3(5.1473303, 1.1600342, 8.576782)
+material = ExtResource("9_ow7pe")
 
 [node name="floor34" type="CSGBox3D" parent="course/verticle climb" unique_id=816823300 groups=["obstacle"]]
 transform = Transform3D(0.9994346, 0, 0.033626243, 0, 1.0000001, 0, -0.033626247, 0, 0.9994345, 274.2145, 147.03638, 14.3158)
@@ -568,6 +1294,58 @@ material = ExtResource("9_ow7pe")
 
 [node name="floor12" type="CSGBox3D" parent="course/verticle climb/floor23/wallPhysics" unique_id=251830702 groups=["obstacle"]]
 transform = Transform3D(1.0000012, 0, -3.410605e-13, 0, 1.0000012, 0, -2.9842795e-13, 1.5898394e-13, 1, 0.33992004, 0.61704254, -7.9183292)
+use_collision = true
+size = Vector3(15.8224945, 3.7908554, 1.056973)
+material = ExtResource("9_ow7pe")
+
+[node name="floor39" type="CSGBox3D" parent="course/verticle climb" unique_id=784526828 groups=["obstacle"]]
+transform = Transform3D(-4.3711392e-08, 0, -0.99999994, 0, 1.0000001, 0, 1.0000001, 0, -4.3711385e-08, 276.96838, 268.32358, 88.948784)
+use_collision = true
+size = Vector3(14.706401, 2.5170898, 37.873047)
+material = ExtResource("6_ow7pe")
+
+[node name="wallPhysics" type="StaticBody3D" parent="course/verticle climb/floor39" unique_id=247327584]
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_cwqvt")
+
+[node name="floor11" type="CSGBox3D" parent="course/verticle climb/floor39/wallPhysics" unique_id=1939694348 groups=["obstacle"]]
+transform = Transform3D(-4.3710926e-08, 0, 1, 0, 1.0000012, 0, -1.0000012, 0, -4.371108e-08, 7.7334747, 0.6170349, 0.059753418)
+use_collision = true
+size = Vector3(36.13304, 3.7908554, 1.056973)
+material = ExtResource("9_ow7pe")
+
+[node name="floor14" type="CSGBox3D" parent="course/verticle climb/floor39/wallPhysics" unique_id=1067174347 groups=["obstacle"]]
+transform = Transform3D(-4.3711065e-08, -0.70109665, 0.7130667, 2.5979216e-13, 0.7130675, 0.7010959, -1.0000008, 3.0645975e-08, -3.116895e-08, 13.590752, 23.030487, 0.33694458)
+use_collision = true
+size = Vector3(15.835875, 26.805258, 1.056973)
+material = ExtResource("9_ow7pe")
+
+[node name="floor15" type="CSGBox3D" parent="course/verticle climb/floor39/wallPhysics" unique_id=2051272690 groups=["obstacle"]]
+transform = Transform3D(-3.2278184e-08, 0.37408915, -0.9273929, -4.322427e-08, 0.9273939, 0.37408867, 1.0000011, 5.2160768e-08, -1.3764836e-08, 0.33631134, 22.544586, 0.33694458)
+use_collision = true
+size = Vector3(15.835875, 21.247478, 1.056973)
+material = ExtResource("9_ow7pe")
+
+[node name="floor12" type="CSGBox3D" parent="course/verticle climb/floor39/wallPhysics" unique_id=1940258816 groups=["obstacle"]]
+transform = Transform3D(1.0000012, 1.6155871e-27, -3.410605e-13, 0, 1.0000012, 0, -2.9842795e-13, 1.5898394e-13, 1, 0.33992004, 0.6170349, -18.752533)
+use_collision = true
+size = Vector3(15.8224945, 3.7908554, 1.056973)
+material = ExtResource("9_ow7pe")
+
+[node name="floor16" type="CSGBox3D" parent="course/verticle climb/floor39/wallPhysics" unique_id=1560182039 groups=["obstacle"]]
+transform = Transform3D(0.96592695, 0.25881934, 0, -0.25881934, 0.96592695, 0, 0, 1.1368684e-13, 1, -16.189285, -34.70395, -18.752533)
+use_collision = true
+size = Vector3(6.8476486, 76.76485, 1.056973)
+material = ExtResource("9_ow7pe")
+
+[node name="floor17" type="CSGBox3D" parent="course/verticle climb/floor39/wallPhysics" unique_id=799498167 groups=["obstacle"]]
+transform = Transform3D(0.96592695, 0.25881934, 0, -0.25881934, 0.96592695, 0, 0, 1.154632e-13, 1, -16.18927, -34.70395, 18.809845)
+use_collision = true
+size = Vector3(6.8476486, 76.76485, 1.056973)
+material = ExtResource("9_ow7pe")
+
+[node name="floor13" type="CSGBox3D" parent="course/verticle climb/floor39/wallPhysics" unique_id=636075856 groups=["obstacle"]]
+transform = Transform3D(1.0000012, 3.2311743e-27, -3.410605e-13, 0, 1.0000012, 0, -2.9842795e-13, 1.5898394e-13, 1, 0.3399353, 0.6170349, 18.88031)
 use_collision = true
 size = Vector3(15.8224945, 3.7908554, 1.056973)
 material = ExtResource("9_ow7pe")
@@ -682,12 +1460,12 @@ smooth_faces = true
 material = SubResource("StandardMaterial3D_safpt")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=1927884447]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 271.12793, 106.12334, 81.6783)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 271.50888, 105.601715, 81.6783)
 collision_mask = 5
 physics_material_override = ExtResource("3_ow7pe")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="StaticBody3D3" unique_id=1745712726]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.062405, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.062408, -2.7104416, 0)
 use_collision = true
 collision_layer = 2
 
@@ -877,6 +1655,18 @@ launchforce = 100
 [node name="boostPanel10" parent="panels" unique_id=2135115546 instance=ExtResource("12_8e2hs")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 212.78941, 139.82953, 32.052467)
 launchforce = 100
+
+[node name="boostPanel" parent="." unique_id=390128108 instance=ExtResource("12_8e2hs")]
+transform = Transform3D(5.7320566e-15, -1.3113416e-07, 3, -3, -1.3113416e-07, 0, 1.3113416e-07, -3, -1.3113416e-07, 277.25037, 112.03409, 100.658936)
+launchforce = 600
+
+[node name="boostPanel2" parent="." unique_id=515508802 instance=ExtResource("12_8e2hs")]
+transform = Transform3D(5.7320566e-15, -1.3113416e-07, 3, -3, -1.3113416e-07, 0, 1.3113416e-07, -3, -1.3113416e-07, 277.25037, 258.6112, 100.658936)
+launchforce = 600
+
+[node name="boostPanel3" parent="." unique_id=508454557 instance=ExtResource("12_8e2hs")]
+transform = Transform3D(5.7320566e-15, -1.3113416e-07, 3, -3, -1.3113416e-07, 0, 1.3113416e-07, -3, -1.3113416e-07, 277.25037, 181.79855, 100.658936)
+launchforce = 600
 
 [connection signal="body_entered" from="course/topFloor/Area3D" to="course" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="resetArea" to="." method="_on_reset_area_body_entered"]
