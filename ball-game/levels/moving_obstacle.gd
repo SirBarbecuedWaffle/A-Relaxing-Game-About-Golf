@@ -1,4 +1,4 @@
-extends AnimatableBody3D
+extends RigidBody3D
 @onready var marker_3d: Marker3D = $Marker3D
 @onready var marker_3d_2: Marker3D = $Marker3D2
 @onready var csg_box_3d: CSGBox3D = $CSGBox3D
