@@ -9,6 +9,7 @@
 [ext_resource type="ArrayMesh" uid="uid://22b701lfptap" path="res://Player/golfball_lowpoly.obj" id="2_vtle1"]
 [ext_resource type="PackedScene" uid="uid://y1fnnxin6obe" path="res://Player/Golf ball.glb" id="6_fhl08"]
 [ext_resource type="PackedScene" uid="uid://bq2oh2yijr4m7" path="res://Player/Golf Club.glb" id="6_vtle1"]
+[ext_resource type="Texture2D" uid="uid://cplxkfdfquore" path="res://Player/powerbar_with_background-removebg-preview.png" id="10_x3vf3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k53q1"]
 friction = 0.09
@@ -119,5 +120,39 @@ transform = Transform3D(4, 3.496911e-07, 0, -3.496911e-07, 4, 0, 0, 0, -4, 0, 0.
 
 [node name="Golf ball" parent="." unique_id=728287173 instance=ExtResource("6_fhl08")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6494646, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=520935533]
+
+[node name="powerHUD" type="Control" parent="CanvasLayer" unique_id=636585211]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="background" type="ColorRect" parent="CanvasLayer/powerHUD" unique_id=1798765703]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 172.0
+offset_right = 396.0
+offset_bottom = 478.0
+color = Color(0, 0, 0, 0.67058825)
+
+[node name="powerBar" type="ColorRect" parent="CanvasLayer/powerHUD" unique_id=1243805630]
+modulate = Color(0, 18.892157, 0, 1)
+layout_mode = 0
+offset_left = 392.0
+offset_top = 478.0
+offset_right = 503.11108
+offset_bottom = 560.0429
+rotation = 3.1415927
+scale = Vector2(0.117, 3.681)
+
+[node name="barfront" type="Sprite2D" parent="CanvasLayer/powerHUD" unique_id=2028568507]
+position = Vector2(386, 317)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_x3vf3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -3,6 +3,7 @@ class_name Player
 @export_range(5,25) var launchForce:=1000.0
 @export_range(50,200) var turnSpeed:=100.0
 var transitioning:=false
+@onready var power_hud: Control = $CanvasLayer/powerHUD
 @onready var success: AudioStreamPlayer = $success
 @onready var explode: AudioStreamPlayer = $explode
 @onready var boost: AudioStreamPlayer3D = $boost
@@ -11,6 +12,8 @@ var transitioning:=false
 @export var tilt_limit = deg_to_rad(45)
 @onready var ball_skin: Node3D = $ballSkin
 @onready var ball_speen: RigidBody3D = $ballSkin/ballSpeen
+@onready var power_bar: ColorRect = $CanvasLayer/powerHUD/powerBar
+
 
 @onready var spring_arm_3d: SpringArm3D = $camera_pivot/SpringArm3D
 @onready var club_deco: Node3D = $clubLocation/clubDeco
@@ -33,6 +36,21 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	if abs(linear_velocity.x)>3 || abs(linear_velocity.y)>6:
+		club_deco.visible=false
+	power_hud.visible=club_deco.visible
+	if clubDistance<2:
+		power_bar.modulate=Color(0.0, 1.0, 0.0, 1.0)
+	if power_bar!=null:
+		power_bar.scale.y=clubDistance*clubDistance/72.25*3.681
+		if clubDistance*clubDistance/72.25>0.3:
+			var coltween = create_tween()
+			coltween.set_trans(Tween.TRANS_SINE)
+			coltween.tween_property(power_bar,"modulate",Color(1.0, 1.0, 0.0, 1.0),0.15)
+		if clubDistance*clubDistance/72.25>0.6:
+			var coltween = create_tween()
+			coltween.set_trans(Tween.TRANS_SINE)
+			coltween.tween_property(power_bar,"modulate",Color(1.0, 0.0, 0.0, 1.0),0.15)
 	_camera_pivot.global_position=global_position
 	club_deco.rotation.y=_camera_pivot.rotation.y-1.57
 	var rollAxis: Vector3 = linear_velocity.cross(Vector3.UP).normalized()
