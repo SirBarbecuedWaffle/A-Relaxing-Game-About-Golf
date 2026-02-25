@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cw354g74apud4"]
+
+[ext_resource type="Script" uid="uid://rgnwrb7p23ja" path="res://spinny.gd" id="1_qn2mh"]
+[ext_resource type="Material" uid="uid://bp45eo2ayq38h" path="res://materials/woodMaterial.tres" id="2_skghn"]
+
+[node name="spinny" type="StaticBody3D" unique_id=988083485]
+collision_mask = 2
+script = ExtResource("1_qn2mh")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1291552791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.020904541, 0)
+size = Vector3(1, 4.7647095, 1)
+material = ExtResource("2_skghn")
