@@ -15,6 +15,7 @@ var transitioning:=false
 @onready var power_bar: ColorRect = $CanvasLayer/powerHUD/powerBar
 
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var spring_arm_3d: SpringArm3D = $camera_pivot/SpringArm3D
 @onready var club_deco: Node3D = $clubLocation/clubDeco
 
@@ -42,6 +43,7 @@ func _physics_process(delta: float) -> void:
 	if clubDistance<2:
 		power_bar.modulate=Color(0.0, 1.0, 0.0, 1.0)
 	if power_bar!=null:
+		
 		power_bar.scale.y=clubDistance*clubDistance/72.25*3.681
 		if clubDistance*clubDistance/72.25>0.3:
 			var coltween = create_tween()
@@ -51,6 +53,11 @@ func _physics_process(delta: float) -> void:
 			var coltween = create_tween()
 			coltween.set_trans(Tween.TRANS_SINE)
 			coltween.tween_property(power_bar,"modulate",Color(1.0, 0.0, 0.0, 1.0),0.15)
+		if clubDistance*clubDistance/72.25>0.9:
+			if animation_player.current_animation!="new animation":
+				animation_player.play("new_animation")
+		else:
+			animation_player.play("RESET")
 	_camera_pivot.global_position=global_position
 	club_deco.rotation.y=_camera_pivot.rotation.y-1.57
 	var rollAxis: Vector3 = linear_velocity.cross(Vector3.UP).normalized()

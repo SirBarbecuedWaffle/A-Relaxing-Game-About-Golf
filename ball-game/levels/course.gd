@@ -1,6 +1,6 @@
 extends StaticBody3D
-@onready var success_particles: GPUParticles3D = $CSGCombiner3D/SuccessParticles
 @export var nextScene: PackedScene
+@onready var success_particles: GPUParticles3D = $topFloor/SuccessParticles
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://d1rh546cwbpsv" path="res://trees/Tall Grass.glb" id="11_j06mh"]
 [ext_resource type="PackedScene" uid="uid://d3pckmmnm7mgb" path="res://boostpanel/boostPanel.tscn" id="12_8e2hs"]
 [ext_resource type="PackedScene" uid="uid://cj5blxe6bec8u" path="res://levels/moving_obstacle.tscn" id="15_ti5b6"]
+[ext_resource type="FontFile" uid="uid://bc5luvf6u14cs" path="res://fomts/Alphasports-WqEn.ttf" id="17_k5ivc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_umreq"]
 sky_top_color = Color(0.35000002, 0.4908334, 1, 1)
@@ -64,7 +65,11 @@ albedo_color = Color(0.20392157, 0.45490196, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k5ivc"]
 transparency = 1
-albedo_color = Color(0.75, 1, 1, 0.007843138)
+albedo_color = Color(0.75, 1, 1, 0.003921569)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7lgp"]
+transparency = 1
+albedo_color = Color(0.75, 1, 1, 0.003921569)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dtagf"]
 friction = 0.0
@@ -80,6 +85,61 @@ rough = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_55gdq"]
 size = Vector3(1023.8456, 1, 1324.7751)
 
+[sub_resource type="LabelSettings" id="LabelSettings_a7lgp"]
+font = ExtResource("17_k5ivc")
+font_size = 64
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_k5ivc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_a7lgp"]
+resource_name = "showoff"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.73333335, 1.05, 1.8, 2.8666666, 3.4666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.6, 0.6, 1.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ompkf"]
+_data = {
+&"RESET": SubResource("Animation_k5ivc"),
+&"showoff": SubResource("Animation_a7lgp")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k5ivc"]
+size = Vector3(150, 129.63795, 69.55829)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ompkf"]
+size = Vector3(150, 102.47769, 289.4679)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_er5m2"]
+size = Vector3(150, 151.29695, 147.50493)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a7lgp"]
+size = Vector3(36.15207, 305.47437, 34.955265)
+
 [node name="level" type="Node3D" unique_id=1443469558]
 script = ExtResource("1_wf6kw")
 
@@ -92,7 +152,7 @@ shadow_enabled = true
 environment = SubResource("Environment_hjsbj")
 
 [node name="Player" parent="." unique_id=2030944428 instance=ExtResource("2_nasht")]
-transform = Transform3D(0.99075496, 0, 0.13566369, 0, 1, 0, -0.13566369, 0, 0.99075496, 231.16882, 551.7498, 65.21174)
+transform = Transform3D(0.99075496, 0, 0.13566369, 0, 1, 0, -0.13566369, 0, 0.99075496, 287.44623, 521.72327, -58.601433)
 launchForce = 15.0
 
 [node name="resetPoint" type="Marker3D" parent="." unique_id=215411684]
@@ -145,7 +205,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 152.
 use_collision = true
 
 [node name="floor10" type="CSGBox3D" parent="course/topFloor" unique_id=979854290 groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.756638, 48.400146, -2.178605)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.756638, 48.395874, -1.9699259)
 use_collision = true
 size = Vector3(78.9498, 6.4141235, 16.454699)
 material = ExtResource("6_ow7pe")
@@ -189,6 +249,8 @@ shape = SubResource("BoxShape3D_e8p81")
 
 [node name="SuccessParticles" parent="course/topFloor" unique_id=1128427718 instance=ExtResource("5_4fpod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.758385, 49.21149, -1.9252609)
+amount = 500
+lifetime = 2.0
 speed_scale = 0.8
 randomness = 1.0
 
@@ -196,6 +258,10 @@ randomness = 1.0
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 37.670734, 55.33843, -2.2519925)
 mesh = ExtResource("6_ewo4o")
 skeleton = NodePath("../../..")
+
+[node name="boostPanel" parent="course/topFloor" unique_id=2028299605 instance=ExtResource("12_8e2hs")]
+transform = Transform3D(3.2580662, 0, -2.0323887, 0, 3.84, 0, 2.0323887, 0, 3.2580662, 32.145325, 51.654724, -2.3903008)
+launchforce = 150
 
 [node name="topFloor2" type="CSGCombiner3D" parent="course" unique_id=1443283227]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 231.27553, 497.12073, 52.997658)
@@ -738,7 +804,7 @@ material = ExtResource("6_ow7pe")
 [node name="floor80" type="CSGBox3D" parent="course/verticle climb" unique_id=1559085736 groups=["obstacle"]]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 276.90958, 383.02783, 144.2559)
 use_collision = true
-size = Vector3(25, 2.52, 47.384926)
+size = Vector3(29.51, 2.52, 47.385)
 material = ExtResource("6_ow7pe")
 
 [node name="floor81" type="CSGBox3D" parent="course/verticle climb" unique_id=409013787 groups=["obstacle"]]
@@ -770,34 +836,73 @@ use_collision = true
 size = Vector3(36.811268, 3.7908554, 1.056973)
 material = ExtResource("9_ow7pe")
 
-[node name="floor84" type="CSGBox3D" parent="course/verticle climb" unique_id=994921705 groups=["obstacle"]]
+[node name="CSGCombiner3D4" type="CSGCombiner3D" parent="course/verticle climb" unique_id=959701187]
 transform = Transform3D(1.0000001, 0, 0, 0, 0.9246924, -0.3807153, 0, 0.3807154, 0.9246922, 178.14563, 574.0758, 21.200193)
+use_collision = true
+
+[node name="floor84" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D4" unique_id=994921705 groups=["obstacle"]]
 use_collision = true
 size = Vector3(7.6799316, 3.0765333, 142.41054)
 material = ExtResource("6_ow7pe")
 
-[node name="wallPhysics" type="StaticBody3D" parent="course/verticle climb/floor84" unique_id=4458176]
+[node name="wallPhysics" type="StaticBody3D" parent="course/verticle climb/CSGCombiner3D4/floor84" unique_id=4458176]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0.70515877, 0, -9.728904)
 collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_cwqvt")
 
-[node name="floor12" type="CSGBox3D" parent="course/verticle climb/floor84/wallPhysics" unique_id=2113951365 groups=["obstacle"]]
+[node name="floor12" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D4/floor84/wallPhysics" unique_id=2113951365 groups=["obstacle"]]
 transform = Transform3D(1.0000011, -2.9802322e-08, -3.375078e-13, 0, 1.0000011, 3.5527137e-15, -4.121148e-13, 1.5809576e-13, 1, -10.789856, 0.6170654, -4.0917664)
 use_collision = true
 size = Vector3(144.71643, 3.7908554, 1.056973)
 material = ExtResource("9_ow7pe")
 
-[node name="floor13" type="CSGBox3D" parent="course/verticle climb/floor84/wallPhysics" unique_id=1761774333 groups=["obstacle"]]
+[node name="floor13" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D4/floor84/wallPhysics" unique_id=1761774333 groups=["obstacle"]]
 transform = Transform3D(1.0000011, -2.9802322e-08, -3.375078e-13, 0, 1.0000011, 3.5527137e-15, -4.7606363e-13, 1.5809576e-13, 1, -10.051025, 0.6170044, 3.4631348)
 use_collision = true
 size = Vector3(141.86761, 3.7908554, 1.056973)
 material = ExtResource("9_ow7pe")
 
+[node name="CSGBox3D" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D4/floor84" unique_id=1106394708]
+transform = Transform3D(1, 0, 0, 0, 0.76604444, -0.6427876, 0, 0.6427876, 0.76604444, -1.2659912, 1.2332501, 56.673115)
+size = Vector3(3.5319824, 2.1347656, 1.6425781)
+material = ExtResource("9_ow7pe")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D4/floor84" unique_id=1020908490]
+transform = Transform3D(1, 0, 0, 0, 0.76604444, -0.6427876, 0, 0.6427876, 0.76604444, 1.9301448, 1.2162929, 43.036896)
+size = Vector3(3.5319824, 2.1347656, 1.6425781)
+material = ExtResource("9_ow7pe")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D4/floor84" unique_id=537699119]
+transform = Transform3D(1, 0, 0, 0, 0.76604444, -0.6427876, 0, 0.6427876, 0.76604444, -1.2171783, 1.1646595, 23.14905)
+size = Vector3(3.5319824, 2.1347656, 1.6425781)
+material = ExtResource("9_ow7pe")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D4/floor84" unique_id=1678668225]
+transform = Transform3D(1, 0, 0, 0, 0.76604444, -0.6427876, 0, 0.6427876, 0.76604444, 1.9579921, 1.1995726, -1.8766203)
+size = Vector3(3.5319824, 2.1347656, 1.6425781)
+material = ExtResource("9_ow7pe")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D4/floor84" unique_id=427402411]
+transform = Transform3D(1, 0, 0, 0, 0.76604444, -0.6427876, 0, 0.6427876, 0.76604444, -0.9595946, 1.2094315, -17.930197)
+size = Vector3(3.6713562, 2.1347656, 1.6425781)
+material = ExtResource("9_ow7pe")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D4/floor84" unique_id=229876538]
+transform = Transform3D(1, 0, 0, 0, 0.76604444, -0.6427876, 0, 0.6427876, 0.76604444, 2.77803, 1.2236958, -41.823692)
+size = Vector3(3.6713562, 2.1347656, 1.6425781)
+material = ExtResource("9_ow7pe")
+
 [node name="floor83" type="CSGBox3D" parent="course/verticle climb" unique_id=124676735 groups=["obstacle"]]
-transform = Transform3D(-4.3711392e-08, 0, 0.9999999, 0, 1.0000001, 0, -1.0000001, 0, -4.3711385e-08, 199.947, 547.1858, 91.27666)
+transform = Transform3D(-4.3711392e-08, 0, 0.9999999, 0, 1.0000001, 0, -1.0000001, 0, -4.3711385e-08, 199.72485, 547.1858, 91.27666)
 use_collision = true
-size = Vector3(7.6799316, 3.0765333, 50.578156)
+size = Vector3(7.6799316, 3.0765333, 51.022476)
 material = SubResource("StandardMaterial3D_k5ivc")
+
+[node name="floor84" type="CSGBox3D" parent="course/verticle climb" unique_id=599220608 groups=["obstacle"]]
+transform = Transform3D(-4.3711392e-08, 0, 0.9999999, 0, 1.0000001, 0, -1.0000001, 0, -4.3711385e-08, 179.17285, 547.87933, 95.59371)
+use_collision = true
+size = Vector3(1.2437744, 4.4635596, 9.918465)
+material = SubResource("StandardMaterial3D_a7lgp")
 
 [node name="CSGCombiner3D3" type="CSGCombiner3D" parent="course/verticle climb" unique_id=819435906]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 234.33646, 532.76746, -49.35689)
@@ -890,7 +995,7 @@ use_collision = true
 size = Vector3(25.023376, 3.8552148, 238.87114)
 material = ExtResource("10_l7rxp")
 
-[node name="movingObstacle8" parent="course/verticle climb/CSGCombiner3D2/floor82" unique_id=1849528205 instance=ExtResource("15_ti5b6")]
+[node name="movingObstacle8" parent="course/verticle climb/CSGCombiner3D2/floor82" unique_id=1494853023 instance=ExtResource("15_ti5b6")]
 transform = Transform3D(1.910685e-15, 4.371139e-08, 0.9999999, 0.9999998, -4.371139e-08, 0, 4.371138e-08, 1, -4.3711385e-08, -0.5595351, 2.3498607, -2.9433308)
 time = 2.0
 
@@ -899,7 +1004,7 @@ transform = Transform3D(1, 0, -6.988022e-21, -2.5579538e-13, 1, 2.5579538e-13, -
 collision_layer = 2
 size = Vector3(5.2139893, 2.3998184, 3.977592)
 
-[node name="boostPanel" parent="course/verticle climb/CSGCombiner3D2/floor82/movingObstacle8/CSGBox3D" index="0" unique_id=2028299605 instance=ExtResource("12_8e2hs")]
+[node name="boostPanel" parent="course/verticle climb/CSGCombiner3D2/floor82/movingObstacle8/CSGBox3D" index="0" unique_id=939294701 instance=ExtResource("12_8e2hs")]
 transform = Transform3D(4.3274273e-08, -5.833555e-14, -4, -1.4948584e-07, -8.21, 2.0207618e-15, -0.99, 1.2396755e-06, -1.7484555e-07, -0.05603009, 0.56944203, 1.3215022)
 visible = false
 launchforce = 250
@@ -987,8 +1092,8 @@ size = Vector3(9.361445, 6.461543, 18.464333)
 material = ExtResource("10_l7rxp")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D2" unique_id=286980343]
-transform = Transform3D(1, 0, 0, -4.2632564e-14, 1, 2.9802322e-08, -7.1054274e-15, 0, 1, -0.054870605, 2.5255432, -0.68022156)
-size = Vector3(10.258709, 2.9545898, 2.3603516)
+transform = Transform3D(1, 0, 0, -4.2632564e-14, 1, 2.9802322e-08, -7.1054274e-15, 0, 1, -0.054870605, 2.5255432, -1.6040497)
+size = Vector3(10.258709, 2.9545898, 4.208008)
 material = ExtResource("9_ow7pe")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D2" unique_id=1805687718]
@@ -997,8 +1102,8 @@ size = Vector3(7.282318, 2.9545898, 1.894043)
 material = ExtResource("9_ow7pe")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D2" unique_id=85537142]
-transform = Transform3D(1, 0, 0, -4.2632564e-14, 1, 2.9802322e-08, -7.1054274e-15, 0, 1, 0.30895996, 2.5255432, 31.794174)
-size = Vector3(7.7054253, 2.9545898, 2.2001953)
+transform = Transform3D(1, 0, 0, -4.2632564e-14, 1, 2.9802322e-08, -7.1054274e-15, 0, 1, 0.30895996, 2.5255432, 30.882797)
+size = Vector3(7.7054253, 2.9545898, 4.022949)
 material = ExtResource("9_ow7pe")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D2" unique_id=1403984431]
@@ -1383,6 +1488,22 @@ material = ExtResource("10_l7rxp")
 [node name="boostPanel" parent="course/verticle climb/wallPhysics5/CSGCombiner3D/floor54" unique_id=1883829108 instance=ExtResource("12_8e2hs")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.3527613e-08, 1.3384321, -1.3969839e-09)
 launchforce = 265
+
+[node name="floor55" type="CSGBox3D" parent="course/verticle climb/wallPhysics5/CSGCombiner3D" unique_id=2135038620 groups=["obstacle"]]
+transform = Transform3D(0.24511965, 0.40636888, 0.8802227, 0.40370387, 0.78269154, -0.47375226, -0.881456, 0.4714634, 0.027799563, 234.09119, 253.56451, 36.34772)
+use_collision = true
+size = Vector3(43.150757, 2.5170898, 8.369147)
+material = ExtResource("10_l7rxp")
+
+[node name="boostPanel" parent="course/verticle climb/wallPhysics5/CSGCombiner3D/floor55" unique_id=31773575 instance=ExtResource("12_8e2hs")]
+transform = Transform3D(-2.99932, 0, -0.12955858, 0, 3, 0, 0.0638744, 0, -6.0836205, -18.230879, 1.3384328, 4.33065e-08)
+launchforce = 10
+
+[node name="floor56" type="CSGBox3D" parent="course/verticle climb/wallPhysics5/CSGCombiner3D" unique_id=1335071206 groups=["obstacle"]]
+transform = Transform3D(0.9878973, 0.15521234, 0, -0.15521294, 0.9878947, 0, 3.4816594e-13, -4.440892e-14, 1.0000031, 211.9935, 243.50946, 60.0771)
+use_collision = true
+size = Vector3(55.28647, 2.5170898, 8.369147)
+material = ExtResource("10_l7rxp")
 
 [node name="floor52" type="CSGBox3D" parent="course/verticle climb/wallPhysics5/CSGCombiner3D" unique_id=473066685 groups=["obstacle"]]
 transform = Transform3D(0.47393826, -0.8805681, -4.2632564e-13, 0.8805681, 0.47393826, -7.1054274e-14, 4.0858983e-13, -1.0373924e-12, 1, 29.413109, 80.34418, -116.46709)
@@ -2245,6 +2366,12 @@ use_collision = true
 size = Vector3(15.835875, 28.045391, 1.056973)
 material = ExtResource("9_ow7pe")
 
+[node name="floor20" type="CSGBox3D" parent="course/verticle climb/floor39/wallPhysics" unique_id=1335217742 groups=["obstacle"]]
+transform = Transform3D(-4.3711434e-08, 0, -0.9999999, 0, 1.0000011, 0, 1.0000011, 0, -4.3711385e-08, 12.339195, 41.2052, 0.33694458)
+use_collision = true
+size = Vector3(15.835875, 9.090519, 1.056973)
+material = ExtResource("9_ow7pe")
+
 [node name="floor18" type="CSGBox3D" parent="course/verticle climb/floor39/wallPhysics" unique_id=977993695 groups=["obstacle"]]
 transform = Transform3D(1.0000011, 0, 3.5527137e-15, 0, 1.0000011, 0, -7.1054274e-15, 0, 1, 4.881569, 25.816254, 7.981018)
 use_collision = true
@@ -2893,7 +3020,7 @@ transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, -
 mesh = ExtResource("9_sohrh")
 
 [node name="TerrainVertex3" type="MeshInstance3D" parent="." unique_id=679373275]
-transform = Transform3D(-10, 0, -1.509958e-06, 0, 10, 0, 1.509958e-06, 0, -10, 166.30664, 4.1120453, 88.32979)
+transform = Transform3D(-10, 0, -1.509958e-06, 0, 10, 0, 1.509958e-06, 0, -10, 208.18494, 9.505173, 150.10994)
 mesh = ExtResource("9_sohrh")
 
 [node name="TerrainVertex5" type="MeshInstance3D" parent="." unique_id=1921381389]
@@ -3521,8 +3648,71 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, -1.7763568e-15, 0, 1, -0.36340332, -3.
 [node name="Marker3D4" type="Marker3D" parent="movingObstacle6" unique_id=279715524]
 transform = Transform3D(1, 0, 0, 0, 1, 0, -2.6645353e-15, 0, 1, -0.47459412, -4.0713463, -14.750458)
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=87886785]
+
+[node name="Cruxes" type="Control" parent="CanvasLayer2" unique_id=464281021]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CanvasLayer2/Cruxes" unique_id=1678221947]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Crux Reached
+Plinko Hell"
+label_settings = SubResource("LabelSettings_a7lgp")
+horizontal_alignment = 1
+visible_characters = 0
+visible_characters_behavior = 1
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2/Cruxes" unique_id=6953418]
+libraries/ = SubResource("AnimationLibrary_ompkf")
+
+[node name="plinkoTrigger" type="Area3D" parent="." unique_id=1689130997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 265.57898, 220.92871, 0)
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plinkoTrigger" unique_id=608996182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.402222, 19.963104, 119.75342)
+shape = SubResource("BoxShape3D_k5ivc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="plinkoTrigger" unique_id=503844272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.402222, 6.3829803, 9.7986145)
+shape = SubResource("BoxShape3D_ompkf")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="plinkoTrigger" unique_id=1610098810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.402222, 30.792603, -61.18287)
+shape = SubResource("BoxShape3D_er5m2")
+
+[node name="reversePlinko" type="Area3D" parent="." unique_id=961899891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 265.57898, 389.91675, 0)
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="reversePlinko" unique_id=359631089]
+transform = Transform3D(1, 0, 0, 0, 0.57898235, 0.81534004, 0, -0.81534004, 0.57898235, 12.7039795, 72.68002, 40.489185)
+shape = SubResource("BoxShape3D_a7lgp")
+
 [connection signal="body_entered" from="course/topFloor/Area3D" to="course" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="resetArea" to="." method="_on_reset_area_body_entered"]
+[connection signal="body_entered" from="plinkoTrigger" to="." method="_on_plinko_trigger_body_entered"]
+[connection signal="body_exited" from="plinkoTrigger" to="." method="_on_plinko_trigger_body_exited"]
+[connection signal="body_entered" from="reversePlinko" to="." method="_on_reverse_plinko_body_entered"]
+[connection signal="body_exited" from="reversePlinko" to="." method="_on_reverse_plinko_body_exited"]
 
 [editable path="course/verticle climb/CSGCombiner3D2/floor82/movingObstacle8"]
 [editable path="course/verticle climb/CSGCombiner3D2/floor82/movingObstacle9"]
