@@ -14,10 +14,15 @@ func _process(delta: float) -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
+	Manager.scores[Manager.curLevel]=body.strokes
 	Manager.playBallSink()
+	
 	if success_particles!=null:
 		success_particles.emitting=true
 	if success_particles2!=null:
 		success_particles2.emitting=true
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.0).timeout
+	body.showScore()
+	await get_tree().create_timer(2.0).timeout
+	Manager.curLevel+=1
 	get_tree().change_scene_to_packed(nextScene)

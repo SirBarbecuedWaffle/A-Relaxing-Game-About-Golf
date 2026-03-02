@@ -153,8 +153,11 @@ shadow_enabled = true
 environment = SubResource("Environment_hjsbj")
 
 [node name="Player" parent="." unique_id=2030944428 instance=ExtResource("2_nasht")]
-transform = Transform3D(0.99075496, 0, 0.13566369, 0, 1, 0, -0.13566369, 0, 0.99075496, 145.87804, 624.94476, -50.536835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3898, 55.453278, -1.9864513)
 launchForce = 15.0
+
+[node name="camera_pivot" parent="Player" index="5" unique_id=903152552]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.4044623, 0)
 
 [node name="resetPoint" type="Marker3D" parent="." unique_id=215411684]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.35675, 59.68125, -1.5343418)
@@ -3711,6 +3714,7 @@ shape = SubResource("BoxShape3D_a7lgp")
 [connection signal="body_entered" from="reversePlinko" to="." method="_on_reverse_plinko_body_entered"]
 [connection signal="body_exited" from="reversePlinko" to="." method="_on_reverse_plinko_body_exited"]
 
+[editable path="Player"]
 [editable path="course/verticle climb/CSGCombiner3D2/floor82/movingObstacle8"]
 [editable path="course/verticle climb/CSGCombiner3D2/floor82/movingObstacle9"]
 [editable path="course/verticle climb/CSGCombiner3D2/floor82/movingObstacle10"]

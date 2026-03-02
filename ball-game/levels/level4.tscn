@@ -379,6 +379,7 @@ physics_material_override = ExtResource("3_lw0yu")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D4" unique_id=760181304]
 transform = Transform3D(0.90630764, -0.4226182, 0, 0.4226182, 0.90630764, 0, 0, 0, 1, 12.211445, 3.399681, 0)
+material_override = ExtResource("11_21lkn")
 use_collision = true
 size = Vector3(6.867594, 2.9311523, 5)
 material = ExtResource("11_21lkn")

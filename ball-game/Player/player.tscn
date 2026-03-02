@@ -9,6 +9,8 @@
 [ext_resource type="ArrayMesh" uid="uid://22b701lfptap" path="res://Player/golfball_lowpoly.obj" id="2_vtle1"]
 [ext_resource type="PackedScene" uid="uid://y1fnnxin6obe" path="res://Player/Golf ball.glb" id="6_fhl08"]
 [ext_resource type="PackedScene" uid="uid://bq2oh2yijr4m7" path="res://Player/Golf Club.glb" id="6_vtle1"]
+[ext_resource type="Texture2D" uid="uid://vbiav67o4adj" path="res://Player/scoreCard.png" id="8_lfmf2"]
+[ext_resource type="FontFile" uid="uid://bc5luvf6u14cs" path="res://fomts/Alphasports-WqEn.ttf" id="8_pisgm"]
 [ext_resource type="Texture2D" uid="uid://cplxkfdfquore" path="res://Player/powerbar_with_background-removebg-preview.png" id="10_x3vf3"]
 [ext_resource type="AudioStream" uid="uid://bkvwnhx1caum0" path="res://audio/clubSwing.wav" id="11_apopc"]
 [ext_resource type="AudioStream" uid="uid://cmj5v3g3vsyeq" path="res://audio/ballHit.wav" id="12_5htga"]
@@ -32,7 +34,15 @@ rings = 11
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_gwnis"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k53q1"]
-font_size = 160
+font = ExtResource("8_pisgm")
+font_size = 142
+
+[sub_resource type="LabelSettings" id="LabelSettings_pisgm"]
+font = ExtResource("8_pisgm")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_x3vf3"]
 length = 0.001
@@ -146,10 +156,255 @@ offset_bottom = 40.0
 [node name="pauseLab" type="Label" parent="Control" unique_id=1424643681]
 visible = false
 layout_mode = 0
+offset_top = -76.0
 offset_right = 1146.0
-offset_bottom = 656.0
+offset_bottom = 580.0
 text = "PAUSED"
 label_settings = SubResource("LabelSettings_k53q1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="scoreCard" type="Sprite2D" parent="Control" unique_id=874006991]
+visible = false
+position = Vector2(576, 429)
+texture = ExtResource("8_lfmf2")
+region_enabled = true
+region_rect = Rect2(0, 1.0113354, 945, 157.8631)
+
+[node name="ColorRect" type="ColorRect" parent="Control/scoreCard" unique_id=896353346]
+offset_left = -469.0
+offset_top = -76.0
+offset_right = -332.0
+offset_bottom = -36.0
+
+[node name="Label" type="Label" parent="Control/scoreCard" unique_id=1764115544]
+offset_left = -471.0
+offset_top = -27.0
+offset_right = -324.0
+offset_bottom = 28.0
+text = "Par"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/scoreCard" unique_id=185863797]
+offset_left = -471.0
+offset_top = 28.0
+offset_right = -324.0
+offset_bottom = 83.0
+text = "Score"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pars" type="Control" parent="Control/scoreCard" unique_id=1976090324]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="hole1Par" type="Label" parent="Control/scoreCard/pars" unique_id=444246995]
+layout_mode = 0
+offset_left = -324.0
+offset_top = -25.0
+offset_right = -247.0
+offset_bottom = 30.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole2Par" type="Label" parent="Control/scoreCard/pars" unique_id=1647844943]
+layout_mode = 0
+offset_left = -246.0
+offset_top = -25.0
+offset_right = -169.0
+offset_bottom = 30.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole3Par" type="Label" parent="Control/scoreCard/pars" unique_id=1666218041]
+layout_mode = 0
+offset_left = -169.0
+offset_top = -25.0
+offset_right = -92.0
+offset_bottom = 30.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole4Par" type="Label" parent="Control/scoreCard/pars" unique_id=527791899]
+layout_mode = 0
+offset_left = -93.0
+offset_top = -25.0
+offset_right = -16.0
+offset_bottom = 30.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole5Par" type="Label" parent="Control/scoreCard/pars" unique_id=642512352]
+layout_mode = 0
+offset_left = -14.0
+offset_top = -25.0
+offset_right = 63.0
+offset_bottom = 30.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole6Par" type="Label" parent="Control/scoreCard/pars" unique_id=1916455703]
+layout_mode = 0
+offset_left = 61.0
+offset_top = -25.0
+offset_right = 138.0
+offset_bottom = 30.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole7Par" type="Label" parent="Control/scoreCard/pars" unique_id=934954846]
+layout_mode = 0
+offset_left = 139.0
+offset_top = -25.0
+offset_right = 216.0
+offset_bottom = 30.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole8Par" type="Label" parent="Control/scoreCard/pars" unique_id=1457203725]
+layout_mode = 0
+offset_left = 215.0
+offset_top = -25.0
+offset_right = 292.0
+offset_bottom = 30.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole9Par" type="Label" parent="Control/scoreCard/pars" unique_id=2059009654]
+layout_mode = 0
+offset_left = 292.0
+offset_top = -25.0
+offset_right = 369.0
+offset_bottom = 30.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="scores" type="Control" parent="Control/scoreCard" unique_id=391782503]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -1.0
+offset_right = 40.0
+offset_bottom = 39.0
+
+[node name="hole1Score" type="Label" parent="Control/scoreCard/scores" unique_id=529519529]
+layout_mode = 0
+offset_left = -324.0
+offset_top = 32.0
+offset_right = -247.0
+offset_bottom = 87.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole2Score" type="Label" parent="Control/scoreCard/scores" unique_id=1261873931]
+layout_mode = 0
+offset_left = -246.0
+offset_top = 32.0
+offset_right = -169.0
+offset_bottom = 87.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole3Score" type="Label" parent="Control/scoreCard/scores" unique_id=907724344]
+layout_mode = 0
+offset_left = -169.0
+offset_top = 32.0
+offset_right = -92.0
+offset_bottom = 87.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole4Score" type="Label" parent="Control/scoreCard/scores" unique_id=1341093758]
+layout_mode = 0
+offset_left = -93.0
+offset_top = 32.0
+offset_right = -16.0
+offset_bottom = 87.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole5Score" type="Label" parent="Control/scoreCard/scores" unique_id=1511094626]
+layout_mode = 0
+offset_left = -14.0
+offset_top = 32.0
+offset_right = 63.0
+offset_bottom = 87.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole6Score" type="Label" parent="Control/scoreCard/scores" unique_id=707605065]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 32.0
+offset_right = 138.0
+offset_bottom = 87.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole7Score" type="Label" parent="Control/scoreCard/scores" unique_id=902343771]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 32.0
+offset_right = 216.0
+offset_bottom = 87.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole8Score" type="Label" parent="Control/scoreCard/scores" unique_id=438811174]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 32.0
+offset_right = 292.0
+offset_bottom = 87.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hole9Score" type="Label" parent="Control/scoreCard/scores" unique_id=450305020]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 32.0
+offset_right = 369.0
+offset_bottom = 87.0
+text = "?"
+label_settings = SubResource("LabelSettings_pisgm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -217,5 +472,6 @@ pitch_scale = 0.51
 
 [node name="glassThud" type="AudioStreamPlayer" parent="." unique_id=1781758640]
 stream = ExtResource("15_dkpta")
+pitch_scale = 3.2
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

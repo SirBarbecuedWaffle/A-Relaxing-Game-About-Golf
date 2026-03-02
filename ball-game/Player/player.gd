@@ -18,12 +18,27 @@ var transitioning:=false
 @onready var wood_thud: AudioStreamPlayer = $woodThud
 @onready var grass_thud: AudioStreamPlayer = $grassThud
 @onready var glass_thud: AudioStreamPlayer = $glassThud
+@onready var score_card: Sprite2D = $Control/scoreCard
+@export var strokes:=0
 
 const BASIC_GRASS_MATERIAL = preload("uid://brd42gst6v57f")
 const GLASSMATERIAL = preload("uid://b3dqs55pbr37s")
+
 const WOOD_MATERIAL = preload("uid://bp45eo2ayq38h")
 const OUT_OF_BOUNDS_MATERIAL = preload("uid://cv7krxq7hmerw")
+@onready var pars: Control = $Control/scoreCard/pars
+@onready var scores: Control = $Control/scoreCard/scores
 
+
+@onready var hole_1_score: Label = $Control/scoreCard/Control/hole1Score
+@onready var hole_2_score: Label = $Control/scoreCard/Control/hole2Score
+@onready var hole_3_score: Label = $Control/scoreCard/Control/hole3Score
+@onready var hole_4_score: Label = $Control/scoreCard/Control/hole4Score
+@onready var hole_5_score: Label = $Control/scoreCard/Control/hole5Score
+@onready var hole_6_score: Label = $Control/scoreCard/Control/hole6Score
+@onready var hole_7_score: Label = $Control/scoreCard/Control/hole7Score
+@onready var hole_8_score: Label = $Control/scoreCard/Control/hole8Score
+@onready var hole_9_score: Label = $Control/scoreCard/Control/hole9Score
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var spring_arm_3d: SpringArm3D = $camera_pivot/SpringArm3D
@@ -44,6 +59,23 @@ func _unhandled_input(event: InputEvent) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func showScore()->void:
+	score_card.visible=true
+
+func _process(delta: float) -> void:
+	for i in range(Manager.curLevel+1):
+		var chil=pars.get_children()
+		chil[i].text=str(Manager.pars[i])
+	for i in range(Manager.curLevel ):
+		var chil=scores.get_children()
+		chil[i].text=str(Manager.scores[i])
+	var chile=scores.get_children()
+	chile[Manager.curLevel].text=str(strokes)
+	
+
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -87,10 +119,12 @@ func _physics_process(delta: float) -> void:
 			paused=false
 			Engine.time_scale=1
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			score_card.visible=false
 		else:
 			paused=true
 			Engine.time_scale=0.0001
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			score_card.visible=true
 		pause_lab.visible=paused
 			
 	if !transitioning:
@@ -117,6 +151,7 @@ func _physics_process(delta: float) -> void:
 			apply_central_force(Vector3.DOWN)	
 			clubDistance=1.0
 			spring_arm_3d.spring_length=3
+			strokes+=1
 		else:
 			if boost.playing:
 				boost.playing=false
@@ -136,9 +171,8 @@ func _on_body_entered(body: Node) -> void:
 				wood_thud.play()
 				wood_thud.pitch_scale=randf_range(0.9,1.2)
 			if body.material==GLASSMATERIAL:
-				if !glass_thud.playing:
-					glass_thud.play()
-					glass_thud.pitch_scale=randf_range(0.9,1.2)
+				glass_thud.play()
+				glass_thud.pitch_scale=randf_range(3.2,4.0)
 	if linear_velocity.y>2 || linear_velocity.y<-2:
 		if !body is CSGCombiner3D: 
 			if body.material==BASIC_GRASS_MATERIAL:
@@ -153,9 +187,8 @@ func _on_body_entered(body: Node) -> void:
 				wood_thud.play()
 				wood_thud.pitch_scale=randf_range(0.9,1.2)
 			if body.material==GLASSMATERIAL:
-				if !glass_thud.playing:
-					glass_thud.play()
-					glass_thud.pitch_scale=randf_range(0.9,1.2)
+				glass_thud.play()
+				glass_thud.pitch_scale=randf_range(0.9,1.2)
 		else:
 			if !grass_thud.playing:
 				grass_thud.play()
@@ -166,13 +199,12 @@ func _on_body_entered(body: Node) -> void:
 				if !grass_thud.playing:
 					grass_thud.play()
 					grass_thud.pitch_scale=randf_range(0.9,1.2)
-			if body.material==WOOD_MATERIAL:
+			elif body.material==WOOD_MATERIAL:
 				wood_thud.play()
 				wood_thud.pitch_scale=randf_range(0.9,1.2)
 			if body.material==GLASSMATERIAL:
-				if !glass_thud.playing:
-					glass_thud.play()
-					glass_thud.pitch_scale=randf_range(0.9,1.2)
+				glass_thud.play()
+				glass_thud.pitch_scale=randf_range(0.9,1.2)
 	#if "goal" in body.get_groups() && !transitioning:
 		#if body.file_path!=null:
 			#complete_level(body.file_path)
