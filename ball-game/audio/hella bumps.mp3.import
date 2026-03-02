@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://vhfsqstq60re"
+path="res://.godot/imported/hella bumps.mp3-3259acdb4f508229cf510af163410fa9.mp3str"
+
+[deps]
+
+source_file="res://audio/hella bumps.mp3"
+dest_files=["res://.godot/imported/hella bumps.mp3-3259acdb4f508229cf510af163410fa9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

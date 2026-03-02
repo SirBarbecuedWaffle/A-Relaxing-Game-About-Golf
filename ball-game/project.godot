@@ -19,6 +19,14 @@ run/main_scene="uid://bwcfww0n68buj"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Manager="*uid://bfa32kmfymlj5"
+
+[display]
+
+window/stretch/aspect="expand"
+
 [global_group]
 
 goal=""

@@ -10,6 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://y1fnnxin6obe" path="res://Player/Golf ball.glb" id="6_fhl08"]
 [ext_resource type="PackedScene" uid="uid://bq2oh2yijr4m7" path="res://Player/Golf Club.glb" id="6_vtle1"]
 [ext_resource type="Texture2D" uid="uid://cplxkfdfquore" path="res://Player/powerbar_with_background-removebg-preview.png" id="10_x3vf3"]
+[ext_resource type="AudioStream" uid="uid://bkvwnhx1caum0" path="res://audio/clubSwing.wav" id="11_apopc"]
+[ext_resource type="AudioStream" uid="uid://cmj5v3g3vsyeq" path="res://audio/ballHit.wav" id="12_5htga"]
+[ext_resource type="AudioStream" uid="uid://cn415u6xus2cb" path="res://audio/freesound_community-stick-hitting-a-dreadlock-small-thud-83297.mp3" id="13_gu6f8"]
+[ext_resource type="AudioStream" uid="uid://bxvjwhhsa7seh" path="res://audio/joentnt-walk-on-grass-1-291984.mp3" id="14_gu6f8"]
+[ext_resource type="AudioStream" uid="uid://cxrtu8qnxpkmi" path="res://audio/freesound_community-glass-ting-89283.mp3" id="15_dkpta"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k53q1"]
 friction = 0.09
@@ -195,5 +200,22 @@ texture = ExtResource("10_x3vf3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=394164679]
 libraries/ = SubResource("AnimationLibrary_5htga")
+
+[node name="clubSwing" type="AudioStreamPlayer" parent="." unique_id=720293372]
+stream = ExtResource("11_apopc")
+
+[node name="hit" type="AudioStreamPlayer" parent="." unique_id=703655354]
+stream = ExtResource("12_5htga")
+
+[node name="woodThud" type="AudioStreamPlayer" parent="." unique_id=1764834798]
+stream = ExtResource("13_gu6f8")
+pitch_scale = 0.51
+
+[node name="grassThud" type="AudioStreamPlayer" parent="." unique_id=1037981012]
+stream = ExtResource("14_gu6f8")
+pitch_scale = 0.51
+
+[node name="glassThud" type="AudioStreamPlayer" parent="." unique_id=1781758640]
+stream = ExtResource("15_dkpta")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

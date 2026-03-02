@@ -391,22 +391,22 @@ tracks/2/path = NodePath("SubViewportContainer/SubViewport/AnimatedSprite2D:modu
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.033333335, 6.633333, 6.866667, 6.9333334, 7.6, 7.633333, 7.9666667, 8.4, 8.41, 8.833333, 8.89, 10.033334, 10.066667),
-"transitions": PackedFloat32Array(1, 1, 1, 0.00038309785, 1, 0.00038309785, 1, 1, 0.00038309785, 1, 0.00038309785, 1, 1),
+"times": PackedFloat32Array(0.043333087, 6.643333, 6.746412, 6.8766665, 6.943333, 7.6, 7.633333, 7.965189, 8.398521, 8.408522, 8.831856, 8.888523, 10.031857, 10.065189, 13.346412, 13.579745, 13.646412, 14.303079, 14.336412, 14.669745, 15.103079, 15.113079, 15.536411, 15.593079, 16.736412, 16.769745),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 0.00038309785, 1, 0.00038309785, 1, 1, 0.00038309785, 1, 0.00038309785, 1, 1, 1, 1, 0.00038309785, 1, 0.00038309785, 1, 1, 0.00038309785, 1, 0.00038309785, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath("SubViewportContainer/SubViewport/AnimatedSprite2D:position")
-tracks/3/interp = 1
+tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(6.2, 7.3333335, 8),
-"transitions": PackedFloat32Array(0.27739236, 1, 1),
+"times": PackedFloat32Array(6.733333, 7),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(352, 140), Vector2(352, 168), Vector2(352, 168)]
+"values": [Vector2(345, 168), Vector2(352, 168)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -431,6 +431,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SubViewportContainer/SubViewport/AnimatedSprite2D2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(6.746412, 6.8766665, 6.943333, 7.6, 7.633333, 7.965189, 8.398521, 8.408522, 8.831856, 8.888523, 10.031857, 10.065189),
+"transitions": PackedFloat32Array(1, 1, 0.00038309785, 1, 0.00038309785, 1, 1, 0.00038309785, 1, 0.00038309785, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SubViewportContainer/SubViewport/AnimatedSprite2D2:position")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(6.733333, 7.0006742),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(357, 168), Vector2(352, 168)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oufnp"]
@@ -538,7 +562,14 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(352, 168)
 sprite_frames = SubResource("SpriteFrames_tyei3")
 autoplay = "default"
-frame_progress = 0.029254926
+frame_progress = 0.1620383
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="SubViewportContainer/SubViewport" unique_id=1021569341]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(352, 168)
+sprite_frames = SubResource("SpriteFrames_tyei3")
+autoplay = "default"
+frame_progress = 0.3418707
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport" unique_id=57140429]
 stream = ExtResource("7_x4165")

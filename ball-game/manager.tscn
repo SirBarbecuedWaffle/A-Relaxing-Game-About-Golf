@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bfa32kmfymlj5"]
+
+[ext_resource type="AudioStream" uid="uid://d00q3vvwvuwet" path="res://audio/documents.mp3" id="1_453op"]
+[ext_resource type="Script" uid="uid://pb7t6dkh644r" path="res://manager.gd" id="1_srgm2"]
+[ext_resource type="AudioStream" uid="uid://sigpyfpdtekh" path="res://audio/soundsforyou-wind-in-trees-117477.mp3" id="2_uscr2"]
+[ext_resource type="AudioStream" uid="uid://nn04qhuhu5bb" path="res://audio/golfGoInHole.wav" id="4_emuub"]
+
+[node name="manager" type="Node" unique_id=822957389]
+script = ExtResource("1_srgm2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=345185885]
+stream = ExtResource("1_453op")
+volume_db = -5.0
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1561224850]
+stream = ExtResource("2_uscr2")
+volume_db = -10.0
+autoplay = true
+
+[node name="ballSink" type="AudioStreamPlayer" parent="." unique_id=104465342]
+stream = ExtResource("4_emuub")
+volume_db = 1.0

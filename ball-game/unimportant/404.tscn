@@ -616,7 +616,8 @@ autoplay = true
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=742123174]
 stream = ExtResource("7_br3yg")
-volume_db = -12.367
+volume_db = -18.0
+autoplay = true
 
 [node name="footSound" type="AudioStreamPlayer" parent="." unique_id=1559441916]
 stream = ExtResource("8_jihe1")

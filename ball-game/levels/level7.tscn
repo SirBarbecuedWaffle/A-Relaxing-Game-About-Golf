@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ceuwh381aghb" path="res://tree_mesh.tscn" id="8_ybc4o"]
 [ext_resource type="Material" uid="uid://bp45eo2ayq38h" path="res://materials/woodMaterial.tres" id="9_ow7pe"]
 [ext_resource type="ArrayMesh" uid="uid://dbjbqq1vchicd" path="res://trees/TerrainVertex.obj" id="9_sohrh"]
+[ext_resource type="Material" uid="uid://cv7krxq7hmerw" path="res://materials/OutOfBoundsMaterial.tres" id="10_a7lgp"]
 [ext_resource type="Material" uid="uid://b3dqs55pbr37s" path="res://materials/glassmaterial.tres" id="10_l7rxp"]
 [ext_resource type="ArrayMesh" uid="uid://do6gcf5q8lufu" path="res://trees/PUSHILIN_tree_stump.obj" id="10_rsqgv"]
 [ext_resource type="PackedScene" uid="uid://d1rh546cwbpsv" path="res://trees/Tall Grass.glb" id="11_j06mh"]
@@ -152,7 +153,7 @@ shadow_enabled = true
 environment = SubResource("Environment_hjsbj")
 
 [node name="Player" parent="." unique_id=2030944428 instance=ExtResource("2_nasht")]
-transform = Transform3D(0.99075496, 0, 0.13566369, 0, 1, 0, -0.13566369, 0, 0.99075496, 287.44623, 521.72327, -58.601433)
+transform = Transform3D(0.99075496, 0, 0.13566369, 0, 1, 0, -0.13566369, 0, 0.99075496, 145.87804, 624.94476, -50.536835)
 launchForce = 15.0
 
 [node name="resetPoint" type="Marker3D" parent="." unique_id=215411684]
@@ -312,7 +313,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_l7rxp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.462097, 43.81987, -87.04755)
 use_collision = true
 size = Vector3(1227.282, 8, 1106.2412)
-material = ExtResource("6_ow7pe")
+material = ExtResource("10_a7lgp")
 
 [node name="Path3D" type="Path3D" parent="course" unique_id=656225569]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.18232, 7.516209, -248.89056)
@@ -1107,13 +1108,13 @@ size = Vector3(7.7054253, 2.9545898, 4.022949)
 material = ExtResource("9_ow7pe")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D2" unique_id=1403984431]
-transform = Transform3D(1, 0, 0, -4.2632564e-14, 1, 2.9802322e-08, -7.1054274e-15, 0, 1, -8.830597, 1.3512573, 58.743515)
-size = Vector3(7.7054253, 5.3029785, 1.875)
+transform = Transform3D(1, 0, 0, -4.2632564e-14, 1, 2.9802322e-08, -7.1054274e-15, 0, 1, -8.830597, 1.3512268, 59.757736)
+size = Vector3(7.7054253, 5.3029785, 3.9034424)
 material = ExtResource("9_ow7pe")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D2" unique_id=237490447]
-transform = Transform3D(1, 0, 0, -4.2632564e-14, 1, 2.9802322e-08, -7.1054274e-15, 0, 1, -4.56073, 1.3512268, 79.37004)
-size = Vector3(7.7054253, 5.3029785, 2.2973633)
+transform = Transform3D(1, 0, 0, -4.2632564e-14, 1, 2.9802322e-08, -7.1054274e-15, 0, 1, -5.3423767, 1.3512268, 79.37004)
+size = Vector3(9.268728, 5.3029785, 2.2973633)
 material = ExtResource("9_ow7pe")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D2" unique_id=1909162029]
@@ -1155,8 +1156,8 @@ transform = Transform3D(1.9073314e-10, -0.004363465, -2.6949956, -2.5, -1.092784
 launchforce = 750
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D2" unique_id=1443469680]
-transform = Transform3D(1, 0, 0, -4.2632564e-14, 1, 2.9802322e-08, -7.1054274e-15, 0, 1, 9.03833, 1.3512268, 58.879257)
-size = Vector3(7.7054253, 5.3029785, 1.6035156)
+transform = Transform3D(1, 0, 0, -4.2632564e-14, 1, 2.9802322e-08, -7.1054274e-15, 0, 1, 9.03833, 1.3511963, 59.92128)
+size = Vector3(7.7054253, 5.3029785, 3.687622)
 material = ExtResource("9_ow7pe")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="course/verticle climb/CSGCombiner3D2" unique_id=1516398678]
@@ -1500,9 +1501,9 @@ transform = Transform3D(-2.99932, 0, -0.12955858, 0, 3, 0, 0.0638744, 0, -6.0836
 launchforce = 10
 
 [node name="floor56" type="CSGBox3D" parent="course/verticle climb/wallPhysics5/CSGCombiner3D" unique_id=1335071206 groups=["obstacle"]]
-transform = Transform3D(0.9878973, 0.15521234, 0, -0.15521294, 0.9878947, 0, 3.4816594e-13, -4.440892e-14, 1.0000031, 211.9935, 243.50946, 60.0771)
+transform = Transform3D(0.9878973, 0.15521234, 0, -0.15521294, 0.9878948, 0, 7.1764816e-13, -4.7961635e-14, 1.0000031, 211.9935, 243.50946, 63.406185)
 use_collision = true
-size = Vector3(55.28647, 2.5170898, 8.369147)
+size = Vector3(55.28647, 2.5170898, 15.027285)
 material = ExtResource("10_l7rxp")
 
 [node name="floor52" type="CSGBox3D" parent="course/verticle climb/wallPhysics5/CSGCombiner3D" unique_id=473066685 groups=["obstacle"]]
@@ -3020,7 +3021,7 @@ transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, -
 mesh = ExtResource("9_sohrh")
 
 [node name="TerrainVertex3" type="MeshInstance3D" parent="." unique_id=679373275]
-transform = Transform3D(-10, 0, -1.509958e-06, 0, 10, 0, 1.509958e-06, 0, -10, 208.18494, 9.505173, 150.10994)
+transform = Transform3D(-10, 0, -1.509958e-06, 0, 10, 0, 1.509958e-06, 0, -10, 208.18494, -1.2163544, 150.10994)
 mesh = ExtResource("9_sohrh")
 
 [node name="TerrainVertex5" type="MeshInstance3D" parent="." unique_id=1921381389]
@@ -3057,10 +3058,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="panels" type="Node3D" parent="." unique_id=1445330733]
-
-[node name="boostPanel" parent="panels" unique_id=765202942 instance=ExtResource("12_8e2hs")]
-transform = Transform3D(-5, 0, -4.371139e-07, 0, 5, 0, 4.371139e-07, 0, -5, 0, 51.64792, -1.111377)
-launchforce = 600
 
 [node name="boostPanel2" parent="panels" unique_id=1411347049 instance=ExtResource("12_8e2hs")]
 transform = Transform3D(-3, 0, -4.5298742e-07, 0, 3, 0, 4.5298742e-07, 0, -3, 223.24864, 139.82953, 32.454)
@@ -3104,7 +3101,7 @@ launchforce = 100
 
 [node name="boostPanel29" parent="panels" unique_id=1620821421 instance=ExtResource("12_8e2hs")]
 transform = Transform3D(-4.6978645, -3.7323008, -9.0597484e-07, -3.7323008, 4.6978645, -5.6356185e-07, 1.0599215e-06, 1.2230554e-07, -6, 234.29099, 145.5054, -29.859282)
-launchforce = 40
+launchforce = 60
 
 [node name="boostPanel30" parent="panels" unique_id=1974819287 instance=ExtResource("12_8e2hs")]
 transform = Transform3D(-4.6978645, -3.7323008, -9.0597484e-07, -3.7323008, 4.6978645, -5.6356185e-07, 1.0599215e-06, 1.2230554e-07, -6, 234.29099, 145.5054, -37.260345)

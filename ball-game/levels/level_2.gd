@@ -31,7 +31,7 @@ func _on_plinko_trigger_body_entered(body: Node3D) -> void:
 
 
 func _on_plinko_trigger_body_exited(body: Node3D) -> void:
-	if body.global_position.y>304.994:
+	if body.global_position.y>286.196:
 		cruxSet("Crux Completed")
 
 
@@ -40,5 +40,5 @@ func _on_reverse_plinko_body_entered(body: Node3D) -> void:
 
 
 func _on_reverse_plinko_body_exited(body: Node3D) -> void:
-	if body.global_position.x<-63.789:
+	if body.global_position.y>515.49:
 		cruxSet("Crux Completed")

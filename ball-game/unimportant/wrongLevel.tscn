@@ -262,7 +262,8 @@ material = SubResource("StandardMaterial3D_yy828")
 
 [node name="boostPanel" parent="floor2" unique_id=851555894 instance=ExtResource("4_6747k")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.16247034, 0.23868465, -0.09158802)
-launchforce = 200
+visible = false
+launchforce = 100
 
 [node name="floor4" type="CSGBox3D" parent="." unique_id=1458104124 groups=["obstacle"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4206753, 4.0510807, 27.516869)
@@ -724,7 +725,10 @@ texture = ExtResource("5_um1d6")
 region_rect = Rect2(10.639053, 96.578636, 43.56639, 63.451866)
 
 [node name="Player" parent="." unique_id=1297519559 instance=ExtResource("7_a3cu3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0624235, 3.4401984, 19.100021)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.0624235, 3.4401984, 19.100021)
+
+[node name="camera_pivot" parent="Player" index="5" unique_id=903152552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4044623, 0)
 
 [node name="ExplosionParticles" parent="." unique_id=341806300 instance=ExtResource("8_8r00b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59055233, 1.2226849, -23.822453)
@@ -763,3 +767,5 @@ autoplay = &"RESET"
 
 [connection signal="body_entered" from="ExplosionParticles/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="Player"]

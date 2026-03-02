@@ -13,6 +13,16 @@ var transitioning:=false
 @onready var ball_skin: Node3D = $ballSkin
 @onready var ball_speen: RigidBody3D = $ballSkin/ballSpeen
 @onready var power_bar: ColorRect = $CanvasLayer/powerHUD/powerBar
+@onready var club_swing: AudioStreamPlayer = $clubSwing
+@onready var hit: AudioStreamPlayer = $hit
+@onready var wood_thud: AudioStreamPlayer = $woodThud
+@onready var grass_thud: AudioStreamPlayer = $grassThud
+@onready var glass_thud: AudioStreamPlayer = $glassThud
+
+const BASIC_GRASS_MATERIAL = preload("uid://brd42gst6v57f")
+const GLASSMATERIAL = preload("uid://b3dqs55pbr37s")
+const WOOD_MATERIAL = preload("uid://bp45eo2ayq38h")
+const OUT_OF_BOUNDS_MATERIAL = preload("uid://cv7krxq7hmerw")
 
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -92,10 +102,14 @@ func _physics_process(delta: float) -> void:
 			if spring_arm_3d.spring_length<5.5:
 				spring_arm_3d.spring_length+=0.025
 		if Input.is_action_just_released("boost") && abs(linear_velocity.z)<0.2 && abs(linear_velocity.x)<0.2 && abs(linear_velocity.y)<0.2:
+			club_swing.play()
+			club_swing.pitch_scale=randf_range(0.9,1.2)
 			var clubtween = create_tween()
 			clubtween.set_trans(Tween.TRANS_SINE)
 			clubtween.tween_property(club_deco,"global_position",golf_ball.global_position,0.1)
 			await clubtween.finished
+			hit.play()
+			hit.pitch_scale=randf_range(0.9,1.2)
 			club_deco.global_position=club_location.global_position
 			club_deco.visible=false
 			print(clubDistance)
@@ -112,6 +126,53 @@ func _physics_process(delta: float) -> void:
 			#apply_central_force(_camera_pivot.global_basis * Vector3(1, 0, 0)*50)
 
 func _on_body_entered(body: Node) -> void:
+	if linear_velocity.x>450  || linear_velocity.x<-450:
+		if !body is CSGCombiner3D:
+			if body.material==BASIC_GRASS_MATERIAL:
+				if !grass_thud.playing:
+					grass_thud.play()
+					grass_thud.pitch_scale=randf_range(0.9,1.2)
+			if body.material==WOOD_MATERIAL:
+				wood_thud.play()
+				wood_thud.pitch_scale=randf_range(0.9,1.2)
+			if body.material==GLASSMATERIAL:
+				if !glass_thud.playing:
+					glass_thud.play()
+					glass_thud.pitch_scale=randf_range(0.9,1.2)
+	if linear_velocity.y>2 || linear_velocity.y<-2:
+		if !body is CSGCombiner3D: 
+			if body.material==BASIC_GRASS_MATERIAL:
+				if !grass_thud.playing:
+					grass_thud.play()
+					grass_thud.pitch_scale=randf_range(0.9,1.2)
+			if body.material==OUT_OF_BOUNDS_MATERIAL:
+				if !grass_thud.playing:
+					grass_thud.play()
+					grass_thud.pitch_scale=randf_range(0.4,0.7)
+			if body.material==WOOD_MATERIAL:
+				wood_thud.play()
+				wood_thud.pitch_scale=randf_range(0.9,1.2)
+			if body.material==GLASSMATERIAL:
+				if !glass_thud.playing:
+					glass_thud.play()
+					glass_thud.pitch_scale=randf_range(0.9,1.2)
+		else:
+			if !grass_thud.playing:
+				grass_thud.play()
+				grass_thud.pitch_scale=randf_range(0.9,1.2)
+	if linear_velocity.z<450 || linear_velocity.z>-450:
+		if !body is CSGCombiner3D:
+			if body.material==BASIC_GRASS_MATERIAL:
+				if !grass_thud.playing:
+					grass_thud.play()
+					grass_thud.pitch_scale=randf_range(0.9,1.2)
+			if body.material==WOOD_MATERIAL:
+				wood_thud.play()
+				wood_thud.pitch_scale=randf_range(0.9,1.2)
+			if body.material==GLASSMATERIAL:
+				if !glass_thud.playing:
+					glass_thud.play()
+					glass_thud.pitch_scale=randf_range(0.9,1.2)
 	#if "goal" in body.get_groups() && !transitioning:
 		#if body.file_path!=null:
 			#complete_level(body.file_path)
