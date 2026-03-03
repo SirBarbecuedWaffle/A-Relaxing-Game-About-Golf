@@ -1,0 +1,270 @@
+[gd_scene format=3 uid="uid://ivbingk6iw5b"]
+
+[ext_resource type="Script" uid="uid://cdfgwkuec8qlc" path="res://end_screen.gd" id="1_bmpty"]
+[ext_resource type="Texture2D" uid="uid://bg1rxvg7iebv" path="res://menuStuff/8.png" id="1_eeddi"]
+[ext_resource type="FontFile" uid="uid://bc5luvf6u14cs" path="res://fomts/Alphasports-WqEn.ttf" id="1_womtn"]
+[ext_resource type="Texture2D" uid="uid://c3l5xuw4jm7x2" path="res://menuStuff/7.png" id="2_bmpty"]
+[ext_resource type="Texture2D" uid="uid://dwalwwq5hhn42" path="res://menuStuff/6.png" id="3_f707g"]
+[ext_resource type="Texture2D" uid="uid://tstwsy508j71" path="res://menuStuff/5.png" id="4_bqjes"]
+[ext_resource type="Texture2D" uid="uid://dehxwdobolh52" path="res://menuStuff/4.png" id="6_8l66u"]
+[ext_resource type="Texture2D" uid="uid://c6aeiyr5g6p21" path="res://menuStuff/3.png" id="7_vuuo2"]
+[ext_resource type="Texture2D" uid="uid://js66omigwyca" path="res://menuStuff/2.png" id="8_7bbr8"]
+[ext_resource type="Texture2D" uid="uid://bd5n8o3ujr5kj" path="res://Player/Idle (32x32).png" id="8_f707g"]
+[ext_resource type="Texture2D" uid="uid://bbfcmhghisit" path="res://menuStuff/flag_captured.png" id="9_1mxua"]
+[ext_resource type="Texture2D" uid="uid://3natgt5shccw" path="res://menuStuff/1.png" id="11_ce510"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqjes"]
+atlas = ExtResource("8_f707g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34fvc"]
+atlas = ExtResource("8_f707g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l66u"]
+atlas = ExtResource("8_f707g")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuuo2"]
+atlas = ExtResource("8_f707g")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bbr8"]
+atlas = ExtResource("8_f707g")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mxua"]
+atlas = ExtResource("8_f707g")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce510"]
+atlas = ExtResource("8_f707g")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtvdl"]
+atlas = ExtResource("8_f707g")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4btmk"]
+atlas = ExtResource("8_f707g")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7v1o7"]
+atlas = ExtResource("8_f707g")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h34q"]
+atlas = ExtResource("8_f707g")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dtvdl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqjes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34fvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8l66u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuuo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bbr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mxua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ce510")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtvdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4btmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7v1o7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h34q")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 15.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guify"]
+atlas = ExtResource("9_1mxua")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oil5j"]
+atlas = ExtResource("9_1mxua")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uog0"]
+atlas = ExtResource("9_1mxua")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5x1w"]
+atlas = ExtResource("9_1mxua")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4btmk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guify")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oil5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uog0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5x1w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_met5o"]
+font = ExtResource("1_womtn")
+font_size = 192
+
+[sub_resource type="LabelSettings" id="LabelSettings_670qs"]
+font = ExtResource("1_womtn")
+font_size = 81
+
+[node name="Node2D" type="Node2D" unique_id=22536049]
+script = ExtResource("1_bmpty")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=58045409]
+position = Vector2(575, 325)
+scale = Vector2(3, 3)
+texture = ExtResource("1_eeddi")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1185433767]
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(10, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1563357730]
+position = Vector2(575, 325)
+scale = Vector2(3, 3)
+texture = ExtResource("2_bmpty")
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=77807715]
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=1563686950]
+position = Vector2(575, 325)
+scale = Vector2(3, 3)
+texture = ExtResource("3_f707g")
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=738519146]
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(40, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3" unique_id=352049880]
+position = Vector2(575, 325)
+scale = Vector2(3, 3)
+texture = ExtResource("4_bqjes")
+
+[node name="Parallax2D4" type="Parallax2D" parent="." unique_id=1067333119]
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(60, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D4" unique_id=1071154920]
+position = Vector2(575, 325)
+scale = Vector2(3, 3)
+texture = ExtResource("6_8l66u")
+
+[node name="Parallax2D5" type="Parallax2D" parent="." unique_id=932462613]
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(80, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D5" unique_id=720294564]
+position = Vector2(575, 325)
+scale = Vector2(3, 3)
+texture = ExtResource("7_vuuo2")
+
+[node name="Button" type="Button" parent="Parallax2D5" unique_id=1734510169]
+offset_left = 1008.0
+offset_top = 548.0
+offset_right = 1042.0
+offset_bottom = 579.0
+text = "    e"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Parallax2D5" unique_id=1034634091]
+modulate = Color(0.24477637, 0.2447764, 0.24477637, 1)
+position = Vector2(1026, 558)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dtvdl")
+animation = &"Run"
+autoplay = "Run"
+frame_progress = 0.2053511
+
+[node name="Parallax2D6" type="Parallax2D" parent="." unique_id=941240895]
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(110, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D6" unique_id=876002609]
+position = Vector2(575, 325)
+scale = Vector2(3, 3)
+texture = ExtResource("8_7bbr8")
+
+[node name="Parallax2D8" type="Parallax2D" parent="." unique_id=1188100536]
+repeat_size = Vector2(2300, 0)
+autoscroll = Vector2(110, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Parallax2D8" unique_id=1962590737]
+position = Vector2(628, 505)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_4btmk")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="." unique_id=415977346]
+offset_left = 104.0
+offset_top = 29.0
+offset_right = 1035.0
+offset_bottom = 286.0
+text = "You Win!"
+label_settings = SubResource("LabelSettings_met5o")
+
+[node name="Label2" type="Label" parent="." unique_id=63374026]
+offset_left = 96.0
+offset_top = 273.0
+offset_right = 1027.0
+offset_bottom = 530.0
+text = "Hope you had a
+relaxing time"
+label_settings = SubResource("LabelSettings_670qs")
+horizontal_alignment = 1
+
+[node name="Parallax2D7" type="Parallax2D" parent="." unique_id=689909094]
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(150, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D7" unique_id=1018066632]
+position = Vector2(575, 325)
+scale = Vector2(3, 3)
+texture = ExtResource("11_ce510")
+
+[node name="Button" type="Button" parent="." unique_id=857260668]
+offset_left = 338.0
+offset_top = 502.0
+offset_right = 842.0
+offset_bottom = 620.0
+theme_override_fonts/font = ExtResource("1_womtn")
+theme_override_font_sizes/font_size = 80
+text = "Play Again"
+
+[connection signal="pressed" from="Parallax2D5/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button2_pressed"]

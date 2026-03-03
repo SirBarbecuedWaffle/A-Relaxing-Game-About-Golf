@@ -3,6 +3,7 @@ class_name Player
 @export_range(5,25) var launchForce:=1000.0
 @export_range(50,200) var turnSpeed:=100.0
 var transitioning:=false
+@onready var animation_player_2: AnimationPlayer = $CanvasLayer/Node2D/AnimationPlayer2
 @onready var power_hud: Control = $CanvasLayer/powerHUD
 @onready var success: AudioStreamPlayer = $success
 @onready var explode: AudioStreamPlayer = $explode
@@ -20,6 +21,8 @@ var transitioning:=false
 @onready var glass_thud: AudioStreamPlayer = $glassThud
 @onready var score_card: Sprite2D = $Control/scoreCard
 @export var strokes:=0
+@onready var hud: Control = $Control/HUD
+@onready var par_lab: Label = $Control/HUD/parLab
 
 const BASIC_GRASS_MATERIAL = preload("uid://brd42gst6v57f")
 const GLASSMATERIAL = preload("uid://b3dqs55pbr37s")
@@ -29,6 +32,7 @@ const OUT_OF_BOUNDS_MATERIAL = preload("uid://cv7krxq7hmerw")
 @onready var pars: Control = $Control/scoreCard/pars
 @onready var scores: Control = $Control/scoreCard/scores
 
+@onready var oob_lab: Label = $Control/OOBLab
 
 @onready var hole_1_score: Label = $Control/scoreCard/Control/hole1Score
 @onready var hole_2_score: Label = $Control/scoreCard/Control/hole2Score
@@ -49,6 +53,7 @@ const OUT_OF_BOUNDS_MATERIAL = preload("uid://cv7krxq7hmerw")
 @onready var golf_ball: MeshInstance3D = $ballSkin/golfBall
 @onready var camera_3d: Camera3D = $camera_pivot/SpringArm3D/Camera3D
 var paused:=false
+@onready var stroke_lab: Label = $Control/HUD/strokeLab
 @onready var ball_messiah: MeshInstance3D = $ballSkin/ballMessiah
 var clubDistance:=1.0
 func _unhandled_input(event: InputEvent) -> void:
@@ -64,6 +69,8 @@ func showScore()->void:
 	score_card.visible=true
 
 func _process(delta: float) -> void:
+	stroke_lab.text=str(strokes)
+	par_lab.text="Par "+str(Manager.pars[Manager.curLevel])
 	for i in range(Manager.curLevel+1):
 		var chil=pars.get_children()
 		chil[i].text=str(Manager.pars[i])
@@ -115,16 +122,18 @@ func _physics_process(delta: float) -> void:
 	club_location.global_position.z=golf_ball.global_position.z+(cos(_camera_pivot.rotation.y)*clubDistance*0.5)
 	
 	if Input.is_action_just_pressed("esc"):
+		
 		if paused:
 			paused=false
 			Engine.time_scale=1
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			score_card.visible=false
 		else:
-			paused=true
-			Engine.time_scale=0.0001
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			score_card.visible=true
+			if !oob_lab.visible:
+				paused=true
+				Engine.time_scale=0.0001
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+				score_card.visible=true
 		pause_lab.visible=paused
 			
 	if !transitioning:
@@ -215,10 +224,21 @@ func _on_body_entered(body: Node) -> void:
 	pass
 
 func complete_level(next_level_file)->void:
+	
 	transitioning=true
 	success.play()
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file(next_level_file)
+	
+func OOB()->void:
+	oob_lab.visible=true
+	await get_tree().create_timer(3.0).timeout
+	oob_lab.visible=false
+	
+func finsh()->void:
+	hud.visible=false
+	await get_tree().create_timer(2.5).timeout
+	animation_player_2.play("transition")
 	
 func crash_sequence()->void:
 	transitioning=true

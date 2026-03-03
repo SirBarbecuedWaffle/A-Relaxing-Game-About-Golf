@@ -2,6 +2,7 @@ extends StaticBody3D
 @export var nextScene: PackedScene
 @onready var success_particles: GPUParticles3D = $topFloor/SuccessParticles
 @onready var success_particles2: GPUParticles3D = $CSGCombiner3D/SuccessParticles
+@onready var player: Player = $"../Player"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,7 +17,7 @@ func _process(delta: float) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	Manager.scores[Manager.curLevel]=body.strokes
 	Manager.playBallSink()
-	
+	player.finsh()
 	if success_particles!=null:
 		success_particles.emitting=true
 	if success_particles2!=null:

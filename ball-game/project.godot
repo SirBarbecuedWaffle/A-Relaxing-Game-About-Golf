@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="ballTest"
-run/main_scene="uid://bwcfww0n68buj"
+run/main_scene="uid://v7bc2qrbu06c"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -25,6 +25,8 @@ Manager="*uid://bfa32kmfymlj5"
 
 [display]
 
+window/size/mode=2
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [global_group]

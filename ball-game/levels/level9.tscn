@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cxnhmgd6nak3d" path="res://Player/player.tscn" id="2_0gjtj"]
 [ext_resource type="PhysicsMaterial" uid="uid://qe8151vhjqcj" path="res://levels/rampMaterial.tres" id="3_7f0bl"]
 [ext_resource type="Script" uid="uid://va1a24efnbdb" path="res://levels/course.gd" id="4_ybwg1"]
-[ext_resource type="PackedScene" uid="uid://b7ogctfwjh30x" path="res://levels/level5.tscn" id="5_wl0i5"]
+[ext_resource type="PackedScene" uid="uid://dbqkojgxhvpjq" path="res://levels/level10.tscn" id="5_0gjtj"]
 [ext_resource type="Material" uid="uid://brd42gst6v57f" path="res://materials/basicGrassMaterial.tres" id="6_jhsfc"]
 [ext_resource type="Texture2D" uid="uid://bn8nq8ywwy68k" path="res://trees/grass.webp" id="7_n4xys"]
 [ext_resource type="PackedScene" uid="uid://jfwajmrh6ca7" path="res://levels/success_particles.tscn" id="8_t4fyd"]
@@ -104,7 +104,7 @@ sides = 64
 collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_cwqvt")
 script = ExtResource("4_ybwg1")
-nextScene = ExtResource("5_wl0i5")
+nextScene = ExtResource("5_0gjtj")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="course" unique_id=585450970]
 use_collision = true

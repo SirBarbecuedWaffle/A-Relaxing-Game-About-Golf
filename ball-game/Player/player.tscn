@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bq2oh2yijr4m7" path="res://Player/Golf Club.glb" id="6_vtle1"]
 [ext_resource type="Texture2D" uid="uid://vbiav67o4adj" path="res://Player/scoreCard.png" id="8_lfmf2"]
 [ext_resource type="FontFile" uid="uid://bc5luvf6u14cs" path="res://fomts/Alphasports-WqEn.ttf" id="8_pisgm"]
+[ext_resource type="FontFile" uid="uid://ca2eawnpmrm7h" path="res://fomts/FtPavielle-ARDBM.ttf" id="9_b1ygp"]
 [ext_resource type="Texture2D" uid="uid://cplxkfdfquore" path="res://Player/powerbar_with_background-removebg-preview.png" id="10_x3vf3"]
 [ext_resource type="AudioStream" uid="uid://bkvwnhx1caum0" path="res://audio/clubSwing.wav" id="11_apopc"]
 [ext_resource type="AudioStream" uid="uid://cmj5v3g3vsyeq" path="res://audio/ballHit.wav" id="12_5htga"]
@@ -33,9 +34,22 @@ rings = 11
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_gwnis"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_o28un"]
+font = ExtResource("8_pisgm")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_n471f"]
+font = ExtResource("8_pisgm")
+font_size = 58
+
 [sub_resource type="LabelSettings" id="LabelSettings_k53q1"]
 font = ExtResource("8_pisgm")
 font_size = 142
+
+[sub_resource type="LabelSettings" id="LabelSettings_b1ygp"]
+font = ExtResource("9_b1ygp")
+font_size = 94
+font_color = Color(1, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pisgm"]
 font = ExtResource("8_pisgm")
@@ -43,6 +57,58 @@ font_size = 32
 font_color = Color(0, 0, 0, 1)
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_o28un"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n471f"]
+resource_name = "loadIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1600)]
+}
+
+[sub_resource type="Animation" id="Animation_b1ygp"]
+resource_name = "transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -1600), Vector2(0, -100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o28un"]
+_data = {
+&"RESET": SubResource("Animation_o28un"),
+&"loadIn": SubResource("Animation_n471f"),
+&"transition": SubResource("Animation_b1ygp")
+}
 
 [sub_resource type="Animation" id="Animation_x3vf3"]
 length = 0.001
@@ -153,6 +219,46 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="HUD" type="Control" parent="Control" unique_id=1527419204]
+anchors_preset = 0
+offset_left = 32.0
+offset_top = -13.0
+offset_right = 72.0
+offset_bottom = 27.0
+
+[node name="strokeCA" type="Label" parent="Control/HUD" unique_id=617031934]
+layout_mode = 0
+offset_left = 732.0
+offset_top = -141.0
+offset_right = 1394.0
+offset_bottom = 205.0
+text = "Stroke"
+label_settings = SubResource("LabelSettings_o28un")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="strokeLab" type="Label" parent="Control/HUD" unique_id=1425331202]
+layout_mode = 0
+offset_left = 733.0
+offset_top = -90.0
+offset_right = 1395.0
+offset_bottom = 256.0
+text = "1"
+label_settings = SubResource("LabelSettings_n471f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="parLab" type="Label" parent="Control/HUD" unique_id=1200259183]
+layout_mode = 0
+offset_left = 737.0
+offset_top = -47.0
+offset_right = 1399.0
+offset_bottom = 299.0
+text = "Par 3"
+label_settings = SubResource("LabelSettings_o28un")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="pauseLab" type="Label" parent="Control" unique_id=1424643681]
 visible = false
 layout_mode = 0
@@ -161,6 +267,18 @@ offset_right = 1146.0
 offset_bottom = 580.0
 text = "PAUSED"
 label_settings = SubResource("LabelSettings_k53q1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OOBLab" type="Label" parent="Control" unique_id=1679927169]
+visible = false
+layout_mode = 0
+offset_top = 8.0
+offset_right = 1146.0
+offset_bottom = 664.0
+text = "Out of Bounds
++1 Stroke	"
+label_settings = SubResource("LabelSettings_b1ygp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -452,6 +570,50 @@ scale = Vector2(0.117, 3.681)
 position = Vector2(386, 317)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_x3vf3")
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer" unique_id=1090560443]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Node2D" unique_id=786357417]
+z_index = 10
+offset_top = 472.0
+offset_right = 40.0
+offset_bottom = 512.0
+rotation = 0.7853982
+scale = Vector2(10.05, 10.05)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Node2D" unique_id=325973156]
+z_index = 10
+offset_left = 1152.0
+offset_top = 472.0
+offset_right = 1192.0
+offset_bottom = 512.0
+rotation = 0.7853982
+scale = Vector2(10.05, 10.05)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/Node2D" unique_id=1359469467]
+z_index = 10
+offset_left = 572.0
+offset_top = 418.99997
+offset_right = 612.0
+offset_bottom = 459.0
+rotation = 0.7853982
+scale = Vector2(14.67, 14.67)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/Node2D" unique_id=892686983]
+z_index = 10
+offset_left = -142.0
+offset_top = 1.9999619
+offset_right = -42.0
+offset_bottom = 56.26998
+scale = Vector2(14.67, 14.67)
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="CanvasLayer/Node2D" unique_id=212033653]
+libraries/ = SubResource("AnimationLibrary_o28un")
+autoplay = &"loadIn"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=394164679]
 libraries/ = SubResource("AnimationLibrary_5htga")
