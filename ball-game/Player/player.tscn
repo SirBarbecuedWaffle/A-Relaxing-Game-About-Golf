@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://cn415u6xus2cb" path="res://audio/freesound_community-stick-hitting-a-dreadlock-small-thud-83297.mp3" id="13_gu6f8"]
 [ext_resource type="AudioStream" uid="uid://bxvjwhhsa7seh" path="res://audio/joentnt-walk-on-grass-1-291984.mp3" id="14_gu6f8"]
 [ext_resource type="AudioStream" uid="uid://cxrtu8qnxpkmi" path="res://audio/freesound_community-glass-ting-89283.mp3" id="15_dkpta"]
+[ext_resource type="AudioStream" uid="uid://ds6jqoq63n8w2" path="res://audio/Wii Sports Aww - QuickSounds.com.mp3" id="19_o28un"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k53q1"]
 friction = 0.09
@@ -50,6 +51,12 @@ font_size = 142
 font = ExtResource("9_b1ygp")
 font_size = 94
 font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7emwf"]
+font = ExtResource("8_pisgm")
+font_size = 94
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pisgm"]
 font = ExtResource("8_pisgm")
@@ -279,6 +286,17 @@ offset_bottom = 664.0
 text = "Out of Bounds
 +1 Stroke	"
 label_settings = SubResource("LabelSettings_b1ygp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="strokeResult" type="Label" parent="Control" unique_id=1852716054]
+visible = false
+layout_mode = 0
+offset_top = -124.0
+offset_right = 1146.0
+offset_bottom = 532.0
+text = "???"
+label_settings = SubResource("LabelSettings_7emwf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -635,5 +653,9 @@ pitch_scale = 0.51
 [node name="glassThud" type="AudioStreamPlayer" parent="." unique_id=1781758640]
 stream = ExtResource("15_dkpta")
 pitch_scale = 3.2
+
+[node name="oobSound" type="AudioStreamPlayer" parent="." unique_id=268001421]
+stream = ExtResource("19_o28un")
+volume_db = -5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://nipae1e02sgp"
+path="res://.godot/imported/Wii Sports Aww - QuickSounds.com.mp3-c84edc826fc53bc95cfdd7f290117e46.mp3str"
+
+[deps]
+
+source_file="res://audio/wiiii/Wii Sports Aww - QuickSounds.com.mp3"
+dest_files=["res://.godot/imported/Wii Sports Aww - QuickSounds.com.mp3-c84edc826fc53bc95cfdd7f290117e46.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

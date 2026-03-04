@@ -43,6 +43,7 @@ const OUT_OF_BOUNDS_MATERIAL = preload("uid://cv7krxq7hmerw")
 @onready var hole_7_score: Label = $Control/scoreCard/Control/hole7Score
 @onready var hole_8_score: Label = $Control/scoreCard/Control/hole8Score
 @onready var hole_9_score: Label = $Control/scoreCard/Control/hole9Score
+@onready var stroke_result: Label = $Control/strokeResult
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var spring_arm_3d: SpringArm3D = $camera_pivot/SpringArm3D
@@ -56,6 +57,7 @@ var paused:=false
 @onready var stroke_lab: Label = $Control/HUD/strokeLab
 @onready var ball_messiah: MeshInstance3D = $ballSkin/ballMessiah
 var clubDistance:=1.0
+@onready var oob_sound: AudioStreamPlayer = $oobSound
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion && !paused:
 		_camera_pivot.rotation.x -= event.relative.y * mouse_sensitivity
@@ -129,7 +131,7 @@ func _physics_process(delta: float) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			score_card.visible=false
 		else:
-			if !oob_lab.visible:
+			if !oob_lab.visible && !stroke_result.visible:
 				paused=true
 				Engine.time_scale=0.0001
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -231,12 +233,49 @@ func complete_level(next_level_file)->void:
 	get_tree().change_scene_to_file(next_level_file)
 	
 func OOB()->void:
+	oob_sound.play()
 	oob_lab.visible=true
 	await get_tree().create_timer(3.0).timeout
 	oob_lab.visible=false
 	
 func finsh()->void:
 	hud.visible=false
+	stroke_result.visible=true
+	if Manager.pars[Manager.curLevel]-strokes==4:
+		stroke_result.text="Condor"
+	if Manager.pars[Manager.curLevel]-strokes==3:
+		stroke_result.text="Albatross"
+	if Manager.pars[Manager.curLevel]-strokes==2:
+		stroke_result.text="Eagle"
+	if Manager.pars[Manager.curLevel]-strokes==1:
+		stroke_result.text="Birdie"
+	if Manager.pars[Manager.curLevel]-strokes==0:
+		stroke_result.text="Par"
+	if Manager.pars[Manager.curLevel]-strokes==-1:
+		stroke_result.text="Bogey"
+	if Manager.pars[Manager.curLevel]-strokes==-2:
+		stroke_result.text="Double Bogey"
+	if Manager.pars[Manager.curLevel]-strokes==-3:
+		stroke_result.text="Triple Bogey"
+	if Manager.pars[Manager.curLevel]-strokes==-4:
+		stroke_result.text="Quadruple Bogey"
+	if Manager.pars[Manager.curLevel]-strokes==-5:
+		stroke_result.text="Pentuple Bogey"
+	if Manager.pars[Manager.curLevel]-strokes==-6:
+		stroke_result.text="Sextuple Bogey"
+	if Manager.pars[Manager.curLevel]-strokes==-7:
+		stroke_result.text="Septuple Bogey"
+	if Manager.pars[Manager.curLevel]-strokes==-8:
+		stroke_result.text="Octuple Bogey"
+	if Manager.pars[Manager.curLevel]-strokes==-9:
+		stroke_result.text="Nonuple Bogey"
+	if Manager.pars[Manager.curLevel]-strokes<-9:
+		stroke_result.text="Bogey x"+str(abs(Manager.pars[Manager.curLevel]-strokes))
+	if strokes==1:
+		stroke_result.text="Hole In One"
+	if stroke_result.text=="???":
+		stroke_result.text="Nice Shot"
+	
 	await get_tree().create_timer(2.5).timeout
 	animation_player_2.play("transition")
 	
