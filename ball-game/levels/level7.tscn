@@ -18,6 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://d3pckmmnm7mgb" path="res://boostpanel/boostPanel.tscn" id="12_8e2hs"]
 [ext_resource type="PackedScene" uid="uid://cj5blxe6bec8u" path="res://levels/moving_obstacle.tscn" id="15_ti5b6"]
 [ext_resource type="FontFile" uid="uid://bc5luvf6u14cs" path="res://fomts/Alphasports-WqEn.ttf" id="17_k5ivc"]
+[ext_resource type="Texture2D" uid="uid://dj6qlhfajvant" path="res://levels/Wooden sign texture.jpg" id="19_aa5le"]
+[ext_resource type="ArrayMesh" uid="uid://cx5uog0gxp8hx" path="res://levels/wooden sign.obj" id="20_80epw"]
+[ext_resource type="FontFile" uid="uid://ca2eawnpmrm7h" path="res://fomts/FtPavielle-ARDBM.ttf" id="21_1ujwg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_umreq"]
 sky_top_color = Color(0.35000002, 0.4908334, 1, 1)
@@ -141,6 +144,9 @@ size = Vector3(150, 151.29695, 147.50493)
 [sub_resource type="BoxShape3D" id="BoxShape3D_a7lgp"]
 size = Vector3(36.15207, 305.47437, 34.955265)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oydwk"]
+albedo_texture = ExtResource("19_aa5le")
+
 [node name="level" type="Node3D" unique_id=1443469558]
 script = ExtResource("1_wf6kw")
 
@@ -153,7 +159,7 @@ shadow_enabled = true
 environment = SubResource("Environment_hjsbj")
 
 [node name="Player" parent="." unique_id=2030944428 instance=ExtResource("2_nasht")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3898, 55.453278, -1.9864513)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.062263, 57.59372, -3.4563446)
 launchForce = 15.0
 
 [node name="camera_pivot" parent="Player" index="5" unique_id=903152552]
@@ -2685,22 +2691,6 @@ height = 4.254
 sides = 32
 material = ExtResource("6_ow7pe")
 
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="course/verticle climb/CSGCombiner3D/floor43" unique_id=1966772467]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.567543, 0, 11.5546875)
-operation = 2
-radius = 8.0
-height = 4.254
-sides = 32
-material = ExtResource("6_ow7pe")
-
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="course/verticle climb/CSGCombiner3D/floor43" unique_id=1443057267]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.679146, 0, -14.917511)
-operation = 2
-radius = 8.0
-height = 4.254
-sides = 32
-material = ExtResource("6_ow7pe")
-
 [node name="CSGCylinder3D6" type="CSGCylinder3D" parent="course/verticle climb/CSGCombiner3D/floor43" unique_id=1292139065]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.056456, 0, 14.985901)
 operation = 2
@@ -3706,6 +3696,82 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="reversePlinko" unique_id=359631089]
 transform = Transform3D(1, 0, 0, 0, 0.57898235, 0.81534004, 0, -0.81534004, 0.57898235, 12.7039795, 72.68002, 40.489185)
 shape = SubResource("BoxShape3D_a7lgp")
+
+[node name="WoodenSign" type="MeshInstance3D" parent="." unique_id=1302392225]
+transform = Transform3D(-0.10218485, -0.9834479, 0.14962809, -0.9947656, 0.101022266, -0.01537018, -9.313226e-10, -0.15041544, -0.9886229, 293.6684, 188.5597, 5.31989)
+material_override = SubResource("StandardMaterial3D_oydwk")
+mesh = ExtResource("20_80epw")
+
+[node name="Label3D" type="Label3D" parent="WoodenSign" unique_id=1205820963]
+transform = Transform3D(0.0050357757, -0.99969405, -0.024215173, 0.001920417, -0.02420578, 0.9997053, -0.9999856, -0.005080792, 0.001797922, -0.09454883, 0.10331489, -0.58087397)
+modulate = Color(0.2715312, 0.21424147, 0.41287518, 1)
+outline_modulate = Color(0.015686275, 0.02745098, 0.11372549, 1)
+text = "You're
+Welcome"
+font = ExtResource("21_1ujwg")
+font_size = 98
+
+[node name="WoodenSign4" type="MeshInstance3D" parent="." unique_id=1717519774]
+transform = Transform3D(0.04579777, 0.99859023, 0.026838288, -0.9989431, 0.04588802, -0.0027569053, -0.003984568, -0.026683675, 0.99963605, 229.24207, 540.1758, -103.346275)
+material_override = SubResource("StandardMaterial3D_oydwk")
+mesh = ExtResource("20_80epw")
+
+[node name="Label3D" type="Label3D" parent="WoodenSign4" unique_id=114743459]
+transform = Transform3D(0.0050357757, -0.99969405, -0.024215173, 0.001920417, -0.02420578, 0.9997053, -0.9999856, -0.005080792, 0.001797922, -0.048989132, 0.10441804, -0.5806424)
+modulate = Color(0.2715312, 0.21424147, 0.41287518, 1)
+outline_modulate = Color(0.015686275, 0.02745098, 0.11372549, 1)
+text = "Nice Job
+Getting This
+Far.
+Now For
+The Final Stretch"
+font = ExtResource("21_1ujwg")
+font_size = 70
+
+[node name="WoodenSign5" type="MeshInstance3D" parent="." unique_id=2088376091]
+transform = Transform3D(0.045797773, 0.8240066, -0.5647264, -0.9989431, 0.035522062, -0.029180378, -0.003984569, 0.5654657, 0.8247623, 159.32724, 605.51526, -56.038536)
+material_override = SubResource("StandardMaterial3D_oydwk")
+mesh = ExtResource("20_80epw")
+
+[node name="Label3D" type="Label3D" parent="WoodenSign5" unique_id=235497568]
+transform = Transform3D(0.0050357757, -0.99969405, -0.024215173, 0.001920417, -0.02420578, 0.9997053, -0.9999856, -0.005080792, 0.001797922, -0.048989132, 0.10441804, -0.5806424)
+modulate = Color(0.2715312, 0.21424147, 0.41287518, 1)
+outline_modulate = Color(0.015686275, 0.02745098, 0.11372549, 1)
+text = "Ok Actually
+Good Job.
+You Have
+Unending Patience.
+Congrats"
+font = ExtResource("21_1ujwg")
+font_size = 70
+
+[node name="WoodenSign2" type="MeshInstance3D" parent="." unique_id=2141044955]
+transform = Transform3D(-0.10218485, -0.9834479, 0.14962809, -0.9947656, 0.101022266, -0.01537018, -9.313226e-10, -0.15041544, -0.9886229, 295.2511, 188.39713, -34.31279)
+material_override = SubResource("StandardMaterial3D_oydwk")
+mesh = ExtResource("20_80epw")
+
+[node name="Label3D" type="Label3D" parent="WoodenSign2" unique_id=1712188605]
+transform = Transform3D(0.0050357757, -0.99969405, -0.024215173, 0.001920417, -0.02420578, 0.9997053, -0.9999856, -0.005080792, 0.001797922, -0.09454883, 0.10331489, -0.58087397)
+modulate = Color(0.2715312, 0.21424147, 0.41287518, 1)
+outline_modulate = Color(0.015686275, 0.02745098, 0.11372549, 1)
+text = "Welcome
+Back :)"
+font = ExtResource("21_1ujwg")
+font_size = 98
+
+[node name="WoodenSign3" type="MeshInstance3D" parent="." unique_id=1109528958]
+transform = Transform3D(-0.10218485, -0.46863827, -0.87746024, -0.99476564, 0.048139725, 0.09013494, -3.1019226e-10, 0.8820776, -0.47110432, 282.53085, 336.48044, -68.10581)
+material_override = SubResource("StandardMaterial3D_oydwk")
+mesh = ExtResource("20_80epw")
+
+[node name="Label3D" type="Label3D" parent="WoodenSign3" unique_id=620238512]
+transform = Transform3D(0.0050357757, -0.99969405, -0.024215173, 0.001920417, -0.02420578, 0.9997053, -0.9999856, -0.005080792, 0.001797922, -0.09454883, 0.10331489, -0.58087397)
+modulate = Color(0.2715312, 0.21424147, 0.41287518, 1)
+outline_modulate = Color(0.015686275, 0.02745098, 0.11372549, 1)
+text = "Take a
+load off"
+font = ExtResource("21_1ujwg")
+font_size = 98
 
 [connection signal="body_entered" from="course/topFloor/Area3D" to="course" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="resetArea" to="." method="_on_reset_area_body_entered"]

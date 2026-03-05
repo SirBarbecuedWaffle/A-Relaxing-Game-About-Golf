@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://djrtsd0dyhmbr" path="res://levels/level9.tscn" id="5_1rsbk"]
 [ext_resource type="Texture2D" uid="uid://bn8nq8ywwy68k" path="res://trees/grass.webp" id="6_2lug4"]
 [ext_resource type="Material" uid="uid://brd42gst6v57f" path="res://materials/basicGrassMaterial.tres" id="7_6cv7v"]
-[ext_resource type="PackedScene" uid="uid://d3pckmmnm7mgb" path="res://boostpanel/boostPanel.tscn" id="7_kykqu"]
 [ext_resource type="PackedScene" uid="uid://jfwajmrh6ca7" path="res://levels/success_particles.tscn" id="8_o83nl"]
 [ext_resource type="ArrayMesh" uid="uid://c1qtxbcclnboj" path="res://flag/model.obj" id="9_418ld"]
 [ext_resource type="Material" uid="uid://cv7krxq7hmerw" path="res://materials/OutOfBoundsMaterial.tres" id="10_wtm13"]
@@ -106,6 +105,12 @@ physics_material_override = SubResource("PhysicsMaterial_cwqvt")
 script = ExtResource("4_h8sls")
 nextScene = ExtResource("5_1rsbk")
 
+[node name="CSGBox3D4" type="CSGBox3D" parent="course" unique_id=1405072246]
+transform = Transform3D(0.8041371, -0.5944439, 0, 0.5944439, 0.8041371, 0, 0, 0, 1, 15.652141, 52.38376, -1.9068413)
+use_collision = true
+size = Vector3(12.422302, 4.894043, 17.146118)
+material = ExtResource("7_6cv7v")
+
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="course" unique_id=585450970]
 use_collision = true
 
@@ -133,10 +138,6 @@ transform = Transform3D(0.7823691, -0.6228151, 0, 0.6228151, 0.7823691, 0, 0, 0,
 operation = 2
 size = Vector3(13.737793, 7.401367, 19.151611)
 material = ExtResource("7_6cv7v")
-
-[node name="boostPanel" parent="course/CSGCombiner3D/CSGBox3D3" unique_id=2028299605 instance=ExtResource("7_kykqu")]
-transform = Transform3D(-0.03748113, -171.45944, -2.089782e-06, -0.9992973, 6.4309998, -9.1638174e-07, 7.182551e-08, 2.5463843e-05, -13.84, 1.9852486, -5.9559517, 0.9182949)
-launchforce = 350
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="course/CSGCombiner3D" unique_id=485852995]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.72751, 57.45164, -1.9891572)

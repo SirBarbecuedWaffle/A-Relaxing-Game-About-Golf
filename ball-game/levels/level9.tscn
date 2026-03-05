@@ -208,6 +208,12 @@ path_joined = false
 smooth_faces = true
 material = SubResource("StandardMaterial3D_safpt")
 
+[node name="CSGBox3D4" type="CSGBox3D" parent="course" unique_id=1643305498]
+transform = Transform3D(0.8940136, -0.44803995, 0, 0.44803995, 0.8940136, 0, 0, 0, 1, 8.847614, 62.74676, -1.9068413)
+use_collision = true
+size = Vector3(35.521896, 4.894043, 17.146118)
+material = ExtResource("6_jhsfc")
+
 [node name="wallPhysics" type="StaticBody3D" parent="." unique_id=1784687661]
 collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_cwqvt")
@@ -434,11 +440,6 @@ material = ExtResource("17_qo35d")
 [node name="boostPanel" parent="StaticBody3D4" unique_id=2028299605 instance=ExtResource("18_0gjtj")]
 transform = Transform3D(2.865, 0, 0, 0, 2.865, 0, 0, 0, 2.865, 48.19897, 25.667603, -0.1488254)
 launchforce = 100
-
-[node name="boostPanel2" parent="StaticBody3D4" unique_id=419341990 instance=ExtResource("18_0gjtj")]
-transform = Transform3D(1.1546018, 7.9210467, 0, -2.6220455, 3.4879856, 0, 0, 0, 10.395, 19.962507, 10.084431, -0.1488254)
-visible = false
-launchforce = 120
 
 [connection signal="body_entered" from="course/CSGCombiner3D/Area3D" to="course" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="resetArea" to="." method="_on_reset_area_body_entered"]

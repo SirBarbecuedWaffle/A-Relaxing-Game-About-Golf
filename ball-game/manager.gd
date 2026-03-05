@@ -7,9 +7,7 @@ extends Node
 @export var scores=[0,0,0,0,0,0,0,0,0]
 @export var pars=[2,2,3,4,3,6,5,6,743]
 @export var curLevel=0
-func _process(delta: float) -> void:
-	#audio_stream_player.pitch_scale=randf_range(-0.002,0.002)
-	pass
+	
 
 func stopMenu()->void:
 	audio_stream_player_3.stop()
